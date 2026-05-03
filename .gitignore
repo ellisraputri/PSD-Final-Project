@@ -1,0 +1,16 @@
+# Build folder
+build/
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+
+# Visual Studio
+*.sln
+*.vcxproj*
+Debug/
+Release/
+
+# Executables
+*.exe
+*.out
