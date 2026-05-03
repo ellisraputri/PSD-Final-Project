@@ -1,8 +1,8 @@
 #ifndef ZOORK_PASSAGE_H
 #define ZOORK_PASSAGE_H
 
-#include "NullRoom.h"
-#include "Room.h"
+#include "Room/NullRoom.h"
+#include "Room/Room.h"
 #include <iostream>
 
 class Passage : public Location {

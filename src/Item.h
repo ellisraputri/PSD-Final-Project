@@ -1,9 +1,9 @@
 #ifndef ZOORK_ITEM_H
 #define ZOORK_ITEM_H
 
-#include "Command.h"
+#include "Command/Command.h"
 #include "GameObject.h"
-#include "NullCommand.h"
+#include "Command/NullCommand.h"
 
 class Item : public GameObject {
 public:

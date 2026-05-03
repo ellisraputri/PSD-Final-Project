@@ -3,9 +3,9 @@
 #ifndef ZOORK_ZOORKENGINE_H
 #define ZOORK_ZOORKENGINE_H
 
-#include "Player.h"
+#include "Character/Player.h"
 #include "Location.h"
-#include "Passage.h"
+#include "Passage/Passage.h"
 #include <iostream>
 #include <sstream>
 #include <string>

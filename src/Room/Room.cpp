@@ -1,6 +1,4 @@
-
-
-#include "NullPassage.h"
+#include "Passage/NullPassage.h"
 #include "Room.h"
 
 #include <utility>

@@ -1,6 +1,6 @@
 
 
-#include "Passage.h"
+#include "Passage/Passage.h"
 #include "PassageDefaultEnterCommand.h"
 
 void PassageDefaultEnterCommand::execute() {

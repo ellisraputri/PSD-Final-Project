@@ -1,7 +1,7 @@
 #include "Passage.h"
 
 #include <utility>
-#include "PassageDefaultEnterCommand.h"
+#include "Command/PassageDefaultEnterCommand.h"
 
 std::string Passage::oppositeDirection(const std::string &s) {
     if (s == "north") return "south";

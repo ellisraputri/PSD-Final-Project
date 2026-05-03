@@ -1,8 +1,8 @@
 #ifndef ZOORK_ROOM_H
 #define ZOORK_ROOM_H
 
-#include "Character.h"
-#include "RoomDefaultEnterCommand.h"
+#include "Character/Character.h"
+#include "Command/RoomDefaultEnterCommand.h"
 #include "Item.h"
 #include "Location.h"
 #include <map>

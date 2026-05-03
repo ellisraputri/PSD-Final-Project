@@ -1,9 +1,9 @@
 #ifndef ZOORK_LOCATION_H
 #define ZOORK_LOCATION_H
 
-#include "Command.h"
+#include "Command/Command.h"
 #include "GameObject.h"
-#include "NullCommand.h"
+#include "Command/NullCommand.h"
 
 class Location : public GameObject {
 public:

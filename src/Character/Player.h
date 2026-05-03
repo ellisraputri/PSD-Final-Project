@@ -3,9 +3,9 @@
 #ifndef ZOORK_PLAYER_H
 #define ZOORK_PLAYER_H
 
-#include "Character.h"
+#include "Character/Character.h"
 #include "Location.h"
-#include "NullRoom.h"
+#include "Room/NullRoom.h"
 
 class Player : public Character {
 public:

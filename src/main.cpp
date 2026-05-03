@@ -1,7 +1,7 @@
-#include "RoomDefaultEnterCommand.h"
-#include "Passage.h"
-#include "Player.h"
-#include "Room.h"
+#include "Command/RoomDefaultEnterCommand.h"
+#include "Passage/Passage.h"
+#include "Character/Player.h"
+#include "Room/Room.h"
 #include "ZOOrkEngine.h"
 #include<memory>
 

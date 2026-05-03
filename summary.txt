@@ -1,0 +1,58 @@
+Character
+- inherit dari GameObject
+- constructor -> belum ada functionality
+
+Command
+- induk dari semua command?
+
+GameObject
+- induk dari semua object
+- GameObject (string &, string &)
+- getName()
+- setName()
+- getDescription()
+- setDescription()
+- attribute: name,description
+
+Item 
+- inherit dari GameObject
+- constructor, ada yang pake (string, string). ada yang pake (string, string, command)
+- abstract method: use
+- setUseCommand
+- attribute: useCommand (shared_ptr<Command>)
+
+Location
+- inherit dari Gameobject
+- constructor, ada yang pake (string, string), ada yang pake (string, string, command)
+- abstract method: enter()
+- setEnterCommand
+- ayyribute: enterCommand (shared_ptr<Command>)
+
+Passage
+- inherit dari Location
+- createBasicPassage (Room, Room, string, bool)
+- Passage(const std::string &, const std::string &, Room*, Room*);
+
+    Passage(const std::string &, const std::string &, std::shared_ptr<Command>, Room*, Room*);
+
+    void setFrom(Room*);
+
+    Room* getFrom() const;
+
+    void setTo(Room*);
+
+    Room* getTo() const;
+- attribute: fromRoom, toRoom
+
+
+PassageDefaultEnterCommand
+- execute() => enter roomnya
+
+Player 
+- setCurrentRoom()
+- getCurrentRoom()
+
+
+Room
+- inherit dari Location
+- 
