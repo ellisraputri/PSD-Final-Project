@@ -19,8 +19,8 @@ int main() {
     std::shared_ptr<Room> behind_house = std::make_shared<Room>("behind-house",
                                   "You are behind the white house. A path leads into the forest to the east. In one corner of the house there is a small window which is slightly ajar.\n");
 
-    Passage::createBasicPassage(start.get(), south_of_house.get(), "south", true);
-    Passage::createBasicPassage(south_of_house.get(), behind_house.get(), "east", true);
+    Passage::createBasicPassage(start.get(), south_of_house.get(), "south", false, true);
+    Passage::createBasicPassage(south_of_house.get(), behind_house.get(), "east", false, true);
 
     ZOOrkEngine zoork(start);
 

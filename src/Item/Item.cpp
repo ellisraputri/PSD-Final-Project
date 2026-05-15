@@ -1,5 +1,5 @@
 #include "Item.h"
-
+#include "Command/PassageDefaultUnlockCommand.h"
 #include <utility>
 
 Item::Item(const std::string &n, const std::string &d) : GameObject(n, d),
@@ -13,6 +13,12 @@ Item::Item(const std::string &n, const std::string &d, std::shared_ptr<Command> 
 }
 
 void Item::use() {
+    auto unlockCommand = std::dynamic_pointer_cast<PassageDefaultUnlockCommand>(useCommand);
+
+    if (unlockCommand) {
+        unlockCommand->setUsedItem(this);
+    }
+
     useCommand->execute();
 }
 

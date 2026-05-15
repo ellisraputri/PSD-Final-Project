@@ -36,6 +36,8 @@ void ZOOrkEngine::run() {
             handleShowInventory();
         } else if (command == "drop") {
             handleDropCommand(arguments);
+        } else if (command == "use") {
+            handleUseCommand(arguments);
         } else if (command == "quit") {
             handleQuitCommand(arguments);
         } else {
@@ -136,14 +138,45 @@ void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments) {
             continue;
         }
 
-        if (!item->getIsTaken()){
-            std::cout << s << " does not exist in inventory" << std::endl;
+        Item* foundItem = nullptr;
+        for (Item* playerItem : player->getInventory()) {
+            if (playerItem->getName() == s) {
+                foundItem = item;
+                break;
+            }
+        }
+        if (foundItem == nullptr) {
+            std::cout << s << " does not exist in the inventory" << std::endl;
             continue;
         }
         
         item->setIsTaken(false);
         player->dropItem(item);
         std::cout << s << " is removed from inventory" << std::endl;
+    }
+}
+
+void ZOOrkEngine::handleUseCommand(std::vector<std::string> arguments) {
+    for(const std::string& s: arguments){
+        Item* item = info.getItem(s);
+        if (item == nullptr) {
+            std::cout << s << " is not a recognizable item" << std::endl;
+            continue;
+        }
+
+        Item* foundItem = nullptr;
+        for (Item* playerItem : player->getInventory()) {
+            if (playerItem->getName() == s) {
+                foundItem = item;
+                break;
+            }
+        }
+        if (foundItem == nullptr) {
+            std::cout << s << " does not exist in the inventory" << std::endl;
+            continue;
+        }
+        
+        item->use();
     }
 }
 
