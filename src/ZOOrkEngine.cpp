@@ -106,7 +106,7 @@ void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments) {
             continue;
         }
 
-        if (item->getIsTaken()){
+        if (item->isTaken()){
             std::cout << s << " is already taken before" << std::endl;
             continue;
         }
@@ -177,6 +177,9 @@ void ZOOrkEngine::handleUseCommand(std::vector<std::string> arguments) {
         }
         
         item->use();
+        if(item->isUsed()) {
+            player->dropItem(item);
+        }
     }
 }
 

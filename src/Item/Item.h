@@ -16,10 +16,14 @@ public:
     void setUseCommand(std::shared_ptr<Command>);
 
     void setIsTaken(bool);
-    bool getIsTaken();
+    bool isTaken();
+
+    void setIsUsed(bool);
+    bool isUsed();
 
 protected:
-    bool isTaken; 
+    bool taken = false; 
+    bool used = false;
     std::shared_ptr<Command> useCommand;
 };
 

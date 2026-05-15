@@ -8,6 +8,7 @@ void PassageDefaultUnlockCommand::execute() {
 
     if (usedItem == requiredItem) {
         passage->setLocked(false);
+        usedItem->setIsUsed(true);
         std::cout << "You unlocked the passage.\n";
         return;
     }
