@@ -3,10 +3,14 @@
 #include <utility>
 
 Item::Item(const std::string &n, const std::string &d) : GameObject(n, d),
-                                                         useCommand(std::make_shared<NullCommand>()) {}
+    useCommand(std::make_shared<NullCommand>()) {
+    isTaken = false;
+}
 
 Item::Item(const std::string &n, const std::string &d, std::shared_ptr<Command> c) : GameObject(n, d),
-                                                                                     useCommand(std::move(c)) {}
+    useCommand(std::move(c)) {
+    isTaken = false;
+}
 
 void Item::use() {
     useCommand->execute();
@@ -14,4 +18,12 @@ void Item::use() {
 
 void Item::setUseCommand(std::shared_ptr<Command> c) {
     useCommand = c;
+}
+
+void Item::setIsTaken(bool b){
+    isTaken = b;
+}
+
+bool Item::getIsTaken(){
+    return isTaken;
 }

@@ -15,7 +15,11 @@ public:
 
     void setUseCommand(std::shared_ptr<Command>);
 
+    void setIsTaken(bool);
+    bool getIsTaken();
+
 protected:
+    bool isTaken; 
     std::shared_ptr<Command> useCommand;
 };
 

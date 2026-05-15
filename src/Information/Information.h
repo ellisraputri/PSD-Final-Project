@@ -10,8 +10,8 @@ class Information {
 public:
     Information();
 
-    std::string getItemInfo(std::string name);
-    std::string getMechanismInfo(std::string name);
+    Item* getItem(std::string name);
+    Mechanism* getMechanism(std::string name);
 
 protected:
     std::vector<Item> allItems;

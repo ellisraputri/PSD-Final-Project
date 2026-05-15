@@ -19,19 +19,19 @@ public:
     }
 
     void setCurrentRoom(Room*);
-
     Room* getCurrentRoom() const;
 
-    std::vector<GameObject*> getCurrentInventory() const;
+    std::vector<Item*> getInventory() const;
+    void takeItem(Item*);
+    void dropItem(Item*);
 
     Player(const Player &) = delete;
-
     Player &operator=(const Player &) = delete;
 
 private:
     static Player *playerInstance;
     Room* currentRoom;
-    std::vector<GameObject*> inventory;
+    std::vector<Item*> inventory;
 
     Player() : Character("You", "You are a person, alike in dignity to any other, but uniquely you."),
                currentRoom(new NullRoom()) {}

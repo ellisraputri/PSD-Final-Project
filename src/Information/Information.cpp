@@ -2,20 +2,20 @@
 
 Information::Information(){}
 
-std::string Information::getItemInfo(std::string name) {
-    for(const Item& item: allItems){
-        if (item.getName() == name){
-            return item.getDescription();
+Item* Information::getItem(std::string name) {
+    for (Item& item : allItems) {
+        if (item.getName() == name) {
+            return &item;
         }
     }
-    return "";
+    return nullptr;
 }
 
-std::string Information::getMechanismInfo(std::string name) {
-    for(const Mechanism& mechanism: allMechanisms){
+Mechanism* Information::getMechanism(std::string name) {
+    for(Mechanism& mechanism: allMechanisms){
         if (mechanism.getName() == name){
-            return mechanism.getDescription();
+            return &mechanism;
         }
     }
-    return "";
+    return nullptr;
 }

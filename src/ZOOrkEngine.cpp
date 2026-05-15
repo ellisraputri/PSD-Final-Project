@@ -32,6 +32,8 @@ void ZOOrkEngine::run() {
             handleLookCommand(arguments);
         } else if ((command == "take") || (command == "get")) {
             handleTakeCommand(arguments);
+        } else if (command == "inventory") {
+            handleShowInventory();
         } else if (command == "drop") {
             handleDropCommand(arguments);
         } else if (command == "quit") {
@@ -71,10 +73,10 @@ void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
     std::string str;
 
     for (int i=0; i<arguments.size(); i++){
-        std::string itemInfo = info.getItemInfo(arguments[i]);
-        if(itemInfo != ""){
+        Item* item = info.getItem(arguments[i]);
+        if(item != nullptr){
             isPrinted[i] = true;
-            std::cout << arguments[i] << ": " << itemInfo << std::endl;
+            std::cout << arguments[i] << ": " << item->getDescription() << std::endl;
         }
     }
     if(std::find(isPrinted.begin(), isPrinted.end(), false) == isPrinted.end()) return;
@@ -82,10 +84,10 @@ void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
     for (int i=0; i<arguments.size(); i++){
         if(isPrinted[i]) continue;
 
-        std::string mechanismInfo = info.getMechanismInfo(arguments[i]);
-        if(mechanismInfo != ""){
+        Mechanism* mechanism = info.getMechanism(arguments[i]);
+        if(mechanism != nullptr){
             isPrinted[i] = true;
-            std::cout << arguments[i] << ": " << mechanismInfo << std::endl;
+            std::cout << arguments[i] << ": " << mechanism->getDescription() << std::endl;
         }
     }
     if(std::find(isPrinted.begin(), isPrinted.end(), false) == isPrinted.end()) return;
@@ -95,13 +97,54 @@ void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
 }
 
 void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments) {
-    // To be implemented
-    std::cout << "This functionality is not yet enabled.\n";
+    for(const std::string& s: arguments){
+        Item* item = info.getItem(s);
+        if (item == nullptr) {
+            std::cout << s << " is not a recognizable item" << std::endl;
+            continue;
+        }
+
+        if (item->getIsTaken()){
+            std::cout << s << " is already taken before" << std::endl;
+            continue;
+        }
+        
+        item->setIsTaken(true);
+        player->takeItem(item);
+        std::cout << s << " is taken into inventory" << std::endl;
+    }
+}
+
+void ZOOrkEngine::handleShowInventory() {
+    std::vector<Item*> inventory = player->getInventory();
+    if (inventory.empty()){
+        std::cout << "Inventory is still empty" << std::endl;
+        return;
+    }
+
+    std::cout << "Current Inventory: \n" << std::endl;
+    for (const Item* item: inventory){
+        std::cout << item->getName() << std::endl;
+    }
 }
 
 void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments) {
-    // To be implemented
-    std::cout << "This functionality is not yet enabled.\n";
+    for(const std::string& s: arguments){
+        Item* item = info.getItem(s);
+        if (item == nullptr) {
+            std::cout << s << " is not a recognizable item" << std::endl;
+            continue;
+        }
+
+        if (!item->getIsTaken()){
+            std::cout << s << " does not exist in inventory" << std::endl;
+            continue;
+        }
+        
+        item->setIsTaken(false);
+        player->dropItem(item);
+        std::cout << s << " is removed from inventory" << std::endl;
+    }
 }
 
 void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments) {
