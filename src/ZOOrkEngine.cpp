@@ -1,6 +1,7 @@
 
 
 #include "ZOOrkEngine.h"
+#include "Information/Information.h"
 
 #include <utility>
 #include <algorithm>
@@ -10,6 +11,8 @@ ZOOrkEngine::ZOOrkEngine(std::shared_ptr<Room> start) {
     player = Player::instance();
     player->setCurrentRoom(start.get());
     player->getCurrentRoom()->enter();
+
+    info = Information();
 }
 
 void ZOOrkEngine::run() {
@@ -64,8 +67,31 @@ void ZOOrkEngine::handleGoCommand(std::vector<std::string> arguments) {
 }
 
 void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
-    // To be implemented
-    std::cout << "This functionality is not yet enabled.\n";
+    std::vector<bool> isPrinted(arguments.size(), false);
+    std::string str;
+
+    for (int i=0; i<arguments.size(); i++){
+        std::string itemInfo = info.getItemInfo(arguments[i]);
+        if(itemInfo != ""){
+            isPrinted[i] = true;
+            std::cout << arguments[i] << ": " << itemInfo << std::endl;
+        }
+    }
+    if(std::find(isPrinted.begin(), isPrinted.end(), false) == isPrinted.end()) return;
+
+    for (int i=0; i<arguments.size(); i++){
+        if(isPrinted[i]) continue;
+
+        std::string mechanismInfo = info.getMechanismInfo(arguments[i]);
+        if(mechanismInfo != ""){
+            isPrinted[i] = true;
+            std::cout << arguments[i] << ": " << mechanismInfo << std::endl;
+        }
+    }
+    if(std::find(isPrinted.begin(), isPrinted.end(), false) == isPrinted.end()) return;
+
+    Room* currentRoom = player->getCurrentRoom();
+    std::cout << currentRoom->getDescription() << std::endl;
 }
 
 void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments) {
@@ -89,13 +115,56 @@ void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments) {
     }
 }
 
-std::vector<std::string> ZOOrkEngine::tokenizeString(const std::string &input) {
+std::vector<std::string> ZOOrkEngine::tokenizeString(const std::string& input) {
     std::vector<std::string> tokens;
-    std::stringstream ss(input);
-    std::string token;
 
-    while (std::getline(ss, token, ' ')) {
-        tokens.push_back(makeLowercase(token));
+    if (input.empty()) {
+        return tokens;
+    }
+
+    std::stringstream ss(input);
+
+    // First word = command
+    std::string command;
+    ss >> command;
+
+    tokens.push_back(makeLowercase(command));
+
+    // Remaining text
+    std::string rest;
+    std::getline(ss, rest);
+
+    // Replace commas with spaces
+    std::replace(rest.begin(), rest.end(), ',', ' ');
+
+    // Split remaining words
+    std::stringstream argsStream(rest);
+    std::string word;
+    std::string currentItem;
+
+    while (argsStream >> word) {
+        word = makeLowercase(word);
+
+        // Skip "and"
+        if (word == "and") {
+            if (!currentItem.empty()) {
+                tokens.push_back(currentItem);
+                currentItem.clear();
+            }
+            continue;
+        }
+
+        // Build multi-word item names
+        if (!currentItem.empty()) {
+            currentItem += " ";
+        }
+
+        currentItem += word;
+    }
+
+    // Push last item
+    if (!currentItem.empty()) {
+        tokens.push_back(currentItem);
     }
 
     return tokens;

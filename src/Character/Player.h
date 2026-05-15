@@ -6,6 +6,7 @@
 #include "Character/Character.h"
 #include "Location.h"
 #include "Room/NullRoom.h"
+#include <vector>
 
 class Player : public Character {
 public:
@@ -21,6 +22,8 @@ public:
 
     Room* getCurrentRoom() const;
 
+    std::vector<GameObject*> getCurrentInventory() const;
+
     Player(const Player &) = delete;
 
     Player &operator=(const Player &) = delete;
@@ -28,6 +31,7 @@ public:
 private:
     static Player *playerInstance;
     Room* currentRoom;
+    std::vector<GameObject*> inventory;
 
     Player() : Character("You", "You are a person, alike in dignity to any other, but uniquely you."),
                currentRoom(new NullRoom()) {}

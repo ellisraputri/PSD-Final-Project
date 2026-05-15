@@ -6,6 +6,7 @@
 #include "Character/Player.h"
 #include "Location.h"
 #include "Passage/Passage.h"
+#include "Information/Information.h"
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -20,6 +21,7 @@ public:
 private:
     bool gameOver = false;
     Player *player;
+    Information info;
 
     void handleGoCommand(std::vector<std::string>);
 

@@ -11,3 +11,7 @@ void Player::setCurrentRoom(Room* room) {
 Room* Player::getCurrentRoom() const {
     return currentRoom;
 }
+
+std::vector<GameObject*> Player::getCurrentInventory() const {
+    return inventory;
+}
