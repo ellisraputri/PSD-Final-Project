@@ -1,5 +1,3 @@
-
-
 #include "Player.h"
 
 Player *Player::playerInstance = nullptr;
@@ -12,15 +10,15 @@ Room* Player::getCurrentRoom() const {
     return currentRoom;
 }
 
-std::vector<Item*> Player::getInventory() const {
+std::vector<std::shared_ptr<Item>> Player::getInventory() const {
     return inventory;
 }
 
-void Player::takeItem(Item* item) {
+void Player::takeItem(std::shared_ptr<Item> item) {
     inventory.push_back(item);
 }
 
-void Player::dropItem(Item* item) {
+void Player::dropItem(std::shared_ptr<Item> item) {
     inventory.erase(
         std::remove(inventory.begin(), inventory.end(), item),
         inventory.end()

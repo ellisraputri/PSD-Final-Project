@@ -2,6 +2,7 @@
 #define ZOORK_PASSAGEDEFAULTUNLOCKCOMMAND_H
 
 #include "Command.h"
+#include "Item/Item.h"
 #include <utility>
 
 class PassageDefaultUnlockCommand : public Command {

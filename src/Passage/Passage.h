@@ -7,8 +7,7 @@
 
 class Passage : public Location {
 public:
-    static void
-    createBasicPassage(Room*, Room*, const std::string &, bool, bool);
+    static std::shared_ptr<Passage> createBasicPassage(Room*, Room*, const std::string &, bool, bool);
     Passage(const std::string &, const std::string &, Room*, Room*);
     Passage(const std::string &, const std::string &, std::shared_ptr<Command>, Room*, Room*);
 

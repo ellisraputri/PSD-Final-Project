@@ -7,12 +7,14 @@
 #include <algorithm>
 #include <memory>
 
-ZOOrkEngine::ZOOrkEngine(std::shared_ptr<Room> start) {
-    player = Player::instance();
-    player->setCurrentRoom(start.get());
-    player->getCurrentRoom()->enter();
-
+ZOOrkEngine::ZOOrkEngine() {
     info = Information();
+    info.initItem();
+
+    player = Player::instance();
+    player->setCurrentRoom(info.getRoom("start-room").get());
+    player->getCurrentRoom()->enter();
+    
 }
 
 void ZOOrkEngine::run() {
@@ -41,8 +43,10 @@ void ZOOrkEngine::run() {
         } else if (command == "quit") {
             handleQuitCommand(arguments);
         } else {
-            std::cout << "I don't understand that command.\n";
+            std::cout << "I don't understand that command";
         }
+
+        std::cout << "\n";
     }
 }
 
@@ -66,8 +70,10 @@ void ZOOrkEngine::handleGoCommand(std::vector<std::string> arguments) {
 
     Room* currentRoom = player->getCurrentRoom();
     auto passage = currentRoom->getPassage(direction);
-    player->setCurrentRoom(passage->getTo());
     passage->enter();
+    if (!passage->isLocked()){
+        player->setCurrentRoom(passage->getTo());
+    }
 }
 
 void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
@@ -75,24 +81,24 @@ void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
     std::string str;
 
     for (int i=0; i<arguments.size(); i++){
-        Item* item = info.getItem(arguments[i]);
+        std::shared_ptr<Item> item = info.getItem(arguments[i]);
         if(item != nullptr){
             isPrinted[i] = true;
             std::cout << arguments[i] << ": " << item->getDescription() << std::endl;
         }
     }
-    if(std::find(isPrinted.begin(), isPrinted.end(), false) == isPrinted.end()) return;
+    if(arguments.size()>0 && std::find(isPrinted.begin(), isPrinted.end(), false) == isPrinted.end()) return;
 
     for (int i=0; i<arguments.size(); i++){
         if(isPrinted[i]) continue;
 
-        Mechanism* mechanism = info.getMechanism(arguments[i]);
+        std::shared_ptr<Mechanism> mechanism = info.getMechanism(arguments[i]);
         if(mechanism != nullptr){
             isPrinted[i] = true;
             std::cout << arguments[i] << ": " << mechanism->getDescription() << std::endl;
         }
     }
-    if(std::find(isPrinted.begin(), isPrinted.end(), false) == isPrinted.end()) return;
+    if(arguments.size()>0 && std::find(isPrinted.begin(), isPrinted.end(), false) == isPrinted.end()) return;
 
     Room* currentRoom = player->getCurrentRoom();
     std::cout << currentRoom->getDescription() << std::endl;
@@ -100,7 +106,7 @@ void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
 
 void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments) {
     for(const std::string& s: arguments){
-        Item* item = info.getItem(s);
+        std::shared_ptr<Item> item = info.getItem(s);
         if (item == nullptr) {
             std::cout << s << " is not a recognizable item" << std::endl;
             continue;
@@ -118,28 +124,28 @@ void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments) {
 }
 
 void ZOOrkEngine::handleShowInventory() {
-    std::vector<Item*> inventory = player->getInventory();
+    std::vector<std::shared_ptr<Item>> inventory = player->getInventory();
     if (inventory.empty()){
         std::cout << "Inventory is still empty" << std::endl;
         return;
     }
 
-    std::cout << "Current Inventory: \n" << std::endl;
-    for (const Item* item: inventory){
+    std::cout << "Current Inventory:" << std::endl;
+    for (const std::shared_ptr<Item> item: inventory){
         std::cout << item->getName() << std::endl;
     }
 }
 
 void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments) {
     for(const std::string& s: arguments){
-        Item* item = info.getItem(s);
+        std::shared_ptr<Item> item = info.getItem(s);
         if (item == nullptr) {
             std::cout << s << " is not a recognizable item" << std::endl;
             continue;
         }
 
-        Item* foundItem = nullptr;
-        for (Item* playerItem : player->getInventory()) {
+        std::shared_ptr<Item> foundItem = nullptr;
+        for (const auto& playerItem : player->getInventory()) {
             if (playerItem->getName() == s) {
                 foundItem = item;
                 break;
@@ -158,14 +164,14 @@ void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments) {
 
 void ZOOrkEngine::handleUseCommand(std::vector<std::string> arguments) {
     for(const std::string& s: arguments){
-        Item* item = info.getItem(s);
+        std::shared_ptr<Item> item = info.getItem(s);
         if (item == nullptr) {
             std::cout << s << " is not a recognizable item" << std::endl;
             continue;
         }
 
-        Item* foundItem = nullptr;
-        for (Item* playerItem : player->getInventory()) {
+        std::shared_ptr<Item> foundItem = nullptr;
+        for (const auto& playerItem : player->getInventory()) {
             if (playerItem->getName() == s) {
                 foundItem = item;
                 break;

@@ -3,7 +3,7 @@
 
 #include "Character/Character.h"
 #include "Command/RoomDefaultEnterCommand.h"
-#include "Item.h"
+#include "Item/Item.h"
 #include "Location.h"
 #include <map>
 
