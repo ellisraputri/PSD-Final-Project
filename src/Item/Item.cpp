@@ -11,10 +11,9 @@ Item::Item(const std::string &n, const std::string &d, std::shared_ptr<Command> 
 }
 
 void Item::use() {
-    auto unlockCommand = std::dynamic_pointer_cast<PassageDefaultUnlockCommand>(useCommand);
-
-    if (unlockCommand) {
-        unlockCommand->setUsedItem(this);
+    auto cmd = std::dynamic_pointer_cast<ItemUseCommand>(useCommand);
+    if (cmd) {
+        cmd->setUsedItem(this);
     }
 
     useCommand->execute();

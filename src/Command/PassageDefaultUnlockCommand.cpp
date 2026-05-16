@@ -15,7 +15,3 @@ void PassageDefaultUnlockCommand::execute() {
 
     std::cout << "That item cannot unlock this passage.\n";
 }
-
-void PassageDefaultUnlockCommand::setUsedItem(Item* item) {
-    usedItem = item;
-}

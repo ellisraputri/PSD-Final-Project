@@ -1,24 +1,16 @@
 #ifndef ZOORK_PASSAGEDEFAULTUNLOCKCOMMAND_H
 #define ZOORK_PASSAGEDEFAULTUNLOCKCOMMAND_H
 
-#include "Command.h"
+#include "ItemUseCommand.h"
 #include "Item/Item.h"
 #include <utility>
 
-class PassageDefaultUnlockCommand : public Command {
+class PassageDefaultUnlockCommand : public ItemUseCommand {
 public:
     explicit PassageDefaultUnlockCommand(GameObject* g, Item* required): 
-        Command(g),
-        requiredItem(required),
-        usedItem(nullptr) {}
-
-    void setUsedItem(Item* item);
+        ItemUseCommand(g, required) {}
 
     void execute() override;
-
-private:
-    Item* requiredItem;
-    Item* usedItem;
 };
 
 
