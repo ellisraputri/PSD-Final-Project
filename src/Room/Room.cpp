@@ -8,6 +8,30 @@ Room::Room(const std::string &n, const std::string &d) : Location(n, d) {
 }
 
 Room::Room(const std::string &n, const std::string &d, std::shared_ptr<Command> c) : Location(n, d, std::move(c)) {}
+
+std::string Room::getDescription() const {
+    std::string desc = Location::getDescription();
+    for (const auto& item: items){
+        desc += "\n" + item->getDescription();
+    }
+    return desc;
+}
+
+void Room::addItem(std::shared_ptr<Item> item){
+    items.push_back(item);
+}
+
+void Room::removeItem(std::shared_ptr<Item> item){
+    items.erase(
+        std::remove(items.begin(), items.end(), item),
+        items.end()
+    );
+}
+
+bool Room::isItemExist(const std::shared_ptr<Item>& item) {
+    return std::find(items.begin(), items.end(), item) != items.end();
+}
+
 void Room::addPassage(const std::string &direction, std::shared_ptr<Passage> p) {
     passageMap[direction] = std::move(p);
 }

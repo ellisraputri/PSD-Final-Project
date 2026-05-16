@@ -15,10 +15,12 @@ public:
 
     Room(const std::string &, const std::string &, std::shared_ptr<Command>);
 
-//    void addItem(Item*);
-//    void removeItem(const std::string&);
-//    Item* getItem(const std::string&);
-//    Item* retrieveItem(const std::string&);
+    std::string getDescription() const override;
+
+    void addItem(std::shared_ptr<Item>);
+    void removeItem(std::shared_ptr<Item>);
+    bool isItemExist(const std::shared_ptr<Item>&);
+
 //    void addCharacter(Character*);
 //    void removeCharacter(const std::string&);
 //    Character* getCharacter(const std::string&);
@@ -30,7 +32,7 @@ public:
     std::shared_ptr<Passage> getPassage(const std::string &);
 
 protected:
-//    std::vector<Item*> items;
+    std::vector<std::shared_ptr<Item>> items;
 //    std::vector<Character*> characters;
     std::map<std::string, std::shared_ptr<Passage>> passageMap;
 };

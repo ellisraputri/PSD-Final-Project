@@ -11,7 +11,7 @@ public:
 
     void setName(const std::string &);
 
-    std::string getDescription() const;
+    virtual std::string getDescription() const;
 
     void setDescription(const std::string &);
 

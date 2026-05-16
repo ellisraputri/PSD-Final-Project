@@ -6,3 +6,9 @@ cd build
 cmake ..
 cmake --build .
 Debug\PSD_Final_Project.exe
+
+rmdir /s /q build
+mkdir build
+cd build
+cmake ..
+cmake --build .

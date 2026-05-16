@@ -14,7 +14,6 @@ ZOOrkEngine::ZOOrkEngine() {
     player = Player::instance();
     player->setCurrentRoom(info.getRoom("start-room").get());
     player->getCurrentRoom()->enter();
-    
 }
 
 void ZOOrkEngine::run() {
@@ -105,9 +104,11 @@ void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
 }
 
 void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments) {
+    Room* currentRoom = player->getCurrentRoom();
+
     for(const std::string& s: arguments){
         std::shared_ptr<Item> item = info.getItem(s);
-        if (item == nullptr) {
+        if (item == nullptr || !currentRoom->isItemExist(item)) {
             std::cout << s << " is not a recognizable item" << std::endl;
             continue;
         }
@@ -118,6 +119,7 @@ void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments) {
         }
         
         item->setIsTaken(true);
+        currentRoom->removeItem(item);
         player->takeItem(item);
         std::cout << s << " is taken into inventory" << std::endl;
     }
@@ -137,6 +139,8 @@ void ZOOrkEngine::handleShowInventory() {
 }
 
 void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments) {
+    Room* currentRoom = player->getCurrentRoom();
+
     for(const std::string& s: arguments){
         std::shared_ptr<Item> item = info.getItem(s);
         if (item == nullptr) {
@@ -158,6 +162,7 @@ void ZOOrkEngine::handleDropCommand(std::vector<std::string> arguments) {
         
         item->setIsTaken(false);
         player->dropItem(item);
+        currentRoom->addItem(item);
         std::cout << s << " is removed from inventory" << std::endl;
     }
 }

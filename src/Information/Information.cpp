@@ -14,7 +14,8 @@ struct PassageData {
 struct ItemData {
     std::string name;
     std::string desc;
-    std::shared_ptr<Passage> passage;
+    std::shared_ptr<Passage> passage1;
+    std::shared_ptr<Passage> passage2; //bidirectional
 };
 
 Information::Information(){}
@@ -73,14 +74,15 @@ void Information::initItem() {
     };
 
     for(int i=0; i<passages.size(); i++){
-        std::shared_ptr<Passage> passage = Passage::createBasicPassage(
+        std::vector<std::shared_ptr<Passage>> passage = Passage::createBasicPassage(
             passages[i].room1.get(), 
             passages[i].room2.get(),
             "south",
             true,   //locked 
             true   //bidirectional
         );
-        allPassages.push_back(passage);
+        allPassages.push_back(passage[0]);
+        allPassages.push_back(passage[1]);
     }
 
     std::vector<ItemData> items = {
@@ -93,14 +95,16 @@ void Information::initItem() {
             "item2",
             "desc2 item2",
             allPassages[0],
+            allPassages[1], //bidirectional
         }  
     };
 
     for(int i=0; i<items.size(); i++){
         std::shared_ptr<Item> item = std::make_shared<Item>(items[i].name, items[i].desc);
-        if (items[i].passage != nullptr) {
+        if (items[i].passage1 != nullptr) {
             auto unlockCommand = std::make_shared<PassageDefaultUnlockCommand>(
-                items[i].passage.get(),
+                items[i].passage1.get(),
+                items[i].passage2.get(),
                 item.get()
             );
             item->setUseCommand(unlockCommand);
@@ -108,4 +112,7 @@ void Information::initItem() {
         allItems.push_back(item);
     }
 
+    // initialize items in the room
+    allRooms[0]->addItem(allItems[0]);
+    allRooms[0]->addItem(allItems[1]);
 }

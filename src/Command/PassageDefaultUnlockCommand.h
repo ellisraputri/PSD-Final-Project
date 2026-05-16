@@ -7,10 +7,13 @@
 
 class PassageDefaultUnlockCommand : public ItemUseCommand {
 public:
-    explicit PassageDefaultUnlockCommand(GameObject* g, Item* required): 
-        ItemUseCommand(g, required) {}
+    explicit PassageDefaultUnlockCommand(GameObject* g1, GameObject* g2, Item* required): 
+        ItemUseCommand(g1, required), otherPassage(g2) {}
 
     void execute() override;
+
+private:
+    GameObject* otherPassage;
 };
 
 
