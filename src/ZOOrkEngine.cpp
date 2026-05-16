@@ -40,10 +40,10 @@ void ZOOrkEngine::run() {
             handleUseCommand(arguments);
         } else if (command == "attack" || command == "hit"){
             handleAttackCommand(arguments);
-        } else if (command == "quit") {
+        } else if (command == "quit" || command == "exit") {
             handleQuitCommand(arguments);
         } else {
-            std::cout << "I don't understand that command";
+            std::cout << "I don't understand that command\n";
         }
 
         std::cout << "\n";
@@ -221,10 +221,10 @@ void ZOOrkEngine::handleAttackCommand(std::vector<std::string> arguments) {
             continue;
         }
         
-        int playerAtk = randomInt(1, player->getAtk());
-        int playerDef = randomInt(0, player->getDef());
-        int enemyAtk = randomInt(1, enemy->getAtk());
-        int enemyDef = randomInt(0, enemy->getDef());
+        int playerAtk = randomInt(0, std::max(player->getAtk(), 0));
+        int playerDef = randomInt(0, std::max(player->getDef(), 0));
+        int enemyAtk = randomInt(0, std::max(enemy->getAtk(), 0));
+        int enemyDef = randomInt(0, std::max(enemy->getDef(), 0));
 
         int dmgFromPlayer = std::max((playerAtk - enemyDef), 0);
         enemy->takeDamage(dmgFromPlayer);
@@ -324,6 +324,10 @@ std::string ZOOrkEngine::makeLowercase(std::string input) {
 }
 
 int ZOOrkEngine::randomInt(int min, int max) {
+    if (max < min) {
+        std::swap(min, max);
+    }
+
     static std::random_device rd;
     static std::mt19937 gen(rd());
 

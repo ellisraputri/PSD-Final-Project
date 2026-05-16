@@ -1,65 +1,37 @@
 #include "Information.h"
 #include "Command/PassageDefaultUnlockCommand.h"
-
-struct RoomData {
-    std::string name;
-    std::string desc;
-};
-struct PassageData {
-    std::string name;
-    std::string desc;
-    std::shared_ptr<Room> room1;
-    std::shared_ptr<Room> room2;
-};
-struct ItemData {
-    std::string name;
-    std::string desc;
-    std::shared_ptr<Passage> passage1;
-    std::shared_ptr<Passage> passage2; //bidirectional
-};
-struct CharacterData {
-    std::string name;
-    std::string desc;
-    int hp;
-    int atk;
-    int def;
-    bool combatMode;
-};
+#include "InformationData.h"
 
 Information::Information(){}
 
 std::shared_ptr<Item> Information::getItem(std::string name) {
-    for (const auto& item : allItems) {
-        if (item->getName() == name) {
-            return item;
-        }
+    auto it = allItems.find(name);
+    if (it != allItems.end()) {
+        return it->second;
     }
     return nullptr;
 }
 
 std::shared_ptr<Mechanism> Information::getMechanism(std::string name) {
-    for(const auto& mechanism: allMechanisms){
-        if (mechanism->getName() == name){
-            return mechanism;
-        }
+    auto it = allMechanisms.find(name);
+    if (it != allMechanisms.end()) {
+        return it->second;
     }
     return nullptr;
 }
 
 std::shared_ptr<Room> Information::getRoom(std::string name) {
-    for (const auto& room : allRooms) {
-        if (room->getName() == name) {
-            return room;
-        }
+    auto it = allRooms.find(name);
+    if (it != allRooms.end()) {
+        return it->second;
     }
     return nullptr;
 }
 
 std::shared_ptr<Character> Information::getCharacter(std::string name) {
-    for (const auto& ch : allCharacters) {
-        if (ch->getName() == name) {
-            return ch;
-        }
+    auto it = allCharacters.find(name);
+    if (it != allCharacters.end()) {
+        return it->second;
     }
     return nullptr;
 }
@@ -76,57 +48,61 @@ void Information::initItem() {
         }
     };
 
-    for(int i=0; i<rooms.size(); i++){
-        std::shared_ptr<Room> room = std::make_shared<Room>(rooms[i].name, rooms[i].desc);
-        allRooms.push_back(room);
+    for(const auto& data: rooms){
+        std::shared_ptr<Room> room = std::make_shared<Room>(data.name, data.desc);
+        allRooms[data.name] = room;
     }
 
     std::vector<PassageData> passages = {
         {
             "passage1",
             "description1",
-            allRooms[0],
-            allRooms[1]
+            "start-room",
+            "second-room",
+            "south",
+            true,
+            true,
         }
     };
 
-    for(int i=0; i<passages.size(); i++){
-        std::vector<std::shared_ptr<Passage>> passage = Passage::createBasicPassage(
-            passages[i].room1.get(), 
-            passages[i].room2.get(),
-            "south",
-            true,   //locked 
-            true   //bidirectional
+    for(const auto& data: passages){
+        auto passage = Passage::createBasicPassage(
+            allRooms[data.fromRoom].get(),
+            allRooms[data.toRoom].get(),
+            data.direction,
+            data.locked,
+            data.bidirectional
         );
-        allPassages.push_back(passage[0]);
-        allPassages.push_back(passage[1]);
+        allPassages[data.name + "_0"] = passage[0];
+        allPassages[data.name + "_1"] = passage[1];
     }
 
     std::vector<ItemData> items = {
         {
             "item1",
             "description1 item1",
-            nullptr
+            "",
+            ""
         },
         {
             "item2",
             "desc2 item2",
-            allPassages[0],
-            allPassages[1], //bidirectional
+            "passage1_0",
+            "passage1_1",
         }  
     };
 
-    for(int i=0; i<items.size(); i++){
-        std::shared_ptr<Item> item = std::make_shared<Item>(items[i].name, items[i].desc);
-        if (items[i].passage1 != nullptr) {
+    for(const auto& data: items){
+        std::shared_ptr<Item> item = std::make_shared<Item>(data.name, data.desc);
+        if (data.passage1 != "") {
             auto unlockCommand = std::make_shared<PassageDefaultUnlockCommand>(
-                items[i].passage1.get(),
-                items[i].passage2.get(),
+                allPassages[data.passage1].get(),
+                allPassages[data.passage2].get(),
                 item.get()
             );
             item->setUseCommand(unlockCommand);
         }
-        allItems.push_back(item);
+        allItems[data.name] = item;
     }
 
     std::vector<CharacterData> characters = {
@@ -140,20 +116,33 @@ void Information::initItem() {
         }
     };
 
-    for(int i=0; i<characters.size(); i++){
-        std::shared_ptr<Character> ch = std::make_shared<Character>(
-            characters[i].name, 
-            characters[i].desc,
-            characters[i].hp,
-            characters[i].atk,
-            characters[i].def,
-            characters[i].combatMode
+    for(const auto& data: characters){
+        std::shared_ptr<Character> character = std::make_shared<Character>(
+            data.name, 
+            data.desc,
+            data.hp,
+            data.atk,
+            data.def,
+            data.combatMode
         );
-        allCharacters.push_back(ch);
+        allCharacters[data.name] = character;
     }
 
-    // initialize items and characters in the room
-    allRooms[0]->addItem(allItems[0]);
-    allRooms[0]->addItem(allItems[1]);
-    allRooms[1]->addCharacter(allCharacters[0]);
+    std::vector<RoomPopulationData> roomPopulations = {
+        {
+            "start-room",
+            {"item1", "item2"},
+            {"char1"}
+        }
+    };
+
+    for (const auto& data : roomPopulations) {
+        auto room = allRooms[data.roomName];
+        for (const auto& itemName : data.items) {
+            room->addItem(allItems[itemName]);
+        }
+        for (const auto& characterName : data.characters) {
+            room->addCharacter(allCharacters[characterName]);
+        }
+    }
 }

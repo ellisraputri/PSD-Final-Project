@@ -74,4 +74,5 @@ void Room::enter() {
         TriggerType::ENTER_ROOM,
         getName()
     );
+    std::cout << getDescription() << std::endl;
 }

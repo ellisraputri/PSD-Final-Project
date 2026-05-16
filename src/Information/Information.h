@@ -1,7 +1,7 @@
 #ifndef ZOORK_INFORMATION_H
 #define ZOORK_INFORMATION_H
 
-#include <vector>
+#include <unordered_map>
 #include "Item/Item.h"
 #include "Mechanism/Mechanism.h"
 #include "Room/Room.h"
@@ -19,11 +19,11 @@ public:
     void initItem();
 
 protected:
-    std::vector<std::shared_ptr<Item>> allItems;
-    std::vector<std::shared_ptr<Mechanism>> allMechanisms;
-    std::vector<std::shared_ptr<Room>> allRooms;
-    std::vector<std::shared_ptr<Passage>> allPassages;
-    std::vector<std::shared_ptr<Character>> allCharacters;
+    std::unordered_map<std::string, std::shared_ptr<Item>> allItems;
+    std::unordered_map<std::string, std::shared_ptr<Mechanism>> allMechanisms;
+    std::unordered_map<std::string, std::shared_ptr<Room>> allRooms;
+    std::unordered_map<std::string, std::shared_ptr<Passage>> allPassages;
+    std::unordered_map<std::string, std::shared_ptr<Character>> allCharacters;
 };
 
 #endif //ZOORK_INFORMATION_H
