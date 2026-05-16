@@ -17,7 +17,8 @@ void StoryManager::addTrigger(const StoryTrigger& trigger) {
 void StoryManager::trigger(TriggerType type, const std::string& target) {
     for (const auto& trigger : triggers) {
         if (trigger.matches(type, target)) {
-            flags.insert(trigger.getResult());
+            flags.insert(trigger.getResultFlag());
+            std::cout << trigger.getTriggerPrint() << std::endl;
         }
     }
 }
