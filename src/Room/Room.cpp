@@ -14,6 +14,9 @@ std::string Room::getDescription() const {
     for (const auto& item: items){
         desc += "\n" + item->getDescription();
     }
+    for (const auto& character: characters){
+        desc += "\n" + character->getDescription();
+    }
     return desc;
 }
 
@@ -30,6 +33,21 @@ void Room::removeItem(std::shared_ptr<Item> item){
 
 bool Room::isItemExist(const std::shared_ptr<Item>& item) {
     return std::find(items.begin(), items.end(), item) != items.end();
+}
+
+void Room::addCharacter(std::shared_ptr<Character> ch){
+    characters.push_back(ch);
+}
+
+void Room::removeCharacter(std::shared_ptr<Character> ch){
+    characters.erase(
+        std::remove(characters.begin(), characters.end(), ch),
+        characters.end()
+    );
+}
+
+bool Room::isCharacterExist(const std::shared_ptr<Character>& ch) {
+    return std::find(characters.begin(), characters.end(), ch) != characters.end();
 }
 
 void Room::addPassage(const std::string &direction, std::shared_ptr<Passage> p) {

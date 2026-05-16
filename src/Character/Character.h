@@ -8,14 +8,26 @@
 class Character : public GameObject {
 public:
     Character(const std::string &, const std::string &);
+    Character(const std::string &n, const std::string &d, int h, int a, int df, bool c): 
+        GameObject(n, d), hp(h), atk(a), def(df), combatMode(c){};
+
+    void setHp(int);
+    int getHp();
+    void setAtk(int);
+    int getAtk();
+    void setDef(int);
+    int getDef();
+    void setCombatMode(bool);
+    bool isCombatMode();
+
+    void takeDamage(int);
+    bool isDead();
 
 protected:
-//    std::vector<Item*> inventory;
-//    std::vector<std::string> tags;
-//    int health;
-//    int attack;
-//    int move;
-//    int initiative;
+    int hp = 1;
+    int atk = 0;
+    int def = 0;
+    bool combatMode = false;
 };
 
 #endif //ZOORK_CHARACTER_H

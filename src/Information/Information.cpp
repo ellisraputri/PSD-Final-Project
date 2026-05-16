@@ -17,6 +17,14 @@ struct ItemData {
     std::shared_ptr<Passage> passage1;
     std::shared_ptr<Passage> passage2; //bidirectional
 };
+struct CharacterData {
+    std::string name;
+    std::string desc;
+    int hp;
+    int atk;
+    int def;
+    bool combatMode;
+};
 
 Information::Information(){}
 
@@ -42,6 +50,15 @@ std::shared_ptr<Room> Information::getRoom(std::string name) {
     for (const auto& room : allRooms) {
         if (room->getName() == name) {
             return room;
+        }
+    }
+    return nullptr;
+}
+
+std::shared_ptr<Character> Information::getCharacter(std::string name) {
+    for (const auto& ch : allCharacters) {
+        if (ch->getName() == name) {
+            return ch;
         }
     }
     return nullptr;
@@ -112,7 +129,31 @@ void Information::initItem() {
         allItems.push_back(item);
     }
 
-    // initialize items in the room
+    std::vector<CharacterData> characters = {
+        {
+            "char1",
+            "char1 description",
+            1, //hp
+            1, //atk
+            0, //def
+            true //combatMode
+        }
+    };
+
+    for(int i=0; i<characters.size(); i++){
+        std::shared_ptr<Character> ch = std::make_shared<Character>(
+            characters[i].name, 
+            characters[i].desc,
+            characters[i].hp,
+            characters[i].atk,
+            characters[i].def,
+            characters[i].combatMode
+        );
+        allCharacters.push_back(ch);
+    }
+
+    // initialize items and characters in the room
     allRooms[0]->addItem(allItems[0]);
     allRooms[0]->addItem(allItems[1]);
+    allRooms[1]->addCharacter(allCharacters[0]);
 }

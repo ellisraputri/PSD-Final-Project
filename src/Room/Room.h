@@ -21,9 +21,9 @@ public:
     void removeItem(std::shared_ptr<Item>);
     bool isItemExist(const std::shared_ptr<Item>&);
 
-//    void addCharacter(Character*);
-//    void removeCharacter(const std::string&);
-//    Character* getCharacter(const std::string&);
+    void addCharacter(std::shared_ptr<Character>);
+    void removeCharacter(std::shared_ptr<Character>);
+    bool isCharacterExist(const std::shared_ptr<Character>&);
 
     void addPassage(const std::string &, std::shared_ptr<Passage>);
 
@@ -33,7 +33,7 @@ public:
 
 protected:
     std::vector<std::shared_ptr<Item>> items;
-//    std::vector<Character*> characters;
+    std::vector<std::shared_ptr<Character>> characters;
     std::map<std::string, std::shared_ptr<Passage>> passageMap;
 };
 

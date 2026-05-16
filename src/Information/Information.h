@@ -14,6 +14,7 @@ public:
     std::shared_ptr<Item> getItem(std::string name);
     std::shared_ptr<Mechanism> getMechanism(std::string name);
     std::shared_ptr<Room> getRoom(std::string name);
+    std::shared_ptr<Character> getCharacter(std::string name);
 
     void initItem();
 
@@ -22,6 +23,7 @@ protected:
     std::vector<std::shared_ptr<Mechanism>> allMechanisms;
     std::vector<std::shared_ptr<Room>> allRooms;
     std::vector<std::shared_ptr<Passage>> allPassages;
+    std::vector<std::shared_ptr<Character>> allCharacters;
 };
 
 #endif //ZOORK_INFORMATION_H

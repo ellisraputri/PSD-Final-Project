@@ -1,11 +1,10 @@
-
-
 #include "ZOOrkEngine.h"
 #include "Information/Information.h"
 
 #include <utility>
 #include <algorithm>
 #include <memory>
+#include <random>
 
 ZOOrkEngine::ZOOrkEngine() {
     info = Information();
@@ -39,6 +38,8 @@ void ZOOrkEngine::run() {
             handleDropCommand(arguments);
         } else if (command == "use") {
             handleUseCommand(arguments);
+        } else if (command == "attack" || command == "hit"){
+            handleAttackCommand(arguments);
         } else if (command == "quit") {
             handleQuitCommand(arguments);
         } else {
@@ -95,6 +96,17 @@ void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
         if(mechanism != nullptr){
             isPrinted[i] = true;
             std::cout << arguments[i] << ": " << mechanism->getDescription() << std::endl;
+        }
+    }
+    if(arguments.size()>0 && std::find(isPrinted.begin(), isPrinted.end(), false) == isPrinted.end()) return;
+
+    for (int i=0; i<arguments.size(); i++){
+        if(isPrinted[i]) continue;
+
+        std::shared_ptr<Character> character = info.getCharacter(arguments[i]);
+        if(character != nullptr){
+            isPrinted[i] = true;
+            std::cout << arguments[i] << ": " << character->getDescription() << std::endl;
         }
     }
     if(arguments.size()>0 && std::find(isPrinted.begin(), isPrinted.end(), false) == isPrinted.end()) return;
@@ -194,6 +206,50 @@ void ZOOrkEngine::handleUseCommand(std::vector<std::string> arguments) {
     }
 }
 
+void ZOOrkEngine::handleAttackCommand(std::vector<std::string> arguments) {
+    Room* currentRoom = player->getCurrentRoom();
+
+    for(const std::string& s: arguments){
+        std::shared_ptr<Character> enemy = info.getCharacter(s);
+        if (enemy == nullptr || !currentRoom->isCharacterExist(enemy)) {
+            std::cout << s << " is not a recognizable enemy" << std::endl;
+            continue;
+        }
+
+        if (!enemy->isCombatMode()){
+            std::cout << s << " is not in a state to have a combat with you" << std::endl;
+            continue;
+        }
+        
+        int playerAtk = randomInt(1, player->getAtk());
+        int playerDef = randomInt(0, player->getDef());
+        int enemyAtk = randomInt(1, enemy->getAtk());
+        int enemyDef = randomInt(0, enemy->getDef());
+
+        int dmgFromPlayer = std::max((playerAtk - enemyDef), 0);
+        enemy->takeDamage(dmgFromPlayer);
+        std::cout << s << " takes " << dmgFromPlayer << " damage from you" << std::endl;
+        std::cout << s << "'s health becomes " << enemy->getHp() << std::endl;
+
+        if (enemy->isDead()){
+            std::cout << s << " has died" << std::endl;
+            enemy->setCombatMode(false);
+            continue;
+        }
+
+        int dmgFromEnemy = std::max((enemyAtk - playerDef), 0);
+        player->takeDamage(dmgFromEnemy);
+        std::cout << "You take " << dmgFromEnemy << " damage from " << s << std::endl;
+        std::cout << "Your health becomes " << player->getHp() << std::endl;
+
+        if (player->isDead()){
+            std::cout << "You have died" << std::endl;
+            gameOver = true;
+            break;
+        }
+    }
+}
+
 void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments) {
     std::string input;
     std::cout << "Are you sure you want to QUIT?\n> ";
@@ -265,4 +321,12 @@ std::string ZOOrkEngine::makeLowercase(std::string input) {
     std::transform(output.begin(), output.end(), output.begin(), ::tolower);
 
     return output;
+}
+
+int randomInt(int min, int max) {
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+
+    std::uniform_int_distribution<> dist(min, max);
+    return dist(gen);
 }
