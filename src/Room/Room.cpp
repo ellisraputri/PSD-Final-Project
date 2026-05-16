@@ -68,3 +68,10 @@ std::shared_ptr<Passage> Room::getPassage(const std::string &direction) {
         return std::make_shared<NullPassage>(this);
     }
 }
+
+void Room::enter() {
+    StoryManager::instance()->trigger(
+        TriggerType::ENTER_ROOM,
+        getName()
+    );
+}

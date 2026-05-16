@@ -323,7 +323,7 @@ std::string ZOOrkEngine::makeLowercase(std::string input) {
     return output;
 }
 
-int randomInt(int min, int max) {
+int ZOOrkEngine::randomInt(int min, int max) {
     static std::random_device rd;
     static std::mt19937 gen(rd());
 

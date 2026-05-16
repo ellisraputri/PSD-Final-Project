@@ -3,6 +3,7 @@
 
 #include "Character/Character.h"
 #include "Command/RoomDefaultEnterCommand.h"
+#include "Story/StoryManager.h"
 #include "Item/Item.h"
 #include "Location.h"
 #include <map>
@@ -12,10 +13,10 @@ class Passage;
 class Room : public Location {
 public:
     Room(const std::string &, const std::string &);
-
     Room(const std::string &, const std::string &, std::shared_ptr<Command>);
 
     std::string getDescription() const override;
+    void enter() override;
 
     void addItem(std::shared_ptr<Item>);
     void removeItem(std::shared_ptr<Item>);
