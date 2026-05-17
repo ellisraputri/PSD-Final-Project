@@ -36,7 +36,7 @@ std::shared_ptr<Character> Information::getCharacter(std::string name) {
     return nullptr;
 }
 
-void Information::initItem() {
+void Information::initRoom() {
     std::vector<RoomData> rooms = {
         {
             "start-room",
@@ -52,7 +52,9 @@ void Information::initItem() {
         std::shared_ptr<Room> room = std::make_shared<Room>(data.name, data.desc);
         allRooms[data.name] = room;
     }
+}
 
+void Information::initPassage() {
     std::vector<PassageData> passages = {
         {
             "passage1",
@@ -76,7 +78,9 @@ void Information::initItem() {
         allPassages[data.name + "_0"] = passage[0];
         allPassages[data.name + "_1"] = passage[1];
     }
+}
 
+void Information::initItem() {
     std::vector<ItemData> items = {
         {
             "item1",
@@ -104,7 +108,9 @@ void Information::initItem() {
         }
         allItems[data.name] = item;
     }
+}
 
+void Information::initCharacter(){
     std::vector<CharacterData> characters = {
         {
             "char1",
@@ -127,7 +133,9 @@ void Information::initItem() {
         );
         allCharacters[data.name] = character;
     }
+}
 
+void Information::initRoomPopulation() {
     std::vector<RoomPopulationData> roomPopulations = {
         {
             "start-room",
@@ -144,5 +152,21 @@ void Information::initItem() {
         for (const auto& characterName : data.characters) {
             room->addCharacter(allCharacters[characterName]);
         }
+    }
+}
+
+void Information::initTrigger() {
+    std::vector<TriggerData> triggers = {
+        {
+            "ENTER_ROOM",
+            "second-room",
+            "entered_second_room",
+            "You entered the second room"
+        }
+    };
+
+    for (const auto& data: triggers){
+        StoryTrigger trigger = StoryTrigger(stringToTriggerType(data.triggerType), data.target, data.flag, data.res);
+        StoryManager::instance()->addTrigger(trigger);
     }
 }

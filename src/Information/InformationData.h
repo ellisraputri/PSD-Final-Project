@@ -42,3 +42,10 @@ struct RoomPopulationData {
     std::vector<std::string> items;
     std::vector<std::string> characters;
 };
+
+struct TriggerData {
+    std::string triggerType;
+    std::string target;
+    std::string flag; 
+    std::string res;
+};

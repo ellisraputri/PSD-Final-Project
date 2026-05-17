@@ -8,7 +8,12 @@
 
 ZOOrkEngine::ZOOrkEngine() {
     info = Information();
+    info.initRoom();
+    info.initPassage();
     info.initItem();
+    info.initCharacter();
+    info.initRoomPopulation();
+    info.initTrigger();
 
     player = Player::instance();
     player->setCurrentRoom(info.getRoom("start-room").get());

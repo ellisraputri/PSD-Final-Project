@@ -6,6 +6,7 @@
 #include "Mechanism/Mechanism.h"
 #include "Room/Room.h"
 #include "Passage/Passage.h"
+#include "Story/TriggerType.h"
 
 class Information {
 public:
@@ -16,7 +17,12 @@ public:
     std::shared_ptr<Room> getRoom(std::string name);
     std::shared_ptr<Character> getCharacter(std::string name);
 
+    void initRoom();
+    void initPassage();
     void initItem();
+    void initCharacter();
+    void initRoomPopulation();
+    void initTrigger();
 
 protected:
     std::unordered_map<std::string, std::shared_ptr<Item>> allItems;
