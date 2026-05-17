@@ -25,7 +25,7 @@ public:
     bool isDead();
 
     std::string getDialogue(const std::string& flag) const;
-
+    void printDialogues() const;
     void addDialogue(const std::string& flag, const std::string& dialogue);
 
 protected:

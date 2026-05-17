@@ -21,7 +21,7 @@ ZOOrkEngine::ZOOrkEngine() {
     // std::cout << "7"<<std::endl;
 
     player = Player::instance();
-    player->setCurrentRoom(info.getRoom("bedroom-bed").get());
+    player->setCurrentRoom(info.getRoom("corridor2").get());
     // std::cout << "8"<<std::endl;
     player->getCurrentRoom()->enter();
     // std::cout << "9"<<std::endl;
@@ -54,6 +54,8 @@ void ZOOrkEngine::run() {
             handleAttackCommand(arguments);
         } else if (command == "talk" || command == "greet") {
             handleTalkCommand(arguments);
+        } else if (command == "dialog") {
+            handleDialogCommand(arguments);
         } else if (command == "quit" || command == "exit") {
             handleQuitCommand(arguments);
         } else {
@@ -283,6 +285,34 @@ void ZOOrkEngine::handleTalkCommand(std::vector<std::string> arguments){
             TriggerType::TALK_CHARACTER,
             character->getName()
         });
+    }
+}
+
+void ZOOrkEngine::handleDialogCommand(std::vector<std::string> arguments){
+    if (arguments.size() != 1){
+        std::cout << "You can only dialog with one character at one time.\n";
+        return;
+    } 
+
+    Room* currentRoom = player->getCurrentRoom();
+    std::shared_ptr<Character> character = info.getCharacter(arguments[0]);
+    if (character == nullptr || !currentRoom->isCharacterExist(character)) {
+        std::cout << arguments[0] << " is not a recognizable character" << std::endl;
+        return;
+    }
+
+    std::string dialogSelection = "";
+    character->printDialogues();
+
+    while (dialogSelection != "stop dialog") {
+        std::cout << "\nyou >> ";
+
+        std::getline(std::cin, dialogSelection);
+        if (dialogSelection == "stop dialog") {
+            break;
+        }
+
+        std::cout << character->getName() << " >> " << character->getDialogue(dialogSelection) << "\n\n";
     }
 }
 

@@ -40,6 +40,8 @@ private:
 
     void handleTalkCommand(std::vector<std::string>);
 
+    void handleDialogCommand(std::vector<std::string>);
+
     void handleQuitCommand(std::vector<std::string>);
 
     static std::vector<std::string> tokenizeString(const std::string&);

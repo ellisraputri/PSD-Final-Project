@@ -24,3 +24,9 @@ cmake --build .
 flagDone dan lockPlayer hanya dipakai kalau butuh locking player after trigger.
 flagDone = trigger flag yang mana supaya lock player di-set false
 
+penamaan:
+- character-> full lowercase
+- item -> full lowercase
+- passage -> passage-{room1}-{room2}, cth: passage-bedroom_door2-corridor2  
+    kalo nama room > 1 kata, buat jadi underscore
+- room -> lowercase, pake "-", cth: bedroom-door2
