@@ -179,8 +179,9 @@ void Information::initTrigger() {
         std::string target = data["target"];
         std::string flag = data["flag"];
         std::string result = data["result"];
+        std::string flagDone = data["flagDone"];
 
-        StoryTrigger trigger = StoryTrigger(stringToTriggerType(triggerType), target, flag, result);
+        StoryTrigger trigger = StoryTrigger(stringToTriggerType(triggerType), target, flag, result, flagDone);
         StoryManager::instance()->addTrigger(trigger);
     }
 }

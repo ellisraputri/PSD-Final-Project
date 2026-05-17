@@ -8,16 +8,25 @@
 
 ZOOrkEngine::ZOOrkEngine() {
     info = Information();
+    // std::cout << "1"<<std::endl;
     info.initRoom();
+    // std::cout << "2"<<std::endl;
     info.initPassage();
+    // std::cout << "3"<<std::endl;
     info.initItem();
+    // std::cout << "4"<<std::endl;
     info.initCharacter();
+    // std::cout << "5"<<std::endl;
     info.initRoomPopulation();
+    // std::cout << "6"<<std::endl;
     info.initTrigger();
+    // std::cout << "7"<<std::endl;
 
     player = Player::instance();
-    player->setCurrentRoom(info.getRoom("start-room").get());
+    player->setCurrentRoom(info.getRoom("bedroom-bed").get());
+    // std::cout << "8"<<std::endl;
     player->getCurrentRoom()->enter();
+    // std::cout << "9"<<std::endl;
 }
 
 void ZOOrkEngine::run() {

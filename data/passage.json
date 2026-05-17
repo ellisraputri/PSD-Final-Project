@@ -1,12 +1,48 @@
 {
     "passages": [
         {
-            "name": "passage1",
-            "desc": "description1",
-            "fromRoom": "start-room",
-            "toRoom": "second-room",
-            "direction": "south",
+            "name": "passage-bedroom_bed-bedroom_door1",
+            "desc": "",
+            "fromRoom": "bedroom-bed",
+            "toRoom": "bedroom-door1",
+            "direction": "west",
+            "locked": false,
+            "bidirectional": true
+        },
+        {
+            "name": "passage-bedroom_bed-bedroom_door2",
+            "desc": "",
+            "fromRoom": "bedroom-bed",
+            "toRoom": "bedroom-door2",
+            "direction": "east",
+            "locked": false,
+            "bidirectional": true
+        },
+        {
+            "name": "passage-bedroom_door1-corridor1",
+            "desc": "",
+            "fromRoom": "bedroom-door1",
+            "toRoom": "corridor1",
+            "direction": "west",
             "locked": true,
+            "bidirectional": true
+        },
+        {
+            "name": "passage-bedroom_door2-corridor2",
+            "desc": "",
+            "fromRoom": "bedroom-door2",
+            "toRoom": "corridor2",
+            "direction": "east",
+            "locked": false,
+            "bidirectional": true
+        },
+        {
+            "name": "passage-castlecenter_hall-corridor2",
+            "desc": "",
+            "fromRoom": "corridor2",
+            "toRoom": "castlecenter-hall",
+            "direction": "south",
+            "locked": false,
             "bidirectional": true
         }
     ]

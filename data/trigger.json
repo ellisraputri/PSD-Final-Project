@@ -2,9 +2,10 @@
     "triggers": [
         {
             "triggerType": "ENTER_ROOM",
-            "target": "second-room",
-            "flag": "entered_second_room",
-            "result": "You entered the second room"
+            "target": "castlecenter-hall",
+            "flag": "entered_castlecenter_hall",
+            "result": "You entered the throne hall. \nThe king is already sitting in his throne. \nYou need to greet him as usual.",
+            "flagDone": "greeted_king"
         }
     ]
 }

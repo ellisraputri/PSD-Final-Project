@@ -10,12 +10,18 @@ Room::Room(const std::string &n, const std::string &d) : Location(n, d) {
 Room::Room(const std::string &n, const std::string &d, std::shared_ptr<Command> c) : Location(n, d, std::move(c)) {}
 
 std::string Room::getDescription() const {
-    std::string desc = Location::getDescription();
-    for (const auto& item: items){
-        desc += "\n" + item->getDescription();
+    std::string desc = GameObject::getDescription();
+    int itemSize = items.size();
+    int charSize = characters.size();
+    
+    if (itemSize != 0) desc += "\nItems in the room: ";
+    for (int i=0; i<itemSize; i++){
+        desc += items[i]->getName() + ((i != itemSize-1)? ", " : "");
     }
-    for (const auto& character: characters){
-        desc += "\n" + character->getDescription();
+
+    if (charSize != 0) desc += "\nCharacters in the room:";
+    for (int i=0; i<charSize; i++){
+        desc += characters[i]->getName() + ((i != charSize-1)? ", " : "");
     }
     return desc;
 }

@@ -1,16 +1,52 @@
 {
     "items": [
         {
-            "name": "item1",
-            "desc": "description1 item1",
+            "name": "mysterious picture 1",
+            "desc": "The picture is stained with black ink.",
             "passage1": "",
             "passage2": ""
         },
         {
-            "name": "item2",
-            "desc": "description2 item2",
-            "passage1": "passage1_0",
-            "passage2": "passage1_1"
+            "name": "mysterious picture 2",
+            "desc": "The clear picture shows a small child with a blonde hair smiling happily while hugging his orange teddy bear. \nAfter careful examining it, you see two small wings sticking out from his back.",
+            "passage1": "",
+            "passage2": ""
+        },
+        {
+            "name": "mysterious picture 3",
+            "desc": "The picture is stained with black ink.",
+            "passage1": "",
+            "passage2": ""
+        },
+        {
+            "name": "mysterious picture 4",
+            "desc": "The picture is stained with black ink.",
+            "passage1": "",
+            "passage2": ""
+        },
+        {
+            "name": "king picture",
+            "desc": "The picture portrays the current ruler of the empire, which is also your father, King Iotate. \nHis long gray hair with slanted red eyes symbolizes a bold, descisive, and ambitious person.",
+            "passage1": "",
+            "passage2": ""
+        },
+        {
+            "name": "princess picture",
+            "desc": "A sincere yet insecure smile can be seen from your older sister's portrait. \nHer brown eyes with eyeglasses and her two braided brown hair made you reminisence the time when she has not gone missing.",
+            "passage1": "",
+            "passage2": ""
+        },
+        {
+            "name": "duke picture",
+            "desc": "The picture shows an one-eyed man with tiger fur jacket and cigarette. \nThis is your uncle, a carefree person that roams freely without a permanent place to settle. \nYou only met him once when you were small.",
+            "passage1": "",
+            "passage2": ""
+        },
+        {
+            "name": "prince picture",
+            "desc": "A portrait of yourself. \nA young man with blonde hair and heterochromatic eyes of red and green.",
+            "passage1": "",
+            "passage2": ""
         }  
     ]
 }

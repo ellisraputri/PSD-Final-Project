@@ -11,3 +11,15 @@ std::string StoryTrigger::getResultFlag() const {
 std::string StoryTrigger::getTriggerPrint() const {
     return resultPrint;
 }
+
+void StoryTrigger::setTriggerDone(bool done) {
+    triggerDone = done;
+}
+
+bool StoryTrigger::isTriggerDone() const {
+    return triggerDone;
+}
+
+std::string StoryTrigger::getFlagDone() const {
+    return flagDone;
+}

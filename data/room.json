@@ -1,14 +1,38 @@
 {
     "rooms": [
         {
-            "name": "start-room",
-            "desc": "description1 start-room",
-            "items": ["item1", "item2"],
-            "characters": ["char1"]
+            "name": "bedroom-bed",
+            "desc": "You are sitting on your soft and comfy bed. \nBut, you do not have any sleep intention at the moment.",
+            "items": [],
+            "characters": []
         },
         {
-            "name": "second-room",
-            "desc": "desc2 - second room",
+            "name": "bedroom-door1",
+            "desc": "There is a locked door heading to the west.",
+            "items": [],
+            "characters": []
+        },
+        {
+            "name": "bedroom-door2",
+            "desc": "There is a slightly opened door heading to the east.", 
+            "items": [],
+            "characters": []
+        },
+        {
+            "name": "corridor1",
+            "desc": "A long corridor with 4 pictures with large frames hanging on the wall.",
+            "items": ["mysterious picture 1", "mysterious picture 2", "mysterious picture 3", "mysterious picture 4"],
+            "characters": []
+        },
+        {
+            "name": "corridor2",
+            "desc": "A long corridor with 4 magnificent portraits of the current empire's royal family.",
+            "items": ["king picture", "princess picture", "duke picture", "prince picture"],
+            "characters": []
+        },
+        {
+            "name": "castlecenter-hall",
+            "desc": "This is the place where you usually greet your father, the king.", 
             "items": [],
             "characters": []
         }
