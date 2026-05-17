@@ -5,7 +5,8 @@
             "target": "castlecenter-hall",
             "flag": "entered_castlecenter_hall",
             "result": "You entered the throne hall. \nThe king is already sitting in his throne. \nYou need to greet him as usual.",
-            "flagDone": "greeted_king"
+            "flagDone": "greeted_king",
+            "lockPlayer": true
         }
     ]
 }

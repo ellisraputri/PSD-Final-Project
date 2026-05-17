@@ -40,6 +40,11 @@ void ZOOrkEngine::run() {
         std::string command = words[0];
         std::vector<std::string> arguments(words.begin() + 1, words.end());
 
+        if (player->isLocked()){
+            std::cout << "You cannot move from your place right now." << std::endl;
+            continue;
+        }
+
         if (command == "go") {
             handleGoCommand(arguments);
         } else if ((command == "look") || (command == "inspect")) {
@@ -54,6 +59,8 @@ void ZOOrkEngine::run() {
             handleUseCommand(arguments);
         } else if (command == "attack" || command == "hit"){
             handleAttackCommand(arguments);
+        } else if (command == "talk" || command == "greet") {
+            handleTalkCommand(arguments);
         } else if (command == "quit" || command == "exit") {
             handleQuitCommand(arguments);
         } else {
@@ -262,6 +269,10 @@ void ZOOrkEngine::handleAttackCommand(std::vector<std::string> arguments) {
             break;
         }
     }
+}
+
+void ZOOrkEngine::handleTalkCommand(std::vector<std::string>){
+    std::cout<<"keren nara"<<std::endl;
 }
 
 void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments) {

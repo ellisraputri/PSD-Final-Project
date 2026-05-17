@@ -24,3 +24,10 @@ void Player::dropItem(std::shared_ptr<Item> item) {
         inventory.end()
     );
 }
+
+void Player::setLocked(bool b){
+    locked = b;
+}
+bool Player::isLocked() const {
+    return locked;
+}
