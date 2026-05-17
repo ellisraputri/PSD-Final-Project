@@ -34,7 +34,7 @@
             "name": "castlecenter-hall",
             "desc": "This is the place where you usually greet your father, the king.", 
             "items": [],
-            "characters": []
+            "characters": ["king iotate"]
         }
     ]
 }

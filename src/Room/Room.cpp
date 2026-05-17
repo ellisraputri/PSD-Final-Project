@@ -19,7 +19,7 @@ std::string Room::getDescription() const {
         desc += items[i]->getName() + ((i != itemSize-1)? ", " : "");
     }
 
-    if (charSize != 0) desc += "\nCharacters in the room:";
+    if (charSize != 0) desc += "\nCharacters in the room: ";
     for (int i=0; i<charSize; i++){
         desc += characters[i]->getName() + ((i != charSize-1)? ", " : "");
     }
@@ -76,9 +76,10 @@ std::shared_ptr<Passage> Room::getPassage(const std::string &direction) {
 }
 
 void Room::enter() {
-    StoryManager::instance()->trigger(
+    EventBus::instance()->emit({
         TriggerType::ENTER_ROOM,
         getName()
-    );
+    });
+
     std::cout << getDescription() << std::endl;
 }

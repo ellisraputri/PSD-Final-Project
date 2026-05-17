@@ -23,3 +23,7 @@ bool StoryTrigger::isTriggerDone() const {
 std::string StoryTrigger::getFlagDone() const {
     return flagDone;
 }
+
+bool StoryTrigger::isLockPlayer() const {
+    return lockPlayer;
+}

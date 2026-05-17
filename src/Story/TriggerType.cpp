@@ -5,12 +5,8 @@ TriggerType stringToTriggerType(const std::string& str) {
         return TriggerType::ENTER_ROOM;
     }
 
-    if (str == "TAKE_ITEM") {
-        return TriggerType::TAKE_ITEM;
-    }
-
-    if (str == "USE_ITEM") {
-        return TriggerType::USE_ITEM;
+    if (str == "TALK_CHARACTER") {
+        return TriggerType::TALK_CHARACTER;
     }
 
     throw std::runtime_error("Unknown trigger type: " + str);

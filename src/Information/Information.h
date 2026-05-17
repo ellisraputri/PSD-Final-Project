@@ -7,6 +7,8 @@
 #include "Room/Room.h"
 #include "Passage/Passage.h"
 #include "Story/TriggerType.h"
+#include "Story/StoryManager.h"
+#include "Story/StoryTrigger.h"
 #include <fstream>
 #include <nlohmann/json.hpp>
 

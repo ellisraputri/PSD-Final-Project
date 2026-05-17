@@ -1,6 +1,5 @@
 #include "Character.h"
 
-
 Character::Character(const std::string &n, const std::string &d) : GameObject(n, d) {}
 
 void Character::setHp(int h){
@@ -37,4 +36,18 @@ void Character::takeDamage(int dmg){
 
 bool Character::isDead() {
     return hp <= 0;
+}
+
+void Character::addDialogue(const std::string& flag,const std::string& dialogue) {
+    dialogues[flag] = dialogue;
+}
+
+std::string Character::getDialogue(const std::string& flag) const {
+    auto it = dialogues.find(flag);
+
+    if (it != dialogues.end()) {
+        return it->second;
+    }
+
+    return "";
 }

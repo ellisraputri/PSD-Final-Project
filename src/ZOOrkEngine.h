@@ -7,6 +7,7 @@
 #include "Location.h"
 #include "Passage/Passage.h"
 #include "Information/Information.h"
+#include "EventBus.h"
 #include <iostream>
 #include <sstream>
 #include <string>

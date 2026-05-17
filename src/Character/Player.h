@@ -1,5 +1,3 @@
-
-
 #ifndef ZOORK_PLAYER_H
 #define ZOORK_PLAYER_H
 
@@ -35,7 +33,7 @@ private:
     static Player *playerInstance;
     Room* currentRoom;
     std::vector<std::shared_ptr<Item>> inventory;
-    bool locked;
+    bool locked = false;
 
     Player() : Character("You", "You are a person, alike in dignity to any other, but uniquely you."),
                currentRoom(new NullRoom()) {}

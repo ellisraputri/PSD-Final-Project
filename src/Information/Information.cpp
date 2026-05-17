@@ -137,6 +137,13 @@ void Information::initCharacter(){
         std::shared_ptr<Character> character = std::make_shared<Character>(
             name, desc, hp, atk, def, combatMode
         );
+
+        if (data.contains("dialogues")) {
+            for (auto& [flag, text] : data["dialogues"].items()) {
+                character->addDialogue(flag, text);
+            }
+        }
+
         allCharacters[name] = character;
     }
 }
@@ -180,8 +187,9 @@ void Information::initTrigger() {
         std::string flag = data["flag"];
         std::string result = data["result"];
         std::string flagDone = data["flagDone"];
+        bool lockPlayer = data["lockPlayer"];
 
-        StoryTrigger trigger = StoryTrigger(stringToTriggerType(triggerType), target, flag, result, flagDone);
+        StoryTrigger trigger = StoryTrigger(stringToTriggerType(triggerType), target, flag, result, flagDone, lockPlayer);
         StoryManager::instance()->addTrigger(trigger);
     }
 }

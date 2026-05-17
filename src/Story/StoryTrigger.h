@@ -6,8 +6,8 @@
 
 class StoryTrigger {
 public:
-    StoryTrigger(TriggerType t, const std::string& target, const std::string& flag, const std::string& res, const std::string& done):
-        triggerType(t), triggerTarget(target), resultFlag(flag), resultPrint(res), flagDone(done){}
+    StoryTrigger(TriggerType t, const std::string& target, const std::string& flag, const std::string& res, const std::string& done, bool lock):
+        triggerType(t), triggerTarget(target), resultFlag(flag), resultPrint(res), flagDone(done), lockPlayer(lock){}
 
     bool matches(TriggerType t, const std::string& target) const;
 
@@ -19,6 +19,8 @@ public:
     bool isTriggerDone() const;
 
     std::string getFlagDone() const;
+
+    bool isLockPlayer() const;
 
 private:
     TriggerType triggerType;
@@ -32,6 +34,8 @@ private:
     bool triggerDone = false;
 
     std::string flagDone;
+
+    bool lockPlayer;
 };
 
 #endif

@@ -2,6 +2,8 @@
 #define ZOORK_STORYMANAGER_H
 
 #include "StoryTrigger.h"
+#include "Character/Player.h"
+#include "EventBus.h"
 #include <set>
 #include <vector>
 
@@ -22,7 +24,7 @@ private:
 
     std::set<std::string> flags;
 
-    StoryManager() = default;
+    StoryManager();
 };
 
 #endif

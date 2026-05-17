@@ -5,8 +5,16 @@
             "target": "castlecenter-hall",
             "flag": "entered_castlecenter_hall",
             "result": "You entered the throne hall. \nThe king is already sitting in his throne. \nYou need to greet him as usual.",
-            "flagDone": "greeted_king",
+            "flagDone": "talked_king",
             "lockPlayer": true
+        },
+        {
+            "triggerType": "TALK_CHARACTER",
+            "target": "king iotate",
+            "flag": "talked_king",
+            "result": "The king nodded after hearing your greeting. Then..",
+            "flagDone": "",
+            "lockPlayer": false
         }
     ]
 }

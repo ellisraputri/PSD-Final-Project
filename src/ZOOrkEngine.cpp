@@ -1,6 +1,4 @@
 #include "ZOOrkEngine.h"
-#include "Information/Information.h"
-
 #include <utility>
 #include <algorithm>
 #include <memory>
@@ -40,11 +38,6 @@ void ZOOrkEngine::run() {
         std::string command = words[0];
         std::vector<std::string> arguments(words.begin() + 1, words.end());
 
-        if (player->isLocked()){
-            std::cout << "You cannot move from your place right now." << std::endl;
-            continue;
-        }
-
         if (command == "go") {
             handleGoCommand(arguments);
         } else if ((command == "look") || (command == "inspect")) {
@@ -72,6 +65,11 @@ void ZOOrkEngine::run() {
 }
 
 void ZOOrkEngine::handleGoCommand(std::vector<std::string> arguments) {
+    if (player->isLocked()){
+        std::cout << "You cannot move from your place right now.\n";
+        return;
+    }
+
     std::string direction;
     if (arguments[0] == "n" || arguments[0] == "north") {
         direction = "north";
@@ -271,8 +269,21 @@ void ZOOrkEngine::handleAttackCommand(std::vector<std::string> arguments) {
     }
 }
 
-void ZOOrkEngine::handleTalkCommand(std::vector<std::string>){
-    std::cout<<"keren nara"<<std::endl;
+void ZOOrkEngine::handleTalkCommand(std::vector<std::string> arguments){
+    Room* currentRoom = player->getCurrentRoom();
+
+    for(const std::string& s: arguments){
+        std::shared_ptr<Character> character = info.getCharacter(s);
+        if (character == nullptr || !currentRoom->isCharacterExist(character)) {
+            std::cout << s << " is not a recognizable character" << std::endl;
+            continue;
+        }
+
+        EventBus::instance()->emit({
+            TriggerType::TALK_CHARACTER,
+            character->getName()
+        });
+    }
 }
 
 void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments) {
