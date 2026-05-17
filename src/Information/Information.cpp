@@ -37,136 +37,150 @@ std::shared_ptr<Character> Information::getCharacter(std::string name) {
 }
 
 void Information::initRoom() {
-    std::vector<RoomData> rooms = {
-        {
-            "start-room",
-            "description1 start-room"
-        },
-        {
-            "second-room",
-            "desc2 - second room"
-        }
-    };
+    std::ifstream file("data/room.json");
+    if (!file.is_open()) {
+        std::cout << "cannot open room.json" << std::endl;
+        throw std::runtime_error("Cannot open room.json");
+    }
 
-    for(const auto& data: rooms){
-        std::shared_ptr<Room> room = std::make_shared<Room>(data.name, data.desc);
-        allRooms[data.name] = room;
+    json j;
+    file >> j;
+
+    for (const auto& data : j["rooms"]) {
+        std::string name = data["name"];
+        std::string desc = data["desc"];
+
+        std::shared_ptr<Room> room = std::make_shared<Room>(name, desc);
+
+        allRooms[name] = room;
     }
 }
 
 void Information::initPassage() {
-    std::vector<PassageData> passages = {
-        {
-            "passage1",
-            "description1",
-            "start-room",
-            "second-room",
-            "south",
-            true,
-            true,
-        }
-    };
+    std::ifstream file("data/passage.json");
+    if (!file.is_open()) {
+        std::cout << "cannot open passage.json" << std::endl;
+        throw std::runtime_error("Cannot open passage.json");
+    }
 
-    for(const auto& data: passages){
+    json j;
+    file >> j;
+
+    for(const auto& data: j["passages"]){
+        std::string name = data["name"];
+        std::string fromRoom = data["fromRoom"];
+        std::string toRoom = data["toRoom"];
+        std::string direction = data["direction"];
+        bool locked = data["locked"];
+        bool bidirectional = data["bidirectional"];
+        
         auto passage = Passage::createBasicPassage(
-            allRooms[data.fromRoom].get(),
-            allRooms[data.toRoom].get(),
-            data.direction,
-            data.locked,
-            data.bidirectional
+            allRooms[fromRoom].get(),
+            allRooms[toRoom].get(),
+            direction,
+            locked,
+            bidirectional
         );
-        allPassages[data.name + "_0"] = passage[0];
-        allPassages[data.name + "_1"] = passage[1];
+        
+        allPassages[name + "_0"] = passage[0];
+        allPassages[name + "_1"] = passage[1];
     }
 }
 
 void Information::initItem() {
-    std::vector<ItemData> items = {
-        {
-            "item1",
-            "description1 item1",
-            "",
-            ""
-        },
-        {
-            "item2",
-            "desc2 item2",
-            "passage1_0",
-            "passage1_1",
-        }  
-    };
+    std::ifstream file("data/item.json");
+    if (!file.is_open()) {
+        std::cout << "cannot open item.json" << std::endl;
+        throw std::runtime_error("Cannot open item.json");
+    }
 
-    for(const auto& data: items){
-        std::shared_ptr<Item> item = std::make_shared<Item>(data.name, data.desc);
-        if (data.passage1 != "") {
+    json j;
+    file >> j;
+
+    for(const auto& data: j["items"]){
+        std::string name = data["name"];
+        std::string desc = data["desc"];
+        std::string passage1 = data["passage1"];
+        std::string passage2 = data["passage2"];
+
+        std::shared_ptr<Item> item = std::make_shared<Item>(name, desc);
+        if (passage1 != "") {
             auto unlockCommand = std::make_shared<PassageDefaultUnlockCommand>(
-                allPassages[data.passage1].get(),
-                allPassages[data.passage2].get(),
+                allPassages[passage1].get(),
+                allPassages[passage2].get(),
                 item.get()
             );
             item->setUseCommand(unlockCommand);
         }
-        allItems[data.name] = item;
+        allItems[name] = item;
     }
 }
 
 void Information::initCharacter(){
-    std::vector<CharacterData> characters = {
-        {
-            "char1",
-            "char1 description",
-            1, //hp
-            1, //atk
-            0, //def
-            true //combatMode
-        }
-    };
+    std::ifstream file("data/character.json");
+    if (!file.is_open()) {
+        std::cout << "cannot open character.json" << std::endl;
+        throw std::runtime_error("Cannot open character.json");
+    }
 
-    for(const auto& data: characters){
+    json j;
+    file >> j;
+
+    for(const auto& data: j["characters"]){
+        std::string name = data["name"];
+        std::string desc = data["desc"];
+        int hp = data["hp"];
+        int atk = data["atk"];
+        int def = data["def"];
+        bool combatMode = data["combatMode"];
+
         std::shared_ptr<Character> character = std::make_shared<Character>(
-            data.name, 
-            data.desc,
-            data.hp,
-            data.atk,
-            data.def,
-            data.combatMode
+            name, desc, hp, atk, def, combatMode
         );
-        allCharacters[data.name] = character;
+        allCharacters[name] = character;
     }
 }
 
 void Information::initRoomPopulation() {
-    std::vector<RoomPopulationData> roomPopulations = {
-        {
-            "start-room",
-            {"item1", "item2"},
-            {"char1"}
-        }
-    };
+    std::ifstream file("data/room.json");
+    if (!file.is_open()) {
+        std::cout << "cannot open room.json" << std::endl;
+        throw std::runtime_error("Cannot open room.json");
+    }
 
-    for (const auto& data : roomPopulations) {
-        auto room = allRooms[data.roomName];
-        for (const auto& itemName : data.items) {
+    json j;
+    file >> j;
+
+    for (const auto& data : j["rooms"]) {
+        std::string name = data["name"];
+        auto room = allRooms[name];
+
+        for (const auto& itemName : data["items"]) {
             room->addItem(allItems[itemName]);
         }
-        for (const auto& characterName : data.characters) {
+        for (const auto& characterName : data["characters"]) {
             room->addCharacter(allCharacters[characterName]);
         }
     }
 }
 
 void Information::initTrigger() {
-    std::vector<TriggerData> triggers = {
-        {
-            "ENTER_ROOM",
-            "second-room",
-            "entered_second_room",
-            "You entered the second room"
-        }
-    };
+    std::ifstream file("data/trigger.json");
+    if (!file.is_open()) {
+        std::cout << "cannot open trigger.json" << std::endl;
+        throw std::runtime_error("Cannot open trigger.json");
+    }
 
-    for (const auto& data: triggers){
-        StoryTrigger trigger = StoryTrigger(stringToTriggerType(data.triggerType), data.target, data.flag, data.res);
+    json j;
+    file >> j;
+
+    for (const auto& data: j["triggers"]){
+        std::string triggerType = data["triggerType"];
+        std::string target = data["target"];
+        std::string flag = data["flag"];
+        std::string result = data["result"];
+
+        StoryTrigger trigger = StoryTrigger(stringToTriggerType(triggerType), target, flag, result);
         StoryManager::instance()->addTrigger(trigger);
     }
 }

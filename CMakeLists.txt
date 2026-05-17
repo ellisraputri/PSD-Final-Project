@@ -7,4 +7,11 @@ file(GLOB_RECURSE SOURCES "src/*.cpp")
 
 add_executable(PSD_Final_Project ${SOURCES})
 
-target_include_directories(PSD_Final_Project PRIVATE src)
+target_include_directories(
+    PSD_Final_Project
+    PRIVATE
+    src
+    include
+)
+
+file(COPY data DESTINATION ${CMAKE_BINARY_DIR})

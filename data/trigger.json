@@ -1,0 +1,10 @@
+{
+    "triggers": [
+        {
+            "triggerType": "ENTER_ROOM",
+            "target": "second-room",
+            "flag": "entered_second_room",
+            "result": "You entered the second room"
+        }
+    ]
+}

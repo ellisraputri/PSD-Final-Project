@@ -1,0 +1,16 @@
+{
+    "rooms": [
+        {
+            "name": "start-room",
+            "desc": "description1 start-room",
+            "items": ["item1", "item2"],
+            "characters": ["char1"]
+        },
+        {
+            "name": "second-room",
+            "desc": "desc2 - second room",
+            "items": [],
+            "characters": []
+        }
+    ]
+}

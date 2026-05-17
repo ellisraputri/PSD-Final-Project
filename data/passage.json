@@ -1,0 +1,13 @@
+{
+    "passages": [
+        {
+            "name": "passage1",
+            "desc": "description1",
+            "fromRoom": "start-room",
+            "toRoom": "second-room",
+            "direction": "south",
+            "locked": true,
+            "bidirectional": true
+        }
+    ]
+}

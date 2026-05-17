@@ -1,0 +1,12 @@
+{
+    "characters": [
+        {
+            "name": "char1",
+            "desc": "char1 description",
+            "hp": 1, 
+            "atk": 1, 
+            "def": 0, 
+            "combatMode": true 
+        }
+    ]
+}
