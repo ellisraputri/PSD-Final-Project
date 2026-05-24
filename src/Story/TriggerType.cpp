@@ -9,5 +9,9 @@ TriggerType stringToTriggerType(const std::string& str) {
         return TriggerType::TALK_CHARACTER;
     }
 
+    if (str == "TAKE_ITEM") {
+        return TriggerType::TAKE_ITEM;
+    }
+
     throw std::runtime_error("Unknown trigger type: " + str);
 }

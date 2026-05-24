@@ -12,7 +12,15 @@
             "triggerType": "TALK_CHARACTER",
             "target": "king iotate",
             "flag": "talked_king",
-            "result": "The king nodded after hearing your greeting. Then..",
+            "result": "The king nodded after hearing your greeting. Then, he instructed you to find a black pearl in the storage room.",
+            "flagDone": "",
+            "lockPlayer": false
+        },
+        {
+            "triggerType": "TAKE_ITEM",
+            "target": "black pearl",
+            "flag": "took_black_pearl",
+            "result": "It seems that you have taken the pearl that your father wanted. \nIt is time to bring it to your father.",
             "flagDone": "",
             "lockPlayer": false
         }

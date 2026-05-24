@@ -47,6 +47,30 @@
             "desc": "A portrait of yourself. \nA young man with blonde hair and heterochromatic eyes of red and green.",
             "passage1": "",
             "passage2": ""
-        }  
+        },
+        {
+            "name": "black pearl",
+            "desc": "An omnious looking pearl with green aura from its within. \nThis seems the pearl that your father told you to get.",
+            "passage1": "",
+            "passage2": ""
+        },
+        {
+            "name": "long sword",
+            "desc": "A long sword with black gem on its hilt. \nYou recall that you usually train with this sword when you were little.",
+            "passage1": "",
+            "passage2": ""
+        },
+        {
+            "name": "black key",
+            "desc": "A mysterious key that you have never seen. \nMaybe it will be useful to unlock a certain room.",
+            "passage1": "passage_castlecenter-throne_to_corridor1",
+            "passage2": "passage_corridor1_to_castlecenter-throne"
+        },
+        {
+            "name": "flashlight",
+            "desc": "A small flashlight that still has a lot of battery.",
+            "passage1": "",
+            "passage2": ""
+        }
     ]
 }

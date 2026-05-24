@@ -74,7 +74,7 @@ void Information::initPassage() {
         bool locked = data["locked"];
         bool bidirectional = data["bidirectional"];
         
-        auto passage = Passage::createBasicPassage(
+        auto passages = Passage::createBasicPassage(
             allRooms[fromRoom].get(),
             allRooms[toRoom].get(),
             direction,
@@ -82,8 +82,13 @@ void Information::initPassage() {
             bidirectional
         );
         
-        allPassages[name + "_0"] = passage[0];
-        allPassages[name + "_1"] = passage[1];
+        std::string passageName = "passage_" + fromRoom + "_to_" + toRoom;
+        allPassages[passageName] = passages[0];
+
+        if (passages.size() > 1) {
+            std::string passageName2 = "passage_" + toRoom + "_to_" + fromRoom;
+            allPassages[passageName2] = passages[1];
+        }
     }
 }
 

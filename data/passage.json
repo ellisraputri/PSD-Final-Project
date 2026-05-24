@@ -1,7 +1,7 @@
 {
     "passages": [
         {
-            "name": "passage-bedroom_bed-bedroom_door1",
+            "name": "passage_bedroom-bed_bedroom-door1",
             "desc": "",
             "fromRoom": "bedroom-bed",
             "toRoom": "bedroom-door1",
@@ -10,7 +10,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage-bedroom_bed-bedroom_door2",
+            "name": "passage_bedroom-bed_bedroom-door2",
             "desc": "",
             "fromRoom": "bedroom-bed",
             "toRoom": "bedroom-door2",
@@ -19,7 +19,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage-bedroom_door1-corridor1",
+            "name": "passage_bedroom-door1_corridor1",
             "desc": "",
             "fromRoom": "bedroom-door1",
             "toRoom": "corridor1",
@@ -28,7 +28,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage-bedroom_door2-corridor2",
+            "name": "passage_bedroom-door2_corridor2",
             "desc": "",
             "fromRoom": "bedroom-door2",
             "toRoom": "corridor2",
@@ -37,12 +37,48 @@
             "bidirectional": true
         },
         {
-            "name": "passage-castlecenter_hall-corridor2",
+            "name": "passage_castlecenter-hall_corridor2",
             "desc": "",
             "fromRoom": "corridor2",
             "toRoom": "castlecenter-hall",
             "direction": "south",
             "locked": false,
+            "bidirectional": true
+        },
+        {
+            "name": "passage_castlecenter-hall_castlecenter-throne",
+            "desc": "",
+            "fromRoom": "castlecenter-hall",
+            "toRoom": "castlecenter-throne",
+            "direction": "west",
+            "locked": false,
+            "bidirectional": true
+        },
+        {
+            "name": "passage_castlecenter-hall_castle-storage1",
+            "desc": "",
+            "fromRoom": "castlecenter-hall",
+            "toRoom": "castle-storage1",
+            "direction": "south",
+            "locked": false,
+            "bidirectional": true
+        },
+        {
+            "name": "passage_castle-storage1_castle-storage2",
+            "desc": "",
+            "fromRoom": "castle-storage1",
+            "toRoom": "castle-storage2",
+            "direction": "west",
+            "locked": false,
+            "bidirectional": true
+        },
+        {
+            "name": "passage_castlecenter-throne_corridor1",
+            "desc": "",
+            "fromRoom": "castlecenter-throne",
+            "toRoom": "corridor1",
+            "direction": "north",
+            "locked": true,
             "bidirectional": true
         }
     ]

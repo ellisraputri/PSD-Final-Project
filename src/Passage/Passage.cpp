@@ -24,7 +24,7 @@ std::vector<std::shared_ptr<Passage>> Passage::createBasicPassage(Room* from, Ro
 
     if (bidirectional) {
         std::string passageName2 = to->getName() + "_to_" + from->getName();
-        auto temp2 = std::make_shared<Passage>(passageName, "A totally normal passageway.", to, from);
+        auto temp2 = std::make_shared<Passage>(passageName2, "A totally normal passageway.", to, from);
         to->addPassage(oppositeDirection(direction), temp2);
         temp2->setLocked(locked);
         return {temp1, temp2};

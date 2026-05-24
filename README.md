@@ -27,6 +27,8 @@ flagDone = trigger flag yang mana supaya lock player di-set false
 penamaan:
 - character-> full lowercase
 - item -> full lowercase
-- passage -> passage-{room1}-{room2}, cth: passage-bedroom_door2-corridor2  
-    kalo nama room > 1 kata, buat jadi underscore
+- passage -> passage_{room1}_{room2}
 - room -> lowercase, pake "-", cth: bedroom-door2
+
+untuk item, nama passage menjadi:
+- passage_{room1}_to_{room2}

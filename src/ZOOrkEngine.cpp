@@ -21,7 +21,7 @@ ZOOrkEngine::ZOOrkEngine() {
     // std::cout << "7"<<std::endl;
 
     player = Player::instance();
-    player->setCurrentRoom(info.getRoom("corridor2").get());
+    player->setCurrentRoom(info.getRoom("castle-storage1").get());
     // std::cout << "8"<<std::endl;
     player->getCurrentRoom()->enter();
     // std::cout << "9"<<std::endl;
@@ -155,6 +155,11 @@ void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments) {
         currentRoom->removeItem(item);
         player->takeItem(item);
         std::cout << s << " is taken into inventory" << std::endl;
+
+        EventBus::instance()->emit({
+            TriggerType::TAKE_ITEM,
+            item->getName()
+        });
     }
 }
 

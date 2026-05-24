@@ -35,6 +35,24 @@
             "desc": "This is the place where you usually greet your father, the king.", 
             "items": [],
             "characters": ["king iotate"]
+        },
+        {
+            "name": "castlecenter-throne",
+            "desc": "The place where the king usually sits at. Numerous sparkling jewels filled the old-looking chair.", 
+            "items": [],
+            "characters": []
+        },
+        {
+            "name": "castle-storage1",
+            "desc": "An old storage room that stores various equipments. \nYou found a shiny black pearl, with a long sword resides beside it.", 
+            "items": ["black pearl", "long sword"],
+            "characters": []
+        },
+        {
+            "name": "castle-storage2",
+            "desc": "An old storage room that stores various equipments. \nYou found a black key and flashlight that are still usable.", 
+            "items": ["black key", "flashlight"],
+            "characters": []
         }
     ]
 }
