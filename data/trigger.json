@@ -5,6 +5,7 @@
             "target": "castlecenter-hall",
             "flag": "entered_castlecenter_hall",
             "result": "You entered the throne hall. \nThe king is already sitting in his throne. \nYou need to greet him as usual.",
+            "flagCondition": "",
             "flagDone": "talked_king",
             "lockPlayer": true
         },
@@ -13,7 +14,8 @@
             "target": "king iotate",
             "flag": "talked_king",
             "result": "The king nodded after hearing your greeting. Then, he instructed you to find a black pearl in the storage room.",
-            "flagDone": "",
+            "flagCondition": "entered_castlecenter_hall",
+            "flagDone": "took_black_pearl",
             "lockPlayer": false
         },
         {
@@ -21,6 +23,25 @@
             "target": "black pearl",
             "flag": "took_black_pearl",
             "result": "It seems that you have taken the pearl that your father wanted. \nIt is time to bring it to your father.",
+            "flagCondition": "talked_king",
+            "flagDone": "",
+            "lockPlayer": false
+        },
+        {
+            "triggerType": "ENTER_ROOM",
+            "target": "castlecenter-hall",
+            "flag": "entered_castlecenter_hall_2",
+            "result": "You heard the king shouting painfully from the west side of this room.",
+            "flagCondition": "took_black_pearl",
+            "flagDone": "entered_castlecenter_throne",
+            "lockPlayer": false
+        },
+        {
+            "triggerType": "ENTER_ROOM",
+            "target": "castlecenter-throne",
+            "flag": "entered_castlecenter_throne",
+            "result": "You saw the king ...",
+            "flagCondition": "entered_castlecenter_hall_2",
             "flagDone": "",
             "lockPlayer": false
         }

@@ -1,8 +1,14 @@
 #include "Information.h"
 #include "Command/PassageDefaultUnlockCommand.h"
-#include "InformationData.h"
 
-Information::Information(){}
+Information* Information::infoInstance = nullptr;
+
+Information* Information::instance() {
+    if (!infoInstance) {
+        infoInstance = new Information();
+    }
+    return infoInstance;
+}
 
 std::shared_ptr<Item> Information::getItem(std::string name) {
     auto it = allItems.find(name);
@@ -34,6 +40,26 @@ std::shared_ptr<Character> Information::getCharacter(std::string name) {
         return it->second;
     }
     return nullptr;
+}
+
+void Information::setItem(const std::string& name, std::shared_ptr<Item> item) {
+    allItems[name] = item;
+}
+
+void Information::setMechanism(const std::string& name, std::shared_ptr<Mechanism> mechanism) {
+    allMechanisms[name] = mechanism;
+}
+
+void Information::setRoom(const std::string& name, std::shared_ptr<Room> room) {
+    allRooms[name] = room;
+}
+
+void Information::setPassage(const std::string& name, std::shared_ptr<Passage> passage) {
+    allPassages[name] = passage;
+}
+
+void Information::setCharacter(const std::string& name, std::shared_ptr<Character> character) {
+    allCharacters[name] = character;
 }
 
 void Information::initRoom() {
@@ -192,9 +218,10 @@ void Information::initTrigger() {
         std::string flag = data["flag"];
         std::string result = data["result"];
         std::string flagDone = data["flagDone"];
+        std::string flagCondition = data["flagCondition"];
         bool lockPlayer = data["lockPlayer"];
 
-        StoryTrigger trigger = StoryTrigger(stringToTriggerType(triggerType), target, flag, result, flagDone, lockPlayer);
+        StoryTrigger trigger = StoryTrigger(stringToTriggerType(triggerType), target, flag, result, flagDone, flagCondition, lockPlayer);
         StoryManager::instance()->addTrigger(trigger);
     }
 }

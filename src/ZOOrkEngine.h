@@ -22,7 +22,7 @@ public:
 private:
     bool gameOver = false;
     Player *player;
-    Information info;
+    Information* info;
 
     void handleGoCommand(std::vector<std::string>);
 

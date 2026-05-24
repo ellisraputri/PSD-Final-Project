@@ -18,11 +18,13 @@ cmake --build .
     "target": "castlecenter-hall",
     "flag": "entered_castlecenter_hall",
     "result": "You entered the throne hall.",
+    "flagCondition": "",
     "flagDone": "talked_king",    
     "lockPlayer": true
 }
 flagDone dan lockPlayer hanya dipakai kalau butuh locking player after trigger.
-flagDone = trigger flag yang mana supaya lock player di-set false
+flagDone = flag apa yang bisa membuat trigger ini berhenti triggered
+flagCondition = flag apa yang harus ada sebelum trigger ini bisa triggered
 
 penamaan:
 - character-> full lowercase

@@ -4,6 +4,7 @@
 #include "StoryTrigger.h"
 #include "Character/Player.h"
 #include "EventBus.h"
+#include "Information/Information.h"
 #include <set>
 #include <vector>
 
@@ -13,6 +14,7 @@ public:
 
     void addTrigger(const StoryTrigger&);
 
+    void triggerAdditionalAction(std::string name);
     void trigger(TriggerType type, const std::string& target);
 
     bool hasFlag(const std::string&) const;

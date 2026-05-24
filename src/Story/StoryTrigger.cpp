@@ -24,6 +24,10 @@ std::string StoryTrigger::getFlagDone() const {
     return flagDone;
 }
 
+std::string StoryTrigger::getFlagCondition() const {
+    return flagCondition;
+}
+
 bool StoryTrigger::isLockPlayer() const {
     return lockPlayer;
 }

@@ -16,12 +16,18 @@ using json = nlohmann::json;
 
 class Information {
 public:
-    Information();
+    static Information* instance();
 
     std::shared_ptr<Item> getItem(std::string name);
     std::shared_ptr<Mechanism> getMechanism(std::string name);
     std::shared_ptr<Room> getRoom(std::string name);
     std::shared_ptr<Character> getCharacter(std::string name);
+
+    void setItem(const std::string& name, std::shared_ptr<Item> item);
+    void setMechanism(const std::string& name, std::shared_ptr<Mechanism> mechanism);
+    void setRoom(const std::string& name, std::shared_ptr<Room> room);
+    void setPassage(const std::string& name, std::shared_ptr<Passage> passage);
+    void setCharacter(const std::string& name, std::shared_ptr<Character> character);
 
     void initRoom();
     void initPassage();
@@ -30,7 +36,9 @@ public:
     void initRoomPopulation();
     void initTrigger();
 
-protected:
+private:
+    static Information* infoInstance;
+
     std::unordered_map<std::string, std::shared_ptr<Item>> allItems;
     std::unordered_map<std::string, std::shared_ptr<Mechanism>> allMechanisms;
     std::unordered_map<std::string, std::shared_ptr<Room>> allRooms;
@@ -38,4 +46,4 @@ protected:
     std::unordered_map<std::string, std::shared_ptr<Character>> allCharacters;
 };
 
-#endif //ZOORK_INFORMATION_H
+#endif
