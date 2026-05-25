@@ -40,10 +40,10 @@
             "triggerType": "ENTER_ROOM",
             "target": "castlecenter-throne",
             "flag": "entered_castlecenter_throne",
-            "result": "You saw the king ...",
+            "result": "You saw the king being stabbed right in his heart by an unknown woman. \nThe woman wears a black jumpsuit with a turtle logo on her right shoulder. \nHer black eyes viciously stare at me with her hands pointing her blood-stained sword to me.\nYou feel the rage to hit the king's murderer.",
             "flagCondition": "entered_castlecenter_hall_2",
             "flagDone": "",
-            "lockPlayer": false
+            "lockPlayer": true
         }
     ]
 }

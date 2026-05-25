@@ -34,3 +34,8 @@ penamaan:
 
 untuk item, nama passage menjadi:
 - passage_{room1}_to_{room2}
+
+item type:
+- none
+- unlock
+- buff

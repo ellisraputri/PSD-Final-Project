@@ -3,80 +3,75 @@
         {
             "name": "mysterious picture 1",
             "desc": "The picture is stained with black ink.",
-            "passage1": "",
-            "passage2": ""
+            "type": "none"
         },
         {
             "name": "mysterious picture 2",
             "desc": "The clear picture shows a small child with a blonde hair smiling happily while hugging his orange teddy bear. \nAfter careful examining it, you see two small wings sticking out from his back.",
-            "passage1": "",
-            "passage2": ""
+            "type": "none"
         },
         {
             "name": "mysterious picture 3",
             "desc": "The picture is stained with black ink.",
-            "passage1": "",
-            "passage2": ""
+            "type": "none"
         },
         {
             "name": "mysterious picture 4",
             "desc": "The picture is stained with black ink.",
-            "passage1": "",
-            "passage2": ""
+            "type": "none"
         },
         {
             "name": "king picture",
             "desc": "The picture portrays the current ruler of the empire, which is also your father, King Iotate. \nHis long gray hair with slanted red eyes symbolizes a bold, descisive, and ambitious person.",
-            "passage1": "",
-            "passage2": ""
+            "type": "none"
         },
         {
             "name": "princess picture",
             "desc": "A sincere yet insecure smile can be seen from your older sister's portrait. \nHer brown eyes with eyeglasses and her two braided brown hair made you reminisence the time when she has not gone missing.",
-            "passage1": "",
-            "passage2": ""
+            "type": "none"
         },
         {
             "name": "duke picture",
             "desc": "The picture shows an one-eyed man with tiger fur jacket and cigarette. \nThis is your uncle, a carefree person that roams freely without a permanent place to settle. \nYou only met him once when you were small.",
-            "passage1": "",
-            "passage2": ""
+            "type": "none"
         },
         {
             "name": "prince picture",
             "desc": "A portrait of yourself. \nA young man with blonde hair and heterochromatic eyes of red and green.",
-            "passage1": "",
-            "passage2": ""
+            "type": "none"
         },
         {
             "name": "black pearl",
             "desc": "An omnious looking pearl with green aura from its within. \nThis seems the pearl that your father told you to get.",
-            "passage1": "",
-            "passage2": ""
+            "type": "buff",
+            "hpBuff": 100,
+            "atkBuff": 100,
+            "defBuff": 100
         },
         {
             "name": "long sword",
             "desc": "A long sword with black gem on its hilt. \nYou recall that you usually train with this sword when you were little.",
-            "passage1": "",
-            "passage2": ""
+            "type": "buff",
+            "hpBuff": 0,
+            "atkBuff": 10,
+            "defBuff": 0
         },
         {
             "name": "black key",
             "desc": "A mysterious key that you have never seen. \nMaybe it will be useful to unlock a certain room.",
+            "type": "unlock",
             "passage1": "passage_castlecenter-throne_to_corridor1",
             "passage2": "passage_corridor1_to_castlecenter-throne"
         },
         {
             "name": "flashlight",
             "desc": "A small flashlight that still has a lot of battery.",
-            "passage1": "",
-            "passage2": ""
+            "type": "none"
         },
         {
             "name": "king dead body",
-            "desc": "...",
-            "passage1": "",
-            "passage2": ""
+            "desc": "The corpse of the king that is just being killed. \nYou can still feel a lukewarm texture on his skin. \nSome tears begin welling up at your eyes before rolling down gracefully on your cheeks.",
+            "type": "none"
         }
     ]
 }

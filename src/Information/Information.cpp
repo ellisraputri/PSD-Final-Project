@@ -1,5 +1,7 @@
 #include "Information.h"
+#include "Item/BuffItem.h"
 #include "Command/PassageDefaultUnlockCommand.h"
+#include "Command/BuffCharacterItemCommand.h"
 
 Information* Information::infoInstance = nullptr;
 
@@ -131,18 +133,39 @@ void Information::initItem() {
     for(const auto& data: j["items"]){
         std::string name = data["name"];
         std::string desc = data["desc"];
-        std::string passage1 = data["passage1"];
-        std::string passage2 = data["passage2"];
+        std::string type = data["type"];
 
-        std::shared_ptr<Item> item = std::make_shared<Item>(name, desc);
-        if (passage1 != "") {
-            auto unlockCommand = std::make_shared<PassageDefaultUnlockCommand>(
-                allPassages[passage1].get(),
-                allPassages[passage2].get(),
-                item.get()
+        std::shared_ptr<Item> item;
+
+        if (type == "buff") {
+            int hpBuff = data["hpBuff"];
+            int atkBuff = data["atkBuff"];
+            int defBuff = data["defBuff"];
+            item = std::make_shared<BuffItem>(name, desc, hpBuff, atkBuff, defBuff);
+            
+            auto buffCommand = std::make_shared<BuffCharacterItemCommand>(
+                item.get(), item.get()
             );
-            item->setUseCommand(unlockCommand);
+            item->setUseCommand(buffCommand);
+        } 
+        else {
+            item = std::make_shared<Item>(name, desc);
         }
+
+        if (type == "unlock"){
+            std::string passage1 = data["passage1"];
+            std::string passage2 = data["passage2"];
+            
+            if (passage1 != "") {
+                auto unlockCommand = std::make_shared<PassageDefaultUnlockCommand>(
+                    allPassages[passage1].get(),
+                    allPassages[passage2].get(),
+                    item.get()
+                );
+                item->setUseCommand(unlockCommand);
+            }
+        }
+        
         allItems[name] = item;
     }
 }
