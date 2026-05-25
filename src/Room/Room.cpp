@@ -76,10 +76,10 @@ std::shared_ptr<Passage> Room::getPassage(const std::string &direction) {
 }
 
 void Room::enter() {
+    std::cout << getDescription() << std::endl;
+
     EventBus::instance()->emit({
         TriggerType::ENTER_ROOM,
         getName()
     });
-
-    std::cout << getDescription() << std::endl;
 }

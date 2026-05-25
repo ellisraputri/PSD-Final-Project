@@ -13,5 +13,9 @@ TriggerType stringToTriggerType(const std::string& str) {
         return TriggerType::TAKE_ITEM;
     }
 
+    if (str == "USE_ITEM") {
+        return TriggerType::USE_ITEM;
+    }
+
     throw std::runtime_error("Unknown trigger type: " + str);
 }

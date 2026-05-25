@@ -8,6 +8,7 @@ enum class TriggerType {
     ENTER_ROOM,
     TALK_CHARACTER,
     TAKE_ITEM,
+    USE_ITEM,
 };
 
 TriggerType stringToTriggerType(const std::string& str);

@@ -4,6 +4,10 @@ bool StoryTrigger::matches(TriggerType t, const std::string& target) const {
     return (triggerType == t && triggerTarget == target);
 }
 
+TriggerType StoryTrigger::getTriggerType() const{
+    return triggerType;
+}
+
 std::string StoryTrigger::getResultFlag() const {
     return resultFlag;
 }

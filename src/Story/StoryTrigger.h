@@ -11,6 +11,8 @@ public:
 
     bool matches(TriggerType t, const std::string& target) const;
 
+    TriggerType getTriggerType() const;
+
     std::string getResultFlag() const;
 
     std::string getTriggerPrint() const;

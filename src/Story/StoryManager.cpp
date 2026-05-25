@@ -41,7 +41,7 @@ void StoryManager::trigger(TriggerType type, const std::string& target) {
         triggerAdditionalAction(trigger.getResultFlag());
 
         player->setLocked(trigger.isLockPlayer());
-        std::cout << trigger.getTriggerPrint() << std::endl;
+        std::cout << trigger.getTriggerPrint() << "\n\n";
 
         if (trigger.getFlagDone() != "" && hasFlag(trigger.getFlagDone())){
             trigger.setTriggerDone(true);
@@ -57,9 +57,10 @@ void StoryManager::triggerAdditionalAction(std::string name) {
         std::shared_ptr<Room> hall = info->getRoom("castlecenter-hall");
         std::shared_ptr<Room> throne = info->getRoom("castlecenter-throne");
         std::shared_ptr<Character> character = info->getCharacter("king iotate");
+        std::shared_ptr<Item> item = info->getItem("king dead body");
 
         hall->removeCharacter(character);
-        throne->addCharacter(character);
+        throne->addItem(item);
         info->setRoom("castlecenter-hall", hall);
         info->setRoom("castlecenter-thone", throne);
     }
