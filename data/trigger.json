@@ -40,19 +40,10 @@
             "triggerType": "ENTER_ROOM",
             "target": "castlecenter-throne",
             "flag": "entered_castlecenter_throne",
-            "result": "You saw the king being stabbed right in his heart by an unknown woman. \nThe woman wears a black jumpsuit with a turtle logo on her right shoulder. \nHer black eyes viciously stare at you with her hands pointing her blood-stained sword towards you. \nYou feel that the black pearl in your bag urges you to use it.",
+            "result": "You saw the king being stabbed right in his heart by an unknown woman. \nThe woman wears a black jumpsuit with a turtle logo on her right shoulder. \nHer black eyes viciously stare at you with her hands pointing her blood-stained sword towards you. \nYou immediately try to launch an attack to the mysterious woman. \nHowever, she dodges the attack effortlessly and proceeds to knock you out. \nBefore your consciousness is gone, you heard that she says \"We will meet again, Huz.\" \n\nAfter a long while, you finally opened your eyes again.",
             "flagCondition": "entered_castlecenter_hall_2",
             "flagDone": "used_black_pearl",
             "lockPlayer": true
-        },
-        {
-            "triggerType": "USE_ITEM",
-            "target": "black pearl",
-            "flag": "used_black_pearl",
-            "result": "You grow stronger after using the pearl. \nYou immediately try to launch an attack to the mysterious woman. \nHowever, she dodges the attack effortlessly and proceeds to knock you out. \nBefore your consciousness is gone, you heard that she says \"We will meet again, Huz.\" \n\nAfter a long while, you finally opened your eyes again. ",
-            "flagCondition": "entered_castlecenter_throne",
-            "flagDone": "",
-            "lockPlayer": false
         }
     ]
 }

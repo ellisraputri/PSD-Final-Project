@@ -41,7 +41,7 @@ void StoryManager::trigger(TriggerType type, const std::string& target) {
         triggerAdditionalAction(trigger.getResultFlag());
 
         player->setLocked(trigger.isLockPlayer());
-        std::cout << trigger.getTriggerPrint() << "\n\n";
+        std::cout << "\n" << trigger.getTriggerPrint() << "\n";
 
         if (trigger.getFlagDone() != "" && hasFlag(trigger.getFlagDone())){
             trigger.setTriggerDone(true);

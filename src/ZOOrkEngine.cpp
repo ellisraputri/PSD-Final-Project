@@ -229,11 +229,6 @@ void ZOOrkEngine::handleUseCommand(std::vector<std::string> arguments) {
         if(item->isUsed()) {
             player->dropItem(item);
         }
-
-        EventBus::instance()->emit({
-            TriggerType::USE_ITEM,
-            item->getName()
-        });
     }
 }
 
