@@ -1,5 +1,6 @@
 #include "Information.h"
 #include "Item/BuffItem.h"
+#include "Passage/PasswordPassage.h"
 #include "Command/PassageDefaultUnlockCommand.h"
 #include "Command/BuffCharacterItemCommand.h"
 
@@ -96,19 +97,33 @@ void Information::initPassage() {
 
     for(const auto& data: j["passages"]){
         std::string name = data["name"];
+        std::string password = data["password"];
         std::string fromRoom = data["fromRoom"];
         std::string toRoom = data["toRoom"];
         std::string direction = data["direction"];
         bool locked = data["locked"];
         bool bidirectional = data["bidirectional"];
         
-        auto passages = Passage::createBasicPassage(
-            allRooms[fromRoom].get(),
-            allRooms[toRoom].get(),
-            direction,
-            locked,
-            bidirectional
-        );
+        std::vector<std::shared_ptr<Passage>> passages;
+        if (password != "") {
+            passages = Passage::createBasicPassage<PasswordPassage>(
+                allRooms[fromRoom].get(),
+                allRooms[toRoom].get(),
+                direction,
+                locked,
+                bidirectional,
+                password
+            );
+        }
+        else {
+            passages = Passage::createBasicPassage<Passage>(
+                allRooms[fromRoom].get(),
+                allRooms[toRoom].get(),
+                direction,
+                locked,
+                bidirectional
+            );
+        }
         
         std::string passageName = "passage_" + fromRoom + "_to_" + toRoom;
         allPassages[passageName] = passages[0];

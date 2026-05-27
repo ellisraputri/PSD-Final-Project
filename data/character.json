@@ -32,6 +32,17 @@
             "dialogues": {
                 "first_meeting": "Hello son."
             }
+        },
+        {
+            "name": "princess unnudh",
+            "desc": "Your sister, the princess that has been captured by an unknown person 4 years ago.",
+            "hp": 10, 
+            "atk": 10, 
+            "def": 10, 
+            "combatMode": false,
+            "dialogues": {
+                "first_meeting": "Hello son."
+            }
         }
     ]
 }

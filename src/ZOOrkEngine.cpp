@@ -22,7 +22,7 @@ ZOOrkEngine::ZOOrkEngine() {
     info->initCheckpoints();
 
     player = Player::instance();
-    player->setCurrentRoom(info->getRoom("corridor1").get());
+    player->setCurrentRoom(info->getRoom("library-bedroom").get());
     // std::cout << "8"<<std::endl;
     player->getCurrentRoom()->enter();
     // std::cout << "9"<<std::endl;
@@ -62,7 +62,10 @@ void ZOOrkEngine::run() {
             handleDialogCommand(arguments);
         } else if (command == "teleport") {
             handleTeleportCommand(arguments);
-        } else if (command == "quit" || command == "exit") {
+        } else if (command == "unlock") {
+            handleUnlockPasswordCommand(arguments);
+        }
+        else if (command == "quit" || command == "exit") {
             handleQuitCommand(arguments); 
         }
         else {
@@ -375,6 +378,39 @@ void ZOOrkEngine::handleTeleportCommand(std::vector<std::string> arguments) {
         TriggerType::ENTER_ROOM,
         room->getName()
     });
+}
+
+void ZOOrkEngine::handleUnlockPasswordCommand(std::vector<std::string> arguments) {
+    if (arguments.size() != 1) {
+        std::cout << "Usage: unlock <direction>\n";
+        return;
+    }
+
+    std::string direction = arguments[0];
+
+    auto room = player->getCurrentRoom();
+    auto passage = room->getPassage(direction);
+    
+    if (dynamic_cast<NullPassage*>(passage.get()) != nullptr) {
+        return;
+    }
+
+    auto passwordPassage = dynamic_cast<PasswordPassage*>(passage.get());
+    if (passwordPassage == nullptr) {
+        std::cout << "This passage does not use a password.\n";
+        return;
+    }
+
+    std::string password;
+    std::cout << "Enter password: ";
+    std::cin >> password;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    if (passwordPassage->tryUnlock(password)) {
+        std::cout << "Passage unlocked.\n";
+    } else {
+        std::cout << "Wrong password.\n";
+    }
 }
 
 void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments) {

@@ -1,11 +1,11 @@
-
-
 #ifndef ZOORK_ZOORKENGINE_H
 #define ZOORK_ZOORKENGINE_H
 
 #include "Character/Player.h"
 #include "Location.h"
 #include "Passage/Passage.h"
+#include "Passage/PasswordPassage.h"
+#include "Passage/NullPassage.h"
 #include "Information/Information.h"
 #include "EventBus.h"
 #include <iostream>
@@ -44,6 +44,8 @@ private:
     void handleDialogCommand(std::vector<std::string>);
 
     void handleTeleportCommand(std::vector<std::string>);
+
+    void handleUnlockPasswordCommand(std::vector<std::string>);
 
     void handleQuitCommand(std::vector<std::string>);
 

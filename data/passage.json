@@ -2,7 +2,7 @@
     "passages": [
         {
             "name": "passage_bedroom-bed_bedroom-door1",
-            "desc": "",
+            "password": "",
             "fromRoom": "bedroom-bed",
             "toRoom": "bedroom-door1",
             "direction": "west",
@@ -11,7 +11,7 @@
         },
         {
             "name": "passage_bedroom-bed_bedroom-door2",
-            "desc": "",
+            "password": "",
             "fromRoom": "bedroom-bed",
             "toRoom": "bedroom-door2",
             "direction": "east",
@@ -20,7 +20,7 @@
         },
         {
             "name": "passage_bedroom-door1_corridor1",
-            "desc": "",
+            "password": "",
             "fromRoom": "bedroom-door1",
             "toRoom": "corridor1",
             "direction": "west",
@@ -29,7 +29,7 @@
         },
         {
             "name": "passage_bedroom-door2_corridor2",
-            "desc": "",
+            "password": "",
             "fromRoom": "bedroom-door2",
             "toRoom": "corridor2",
             "direction": "east",
@@ -38,7 +38,7 @@
         },
         {
             "name": "passage_castlecenter-hall_corridor2",
-            "desc": "",
+            "password": "",
             "fromRoom": "corridor2",
             "toRoom": "castlecenter-hall",
             "direction": "south",
@@ -47,7 +47,7 @@
         },
         {
             "name": "passage_castlecenter-hall_castlecenter-throne",
-            "desc": "",
+            "password": "",
             "fromRoom": "castlecenter-hall",
             "toRoom": "castlecenter-throne",
             "direction": "west",
@@ -56,7 +56,7 @@
         },
         {
             "name": "passage_castlecenter-hall_castle-storage1",
-            "desc": "",
+            "password": "",
             "fromRoom": "castlecenter-hall",
             "toRoom": "castle-storage1",
             "direction": "south",
@@ -65,7 +65,7 @@
         },
         {
             "name": "passage_castle-storage1_castle-storage2",
-            "desc": "",
+            "password": "",
             "fromRoom": "castle-storage1",
             "toRoom": "castle-storage2",
             "direction": "west",
@@ -74,7 +74,7 @@
         },
         {
             "name": "passage_castlecenter-throne_corridor1",
-            "desc": "",
+            "password": "",
             "fromRoom": "castlecenter-throne",
             "toRoom": "corridor1",
             "direction": "north",
@@ -86,7 +86,7 @@
 
         {
             "name": "passage_library-entrace_library-corridor",
-            "desc": "",
+            "password": "",
             "fromRoom": "library-entrace",
             "toRoom": "library-corridor",
             "direction": "north",
@@ -95,7 +95,7 @@
         },
         {
             "name": "passage_library-corridor_library-hall",
-            "desc": "",
+            "password": "",
             "fromRoom": "library-corridor",
             "toRoom": "library-hall",
             "direction": "east",
@@ -104,7 +104,7 @@
         },
         {
             "name": "passage_library-corridor_library-bedroom",
-            "desc": "",
+            "password": "",
             "fromRoom": "library-corridor",
             "toRoom": "library-bedroom",
             "direction": "north",
@@ -113,11 +113,20 @@
         },
         {
             "name": "passage_library-corridor_library-mainroom",
-            "desc": "",
+            "password": "",
             "fromRoom": "library-corridor",
             "toRoom": "library-mainroom",
             "direction": "west",
             "locked": false,
+            "bidirectional": true
+        },
+        {
+            "name": "passage_library-hall_library-jail",
+            "password": "password",
+            "fromRoom": "library-hall",
+            "toRoom": "library-jail",
+            "direction": "east",
+            "locked": true,
             "bidirectional": true
         }
     ]

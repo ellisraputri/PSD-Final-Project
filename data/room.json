@@ -70,7 +70,7 @@
         },
         {
             "name": "library-hall",
-            "desc": "A hall with a lot of books. There is a mechanism in the east side of the room.", 
+            "desc": "A hall with a lot of books. \nThere is a mechanism in the east side of the room. \nYou need a password to unlock it. \nTips: use \"unlock <direction>\" command", 
             "items": ["spell book"],
             "characters": []
         },
@@ -85,6 +85,12 @@
             "desc": "The old man is sitting in a chair reading book.", 
             "items": [],
             "characters": ["old man qing"]
+        },
+        {
+            "name": "library-jail",
+            "desc": "A jail with minimum ventilation and lighting. \nIt is prominent that your sister has been locked up here for a long time.", 
+            "items": [],
+            "characters": ["princess unnudh"]
         }
     ]
 }
