@@ -42,7 +42,27 @@
             "flag": "entered_castlecenter_throne",
             "result": "You saw the king being stabbed right in his heart by an unknown woman. \nThe woman wears a black jumpsuit with a turtle logo on her right shoulder. \nHer black eyes viciously stare at you with her hands pointing her blood-stained sword towards you. \nYou immediately try to launch an attack to the mysterious woman. \nHowever, she dodges the attack effortlessly and proceeds to knock you out. \nBefore your consciousness is gone, you heard that she says \"We will meet again, Huz.\" \n\nAfter a long while, you finally opened your eyes again.",
             "flagCondition": "entered_castlecenter_hall_2",
-            "flagDone": "used_black_pearl",
+            "flagDone": "",
+            "lockPlayer": false
+        },
+        {
+            "triggerType": "ENTER_ROOM",
+            "target": "corridor1",
+            "flag": "entered_corridor1",
+            "result": "Congrats! You unlocked the your first teleport waypoint. \nAfter this, you can type \"teleport\" to go elsewhere.",
+            "flagCondition": "",
+            "flagDone": "",
+            "lockPlayer": false
+        },
+
+
+        {
+            "triggerType": "ENTER_ROOM",
+            "target": "library-entrace",
+            "flag": "entered_library_entrace",
+            "result": "The guard is wary of you. He immediately try to attack you.",
+            "flagCondition": "",
+            "flagDone": "",
             "lockPlayer": true
         }
     ]

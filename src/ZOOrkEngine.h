@@ -12,6 +12,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <limits>
 
 class ZOOrkEngine {
 public:
@@ -41,6 +42,8 @@ private:
     void handleTalkCommand(std::vector<std::string>);
 
     void handleDialogCommand(std::vector<std::string>);
+
+    void handleTeleportCommand(std::vector<std::string>);
 
     void handleQuitCommand(std::vector<std::string>);
 

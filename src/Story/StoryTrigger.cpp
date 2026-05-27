@@ -8,6 +8,10 @@ TriggerType StoryTrigger::getTriggerType() const{
     return triggerType;
 }
 
+std::string StoryTrigger::getTriggerTarget() const {
+    return triggerTarget;
+}
+
 std::string StoryTrigger::getResultFlag() const {
     return resultFlag;
 }

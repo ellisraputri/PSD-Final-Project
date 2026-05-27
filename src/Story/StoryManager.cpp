@@ -38,20 +38,25 @@ void StoryManager::trigger(TriggerType type, const std::string& target) {
         }
 
         flags.insert(trigger.getResultFlag());
-        triggerAdditionalAction(trigger.getResultFlag());
+        triggerAdditionalAction(trigger);
 
         player->setLocked(trigger.isLockPlayer());
         std::cout << "\n" << trigger.getTriggerPrint() << "\n";
 
-        if (trigger.getFlagDone() != "" && hasFlag(trigger.getFlagDone())){
+        if (trigger.getFlagDone() == "" || 
+            (trigger.getFlagDone() != "" && hasFlag(trigger.getFlagDone()))){
+
             trigger.setTriggerDone(true);
             if(player->isLocked()) player->setLocked(false);
         }
     }
 }
 
-void StoryManager::triggerAdditionalAction(std::string name) {
+void StoryManager::triggerAdditionalAction(StoryTrigger& trigger) {
     Information* info = Information::instance();
+    Player* player = Player::instance();
+
+    std::string name = trigger.getResultFlag();
 
     if (name == "took_black_pearl") {
         std::shared_ptr<Room> hall = info->getRoom("castlecenter-hall");
@@ -63,5 +68,9 @@ void StoryManager::triggerAdditionalAction(std::string name) {
         throne->addItem(item);
         info->setRoom("castlecenter-hall", hall);
         info->setRoom("castlecenter-thone", throne);
+    }
+
+    if (name == "entered_corridor1" || name == "entered_library_entrace") {
+        player->setCheckpoint(trigger.getTriggerTarget());
     }
 }

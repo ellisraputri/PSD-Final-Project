@@ -31,3 +31,10 @@ void Player::setLocked(bool b){
 bool Player::isLocked() const {
     return locked;
 }
+
+void Player::setCheckpoint(std::string s){
+    checkpoint = s;
+}
+std::string Player::getCheckpoint() const {
+    return checkpoint;
+}

@@ -2,6 +2,7 @@
 #define ZOORK_INFORMATION_H
 
 #include <unordered_map>
+#include <vector>
 #include "Item/Item.h"
 #include "Mechanism/Mechanism.h"
 #include "Room/Room.h"
@@ -35,6 +36,9 @@ public:
     void initCharacter();
     void initRoomPopulation();
     void initTrigger();
+    void initCheckpoints();
+
+    std::vector<std::string> getCheckpointList(std::string);
 
 private:
     static Information* infoInstance;
@@ -44,6 +48,8 @@ private:
     std::unordered_map<std::string, std::shared_ptr<Room>> allRooms;
     std::unordered_map<std::string, std::shared_ptr<Passage>> allPassages;
     std::unordered_map<std::string, std::shared_ptr<Character>> allCharacters;
+
+    std::vector<std::shared_ptr<Room>> checkpoints;
 };
 
 #endif

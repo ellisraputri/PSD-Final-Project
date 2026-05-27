@@ -19,9 +19,10 @@ ZOOrkEngine::ZOOrkEngine() {
     // std::cout << "6"<<std::endl;
     info->initTrigger();
     // std::cout << "7"<<std::endl;
+    info->initCheckpoints();
 
     player = Player::instance();
-    player->setCurrentRoom(info->getRoom("castle-storage1").get());
+    player->setCurrentRoom(info->getRoom("corridor1").get());
     // std::cout << "8"<<std::endl;
     player->getCurrentRoom()->enter();
     // std::cout << "9"<<std::endl;
@@ -35,6 +36,9 @@ void ZOOrkEngine::run() {
         std::getline(std::cin, input);
 
         std::vector<std::string> words = tokenizeString(input);
+        if (words.empty()) {
+            continue;
+        }
         std::string command = words[0];
         std::vector<std::string> arguments(words.begin() + 1, words.end());
 
@@ -56,9 +60,12 @@ void ZOOrkEngine::run() {
             handleTalkCommand(arguments);
         } else if (command == "dialog") {
             handleDialogCommand(arguments);
+        } else if (command == "teleport") {
+            handleTeleportCommand(arguments);
         } else if (command == "quit" || command == "exit") {
-            handleQuitCommand(arguments);
-        } else {
+            handleQuitCommand(arguments); 
+        }
+        else {
             std::cout << "I don't understand that command\n";
         }
 
@@ -319,6 +326,41 @@ void ZOOrkEngine::handleDialogCommand(std::vector<std::string> arguments){
 
         std::cout << character->getName() << " >> " << character->getDialogue(dialogSelection) << "\n\n";
     }
+}
+
+void ZOOrkEngine::handleTeleportCommand(std::vector<std::string> arguments) {
+    int input;
+    std::cout << "Where do you want to teleport? Please just input the number.\n";
+
+    auto checkpoints = info->getCheckpointList(player->getCheckpoint());
+    for (int i = 0; i < checkpoints.size(); i++) {
+        std::cout << i << ". " << checkpoints[i] << std::endl;
+    }
+
+    if (!(std::cin >> input)) {
+        std::cout << "Invalid input.\n";
+
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+        return;
+    }
+
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    if (input < 0 || input >= checkpoints.size()) {
+        std::cout << "I don't know this place." << std::endl;
+        return;
+    }
+
+    std::shared_ptr<Room> room = info->getRoom(checkpoints[input]);
+    player->setCurrentRoom(room.get());
+    std::cout << "You have teleported to " << room->getName() << std::endl;
+
+    EventBus::instance()->emit({
+        TriggerType::ENTER_ROOM,
+        room->getName()
+    });
 }
 
 void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments) {

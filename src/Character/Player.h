@@ -26,6 +26,9 @@ public:
     void setLocked(bool);
     bool isLocked() const;
 
+    void setCheckpoint(std::string);
+    std::string getCheckpoint() const;
+
     Player(const Player &) = delete;
     Player &operator=(const Player &) = delete;
 
@@ -34,6 +37,7 @@ private:
     Room* currentRoom;
     std::vector<std::shared_ptr<Item>> inventory;
     bool locked = false;
+    std::string checkpoint = "bedroom-bed";
 
     Player() : Character("You", "You are a person, alike in dignity to any other, but uniquely you."),
                currentRoom(new NullRoom()) {}

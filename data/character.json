@@ -10,6 +10,17 @@
             "dialogues": {
                 "first_meeting": "Hello son."
             }
+        },
+        {
+            "name": "guard",
+            "desc": "A guard that is suspicious to your appearance.",
+            "hp": 0, 
+            "atk": 0, 
+            "def": 0, 
+            "combatMode": false,
+            "dialogues": {
+                "first_meeting": "Hello son."
+            }
         }
     ]
 }

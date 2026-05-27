@@ -248,3 +248,31 @@ void Information::initTrigger() {
         StoryManager::instance()->addTrigger(trigger);
     }
 }
+
+void Information::initCheckpoints(){
+    checkpoints.push_back(allRooms["bedroom-bed"]);
+    checkpoints.push_back(allRooms["corridor1"]);
+    checkpoints.push_back(allRooms["library-entrace"]);
+}
+
+std::vector<std::string> Information::getCheckpointList(std::string current) {
+    if (current == checkpoints[0]->getName()) {
+        return std::vector<std::string>();
+    }
+
+    std::vector<std::string> returnList;
+    int loopSize = 0;
+
+    for (int i=0; i<checkpoints.size(); i++){
+        if (current == checkpoints[i]->getName()){
+            loopSize = i;
+        }
+    }
+
+    loopSize = (loopSize % 2 ==1)? loopSize+1 : loopSize;
+    for (int i=0; i<=loopSize; i++){
+        returnList.push_back(checkpoints[i]->getName());
+    }
+
+    return returnList;
+}

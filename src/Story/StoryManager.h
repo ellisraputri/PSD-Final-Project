@@ -14,7 +14,7 @@ public:
 
     void addTrigger(const StoryTrigger&);
 
-    void triggerAdditionalAction(std::string name);
+    void triggerAdditionalAction(StoryTrigger&);
     void trigger(TriggerType type, const std::string& target);
 
     bool hasFlag(const std::string&) const;

@@ -53,6 +53,14 @@
             "desc": "An old storage room that stores various equipments. \nYou found a black key and flashlight that are still usable.", 
             "items": ["black key", "flashlight"],
             "characters": []
+        },
+
+
+        {
+            "name": "library-entrace",
+            "desc": "This is the entrace of an unknown library. \nThere seems to be a person guarding the entrace.", 
+            "items": [],
+            "characters": ["guard"]
         }
     ]
 }
