@@ -33,6 +33,7 @@ public:
     void initRoom();
     void initPassage();
     void initItem();
+    void initMechanism();
     void initCharacter();
     void initRoomPopulation();
     void initTrigger();

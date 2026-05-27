@@ -13,6 +13,7 @@ std::string Room::getDescription() const {
     std::string desc = GameObject::getDescription();
     int itemSize = items.size();
     int charSize = characters.size();
+    int mechanismSize = mechanisms.size();
     
     if (itemSize != 0) desc += "\nItems in the room: ";
     for (int i=0; i<itemSize; i++){
@@ -23,6 +24,12 @@ std::string Room::getDescription() const {
     for (int i=0; i<charSize; i++){
         desc += characters[i]->getName() + ((i != charSize-1)? ", " : "");
     }
+
+    if (mechanismSize != 0) desc += "\nMechanisms in the room: ";
+    for (int i=0; i<mechanismSize; i++){
+        desc += mechanisms[i]->getName() + ((i != mechanismSize-1)? ", " : "");
+    }
+
     return desc;
 }
 
@@ -37,8 +44,11 @@ void Room::removeItem(std::shared_ptr<Item> item){
     );
 }
 
-bool Room::isItemExist(const std::shared_ptr<Item>& item) {
-    return std::find(items.begin(), items.end(), item) != items.end();
+bool Room::isItemExist(const std::string& s) {
+    for (auto& i: items){
+        if (i->getName() == s) return true;
+    }
+    return false;
 }
 
 void Room::addCharacter(std::shared_ptr<Character> ch){
@@ -52,8 +62,11 @@ void Room::removeCharacter(std::shared_ptr<Character> ch){
     );
 }
 
-bool Room::isCharacterExist(const std::shared_ptr<Character>& ch) {
-    return std::find(characters.begin(), characters.end(), ch) != characters.end();
+bool Room::isCharacterExist(const std::string& s) {
+    for (auto& c: characters){
+        if (c->getName() == s) return true;
+    }
+    return false;
 }
 
 void Room::addPassage(const std::string &direction, std::shared_ptr<Passage> p) {
@@ -78,6 +91,24 @@ std::shared_ptr<Passage> Room::getPassage(const std::string &direction) {
 bool Room::isPassageExist(const std::string& s) {
     for (auto& [key, val]: passageMap){
         if (val->getName() == s) return true;
+    }
+    return false;
+}
+
+void Room::addMechanism(std::shared_ptr<Mechanism> mechanism){
+    mechanisms.push_back(mechanism);
+}
+
+void Room::removeMechanism(std::shared_ptr<Mechanism> mechanism){
+    mechanisms.erase(
+        std::remove(mechanisms.begin(), mechanisms.end(), mechanism),
+        mechanisms.end()
+    );
+}
+
+bool Room::isMechanismExist(const std::string& s) {
+    for (auto& m: mechanisms){
+        if (m->getName() == s) return true;
     }
     return false;
 }

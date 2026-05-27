@@ -59,14 +59,15 @@
         {
             "name": "black key",
             "desc": "A mysterious key that you have never seen. \nMaybe it will be useful to unlock a certain room.",
-            "type": "unlock",
+            "type": "unlock-passage",
             "passage1": "passage_castlecenter-throne_to_corridor1",
             "passage2": "passage_corridor1_to_castlecenter-throne"
         },
         {
             "name": "flashlight",
             "desc": "A small flashlight that still has a lot of battery and can be used to expose UV fields.",
-            "type": "none"
+            "type": "unlock-mechanism",
+            "mechanism": "loose brick"
         },
         {
             "name": "king heart",

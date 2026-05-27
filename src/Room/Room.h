@@ -5,6 +5,7 @@
 #include "Command/RoomDefaultEnterCommand.h"
 #include "EventBus.h"
 #include "Item/Item.h"
+#include "Mechanism/Mechanism.h"
 #include "Location.h"
 #include <map>
 
@@ -20,22 +21,25 @@ public:
 
     void addItem(std::shared_ptr<Item>);
     void removeItem(std::shared_ptr<Item>);
-    bool isItemExist(const std::shared_ptr<Item>&);
+    bool isItemExist(const std::string&);
 
     void addCharacter(std::shared_ptr<Character>);
     void removeCharacter(std::shared_ptr<Character>);
-    bool isCharacterExist(const std::shared_ptr<Character>&);
+    bool isCharacterExist(const std::string&);
 
     void addPassage(const std::string &, std::shared_ptr<Passage>);
-
     void removePassage(const std::string &);
-
     std::shared_ptr<Passage> getPassage(const std::string &);
     bool isPassageExist(const std::string&);
+
+    void addMechanism(std::shared_ptr<Mechanism>);
+    void removeMechanism(std::shared_ptr<Mechanism>);
+    bool isMechanismExist(const std::string&);
 
 protected:
     std::vector<std::shared_ptr<Item>> items;
     std::vector<std::shared_ptr<Character>> characters;
+    std::vector<std::shared_ptr<Mechanism>> mechanisms;
     std::map<std::string, std::shared_ptr<Passage>> passageMap;
 };
 

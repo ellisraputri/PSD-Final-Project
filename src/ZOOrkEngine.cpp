@@ -11,6 +11,7 @@ ZOOrkEngine::ZOOrkEngine() {
     // std::cout << "2"<<std::endl;
     info->initPassage();
     // std::cout << "3"<<std::endl;
+    info->initMechanism();
     info->initItem();
     // std::cout << "4"<<std::endl;
     info->initCharacter();
@@ -126,7 +127,12 @@ void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
         std::shared_ptr<Mechanism> mechanism = info->getMechanism(arguments[i]);
         if(mechanism != nullptr){
             isPrinted[i] = true;
-            std::cout << arguments[i] << ": " << mechanism->getDescription() << std::endl;
+            
+            if (mechanism->isLocked()){
+                std::cout << arguments[i] << ": " << mechanism->getDescription() << std::endl;
+            } else {
+                std::cout << arguments[i] << ": " << mechanism->getResultPrint() << std::endl;
+            }
         }
     }
     if(arguments.size()>0 && std::find(isPrinted.begin(), isPrinted.end(), false) == isPrinted.end()) return;
@@ -151,7 +157,7 @@ void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments) {
 
     for(const std::string& s: arguments){
         std::shared_ptr<Item> item = info->getItem(s);
-        if (item == nullptr || !currentRoom->isItemExist(item)) {
+        if (item == nullptr || !currentRoom->isItemExist(item->getName())) {
             std::cout << s << " is not a recognizable item" << std::endl;
             continue;
         }
@@ -251,7 +257,7 @@ void ZOOrkEngine::handleAttackCommand(std::vector<std::string> arguments) {
     Room* currentRoom = player->getCurrentRoom();
     std::shared_ptr<Character> enemy = info->getCharacter(arguments[0]);
 
-    if (enemy == nullptr || !currentRoom->isCharacterExist(enemy)) {
+    if (enemy == nullptr || !currentRoom->isCharacterExist(enemy->getName())) {
         std::cout << enemy->getName() << " is not a recognizable enemy" << std::endl;
         return;
     }
@@ -300,7 +306,7 @@ void ZOOrkEngine::handleTalkCommand(std::vector<std::string> arguments){
 
     for(const std::string& s: arguments){
         std::shared_ptr<Character> character = info->getCharacter(s);
-        if (character == nullptr || !currentRoom->isCharacterExist(character)) {
+        if (character == nullptr || !currentRoom->isCharacterExist(character->getName())) {
             std::cout << s << " is not a recognizable character" << std::endl;
             continue;
         }
@@ -320,7 +326,7 @@ void ZOOrkEngine::handleDialogCommand(std::vector<std::string> arguments){
 
     Room* currentRoom = player->getCurrentRoom();
     std::shared_ptr<Character> character = info->getCharacter(arguments[0]);
-    if (character == nullptr || !currentRoom->isCharacterExist(character)) {
+    if (character == nullptr || !currentRoom->isCharacterExist(character->getName())) {
         std::cout << arguments[0] << " is not a recognizable character" << std::endl;
         return;
     }

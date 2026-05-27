@@ -1,4 +1,15 @@
 #include "Mechanism.h"
 
+void Mechanism::setLocked(bool b) {
+    locked = b;
+}
+bool Mechanism::isLocked() const {
+    return locked;
+}
 
-Mechanism::Mechanism(const std::string &n, const std::string &d) : GameObject(n, d) {}
+void Mechanism::setResultPrint(std::string s) {
+    resultPrint = s;
+}
+std::string Mechanism::getResultPrint() const {
+    return resultPrint;
+}

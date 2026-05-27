@@ -4,55 +4,64 @@
             "name": "bedroom-bed",
             "desc": "You are sitting on your soft and comfy bed. \nBut, you do not have any sleep intention at the moment.",
             "items": [],
-            "characters": []
+            "characters": [],
+            "mechanisms": []
         },
         {
             "name": "bedroom-door1",
             "desc": "There is a locked door heading to the west.",
             "items": [],
-            "characters": []
+            "characters": [],
+            "mechanisms": []
         },
         {
             "name": "bedroom-door2",
             "desc": "There is a slightly opened door heading to the east.", 
             "items": [],
-            "characters": []
+            "characters": [],
+            "mechanisms": []
         },
         {
             "name": "corridor1",
             "desc": "A long corridor with 4 pictures with large frames hanging on the wall.",
             "items": ["mysterious picture 1", "mysterious picture 2", "mysterious picture 3", "mysterious picture 4"],
-            "characters": []
+            "characters": [],
+            "mechanisms": []
         },
         {
             "name": "corridor2",
             "desc": "A long corridor with 4 magnificent portraits of the current empire's royal family.",
             "items": ["king picture", "princess picture", "duke picture", "prince picture"],
-            "characters": []
+            "characters": [],
+            "mechanisms": []
         },
         {
             "name": "castlecenter-hall",
             "desc": "This is the place where you usually greet your father, the king.", 
             "items": [],
-            "characters": ["king iotate"]
+            "characters": ["king iotate"],
+            "mechanisms": []
         },
         {
             "name": "castlecenter-throne",
             "desc": "The place where the king usually sits at. Numerous sparkling jewels filled the old-looking chair.", 
             "items": [],
-            "characters": []
+            "characters": [],
+            "mechanisms": []
         },
         {
             "name": "castle-storage1",
             "desc": "An old storage room that stores various equipments. \nYou found a shiny black pearl, with a long sword resides beside it.", 
             "items": ["black pearl", "long sword"],
-            "characters": []
+            "characters": [],
+            "mechanisms": []
         },
         {
             "name": "castle-storage2",
             "desc": "An old storage room that stores various equipments. \nYou found a black key and flashlight that are still usable.", 
             "items": ["black key", "flashlight"],
-            "characters": []
+            "characters": [],
+            "mechanisms": []
         },
 
 
@@ -60,37 +69,43 @@
             "name": "library-entrace",
             "desc": "This is the entrace of an unknown library. \nThere seems to be a person guarding the entrace.", 
             "items": [],
-            "characters": ["guard"]
+            "characters": ["guard"],
+            "mechanisms": []
         },
         {
             "name": "library-corridor",
             "desc": "The corridor of the library with a wall made of bricks. \nThere seems a brick that has a hidden text.", 
             "items": ["old note"],
-            "characters": []
+            "characters": [],
+            "mechanisms": ["loose brick"]
         },
         {
             "name": "library-hall",
             "desc": "A hall with a lot of books. \nThere is a mechanism in the east side of the room. \nYou need a password to unlock it. \nTips: use \"unlock <direction>\" command", 
             "items": ["spell book"],
-            "characters": []
+            "characters": [],
+            "mechanisms": []
         },
         {
             "name": "library-bedroom",
             "desc": "A simple bedroom, yet feel warm. \nYou feel that you have been here before.", 
-            "items": ["lighter"],
-            "characters": []
+            "items": ["lighter", "flashlight"],
+            "characters": [],
+            "mechanisms": []
         },
         {
             "name": "library-mainroom",
             "desc": "The old man is sitting in a chair reading book.", 
             "items": [],
-            "characters": ["old man qing"]
+            "characters": ["old man qing"],
+            "mechanisms": []
         },
         {
             "name": "library-jail",
             "desc": "A jail with minimum ventilation and lighting. \nIt is prominent that your sister has been locked up here for a long time.", 
             "items": [],
-            "characters": ["princess unnudh"]
+            "characters": ["princess unnudh"],
+            "mechanisms": []
         }
     ]
 }

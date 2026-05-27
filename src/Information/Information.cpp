@@ -3,6 +3,7 @@
 #include "Passage/PasswordPassage.h"
 #include "Command/PassageDefaultUnlockCommand.h"
 #include "Command/BuffCharacterItemCommand.h"
+#include "Command/MechanismUnlockCommand.h"
 
 Information* Information::infoInstance = nullptr;
 
@@ -135,6 +136,26 @@ void Information::initPassage() {
     }
 }
 
+void Information::initMechanism() {
+    std::ifstream file("data/mechanism.json");
+    if (!file.is_open()) {
+        std::cout << "cannot open mechanism.json" << std::endl;
+        throw std::runtime_error("Cannot open mechanism.json");
+    }
+
+    json j;
+    file >> j;
+
+    for(const auto& data: j["mechanisms"]){
+        std::string name = data["name"];
+        std::string desc = data["desc"];
+        std::string print = data["print"];
+
+        auto mechanism = std::make_shared<Mechanism>(name, desc, print);
+        allMechanisms[name] = mechanism;
+    }
+}
+
 void Information::initItem() {
     std::ifstream file("data/item.json");
     if (!file.is_open()) {
@@ -167,18 +188,26 @@ void Information::initItem() {
             item = std::make_shared<Item>(name, desc);
         }
 
-        if (type == "unlock"){
+        if (type == "unlock-passage"){
             std::string passage1 = data["passage1"];
             std::string passage2 = data["passage2"];
             
-            if (passage1 != "") {
-                auto unlockCommand = std::make_shared<PassageDefaultUnlockCommand>(
-                    allPassages[passage1].get(),
-                    allPassages[passage2].get(),
-                    item.get()
-                );
-                item->setUseCommand(unlockCommand);
-            }
+            auto unlockCommand = std::make_shared<PassageDefaultUnlockCommand>(
+                allPassages[passage1].get(),
+                allPassages[passage2].get(),
+                item.get()
+            );
+            item->setUseCommand(unlockCommand);
+            
+        } 
+        else if (type == "unlock-mechanism"){
+            std::string mechanism = data["mechanism"];
+            
+            auto unlockCommand = std::make_shared<MechanismUnlockCommand>(
+                allMechanisms[mechanism].get(),
+                item.get()
+            );
+            item->setUseCommand(unlockCommand);
         }
         
         allItems[name] = item;
@@ -236,6 +265,9 @@ void Information::initRoomPopulation() {
         }
         for (const auto& characterName : data["characters"]) {
             room->addCharacter(allCharacters[characterName]);
+        }
+        for (const auto& mechanismName : data["mechanisms"]) {
+            room->addMechanism(allMechanisms[mechanismName]);
         }
     }
 }
