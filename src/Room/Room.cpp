@@ -75,6 +75,13 @@ std::shared_ptr<Passage> Room::getPassage(const std::string &direction) {
     }
 }
 
+bool Room::isPassageExist(const std::string& s) {
+    for (auto& [key, val]: passageMap){
+        if (val->getName() == s) return true;
+    }
+    return false;
+}
+
 void Room::enter() {
     std::cout << getDescription() << std::endl;
 

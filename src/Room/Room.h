@@ -31,6 +31,7 @@ public:
     void removePassage(const std::string &);
 
     std::shared_ptr<Passage> getPassage(const std::string &);
+    bool isPassageExist(const std::string&);
 
 protected:
     std::vector<std::shared_ptr<Item>> items;
