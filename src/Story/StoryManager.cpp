@@ -62,12 +62,17 @@ void StoryManager::triggerAdditionalAction(StoryTrigger& trigger) {
         std::shared_ptr<Room> hall = info->getRoom("castlecenter-hall");
         std::shared_ptr<Room> throne = info->getRoom("castlecenter-throne");
         std::shared_ptr<Character> character = info->getCharacter("king iotate");
-        std::shared_ptr<Item> item = info->getItem("king dead body");
+        std::shared_ptr<Item> item = info->getItem("king heart");
 
         hall->removeCharacter(character);
         throne->addItem(item);
         info->setRoom("castlecenter-hall", hall);
         info->setRoom("castlecenter-thone", throne);
+    }
+
+    if (name == "win_combat_guard") {
+        std::shared_ptr<Room> bedroom = info->getRoom("library-bedroom");
+        player->setCurrentRoom(bedroom.get());
     }
 
     if (name == "entered_corridor1" || name == "entered_library_entrace") {

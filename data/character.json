@@ -13,11 +13,11 @@
         },
         {
             "name": "guard",
-            "desc": "A guard that is suspicious to your appearance.",
-            "hp": 0, 
-            "atk": 0, 
+            "desc": "A guard that is very wary of you.",
+            "hp": 10, 
+            "atk": 1, 
             "def": 0, 
-            "combatMode": false,
+            "combatMode": true,
             "dialogues": {
                 "first_meeting": "Hello son."
             }

@@ -64,6 +64,15 @@
             "flagCondition": "",
             "flagDone": "",
             "lockPlayer": true
+        },
+        {
+            "triggerType": "WIN_COMBAT",
+            "target": "guard",
+            "flag": "win_combat_guard",
+            "result": "You won the combat against the guard. \nSuddenly, an old man with long white beard comes out. \nSurprisingly, he did not attack you. Instead, tears swelled up in his eyes. \n\"You're finally back to the Heaven Realm, Huz\". \nYou are then transported into a bedroom.",
+            "flagCondition": "",
+            "flagDone": "",
+            "lockPlayer": false
         }
     ]
 }

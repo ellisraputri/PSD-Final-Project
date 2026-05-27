@@ -240,46 +240,55 @@ void ZOOrkEngine::handleUseCommand(std::vector<std::string> arguments) {
 }
 
 void ZOOrkEngine::handleAttackCommand(std::vector<std::string> arguments) {
+    if (arguments.size() != 1){
+        std::cout << "You can only attack one character at one time.\n";
+        return;
+    } 
+
     Room* currentRoom = player->getCurrentRoom();
+    std::shared_ptr<Character> enemy = info->getCharacter(arguments[0]);
 
-    for(const std::string& s: arguments){
-        std::shared_ptr<Character> enemy = info->getCharacter(s);
-        if (enemy == nullptr || !currentRoom->isCharacterExist(enemy)) {
-            std::cout << s << " is not a recognizable enemy" << std::endl;
-            continue;
-        }
+    if (enemy == nullptr || !currentRoom->isCharacterExist(enemy)) {
+        std::cout << enemy->getName() << " is not a recognizable enemy" << std::endl;
+        return;
+    }
 
-        if (!enemy->isCombatMode()){
-            std::cout << s << " is not in a state to have a combat with you" << std::endl;
-            continue;
-        }
-        
-        int playerAtk = randomInt(0, std::max(player->getAtk(), 0));
-        int playerDef = randomInt(0, std::max(player->getDef(), 0));
-        int enemyAtk = randomInt(0, std::max(enemy->getAtk(), 0));
-        int enemyDef = randomInt(0, std::max(enemy->getDef(), 0));
+    if (!enemy->isCombatMode()){
+        std::cout << enemy->getName() << " is not in a state to have a combat with you" << std::endl;
+        return;
+    }
+    
+    int playerAtk = randomInt(0, std::max(player->getAtk(), 0));
+    int playerDef = randomInt(0, std::max(player->getDef(), 0));
+    int enemyAtk = randomInt(0, std::max(enemy->getAtk(), 0));
+    int enemyDef = randomInt(0, std::max(enemy->getDef(), 0));
 
-        int dmgFromPlayer = std::max((playerAtk - enemyDef), 0);
-        enemy->takeDamage(dmgFromPlayer);
-        std::cout << s << " takes " << dmgFromPlayer << " damage from you" << std::endl;
-        std::cout << s << "'s health becomes " << enemy->getHp() << std::endl;
+    int dmgFromPlayer = std::max((playerAtk - enemyDef), 0);
+    enemy->takeDamage(dmgFromPlayer);
+    std::cout << enemy->getName() << " takes " << dmgFromPlayer << " damage from you" << std::endl;
+    std::cout << enemy->getName() << "'s health becomes " << enemy->getHp() << std::endl;
 
-        if (enemy->isDead()){
-            std::cout << s << " has died" << std::endl;
-            enemy->setCombatMode(false);
-            continue;
-        }
+    if (enemy->isDead()){
+        std::cout << enemy->getName() << " has died" << std::endl;
+        enemy->setCombatMode(false);
 
-        int dmgFromEnemy = std::max((enemyAtk - playerDef), 0);
-        player->takeDamage(dmgFromEnemy);
-        std::cout << "You take " << dmgFromEnemy << " damage from " << s << std::endl;
-        std::cout << "Your health becomes " << player->getHp() << std::endl;
+        EventBus::instance()->emit({
+            TriggerType::WIN_COMBAT,
+            enemy->getName()
+        });
 
-        if (player->isDead()){
-            std::cout << "You have died" << std::endl;
-            gameOver = true;
-            break;
-        }
+        return;
+    }
+
+    int dmgFromEnemy = std::max((enemyAtk - playerDef), 0);
+    player->takeDamage(dmgFromEnemy);
+    std::cout << "You take " << dmgFromEnemy << " damage from " << enemy->getName() << std::endl;
+    std::cout << "Your health becomes " << player->getHp() << std::endl;
+
+    if (player->isDead()){
+        std::cout << "You have died" << std::endl;
+        gameOver = true;
+        return;
     }
 }
 
@@ -329,6 +338,11 @@ void ZOOrkEngine::handleDialogCommand(std::vector<std::string> arguments){
 }
 
 void ZOOrkEngine::handleTeleportCommand(std::vector<std::string> arguments) {
+    if (player->isLocked()){
+        std::cout << "You cannot move from your place right now.\n";
+        return;
+    }
+
     int input;
     std::cout << "Where do you want to teleport? Please just input the number.\n";
 

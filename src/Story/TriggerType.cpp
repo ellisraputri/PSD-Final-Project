@@ -13,5 +13,9 @@ TriggerType stringToTriggerType(const std::string& str) {
         return TriggerType::TAKE_ITEM;
     }
 
+    if (str == "WIN_COMBAT") {
+        return TriggerType::WIN_COMBAT;
+    }
+
     throw std::runtime_error("Unknown trigger type: " + str);
 }

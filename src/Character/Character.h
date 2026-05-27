@@ -30,9 +30,9 @@ public:
 
 protected:
     std::unordered_map<std::string, std::string> dialogues;
-    int hp = 1;
-    int atk = 0;
-    int def = 0;
+    int hp = 100;
+    int atk = 100;
+    int def = 100;
     bool combatMode = false;  
 };
 

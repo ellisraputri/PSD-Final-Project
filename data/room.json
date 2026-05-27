@@ -61,6 +61,12 @@
             "desc": "This is the entrace of an unknown library. \nThere seems to be a person guarding the entrace.", 
             "items": [],
             "characters": ["guard"]
+        },
+        {
+            "name": "library-bedroom",
+            "desc": "A simple bedroom, yet feel warm. \nYou feel that you have been here before.", 
+            "items": [],
+            "characters": []
         }
     ]
 }
