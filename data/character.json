@@ -21,6 +21,17 @@
             "dialogues": {
                 "first_meeting": "Hello son."
             }
+        },
+        {
+            "name": "old man qing",
+            "desc": "An old man from one of the pictures in the locked castle corridor.",
+            "hp": 0, 
+            "atk": 0, 
+            "def": 0, 
+            "combatMode": false,
+            "dialogues": {
+                "first_meeting": "Hello son."
+            }
         }
     ]
 }

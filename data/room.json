@@ -63,10 +63,28 @@
             "characters": ["guard"]
         },
         {
+            "name": "library-corridor",
+            "desc": "The corridor of the library with a wall made of bricks. \nThere seems a brick that has a hidden text.", 
+            "items": ["old note"],
+            "characters": []
+        },
+        {
+            "name": "library-hall",
+            "desc": "A hall with a lot of books. There is a mechanism in the east side of the room.", 
+            "items": ["spell book"],
+            "characters": []
+        },
+        {
             "name": "library-bedroom",
             "desc": "A simple bedroom, yet feel warm. \nYou feel that you have been here before.", 
-            "items": [],
+            "items": ["lighter"],
             "characters": []
+        },
+        {
+            "name": "library-mainroom",
+            "desc": "The old man is sitting in a chair reading book.", 
+            "items": [],
+            "characters": ["old man qing"]
         }
     ]
 }

@@ -73,6 +73,15 @@
             "flagCondition": "",
             "flagDone": "",
             "lockPlayer": false
+        },
+        {
+            "triggerType": "ENTER_ROOM",
+            "target": "library-hall",
+            "flag": "entered_library_hall",
+            "result": "You hears a crying voice from the east side. \nYou recognize that it is your sister's voice.",
+            "flagCondition": "win_combat_guard",
+            "flagDone": "",
+            "lockPlayer": false
         }
     ]
 }

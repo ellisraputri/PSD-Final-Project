@@ -56,3 +56,6 @@ Player
 Room
 - inherit dari Location
 - 
+
+Mechanism
+loose brick

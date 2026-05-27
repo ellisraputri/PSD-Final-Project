@@ -80,6 +80,45 @@
             "direction": "north",
             "locked": true,
             "bidirectional": true
+        },
+
+
+
+        {
+            "name": "passage_library-entrace_library-corridor",
+            "desc": "",
+            "fromRoom": "library-entrace",
+            "toRoom": "library-corridor",
+            "direction": "north",
+            "locked": false,
+            "bidirectional": true
+        },
+        {
+            "name": "passage_library-corridor_library-hall",
+            "desc": "",
+            "fromRoom": "library-corridor",
+            "toRoom": "library-hall",
+            "direction": "east",
+            "locked": false,
+            "bidirectional": true
+        },
+        {
+            "name": "passage_library-corridor_library-bedroom",
+            "desc": "",
+            "fromRoom": "library-corridor",
+            "toRoom": "library-bedroom",
+            "direction": "north",
+            "locked": false,
+            "bidirectional": true
+        },
+        {
+            "name": "passage_library-corridor_library-mainroom",
+            "desc": "",
+            "fromRoom": "library-corridor",
+            "toRoom": "library-mainroom",
+            "direction": "west",
+            "locked": false,
+            "bidirectional": true
         }
     ]
 }
