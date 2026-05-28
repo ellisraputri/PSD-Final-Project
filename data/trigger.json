@@ -87,7 +87,7 @@
             "triggerType": "ENTER_ROOM",
             "target": "library-jail",
             "flag": "entered_library_jail",
-            "result": "Your sister rejoiced at your arrival. \nYou hug her in relief, and she held you just as tightly. \nCrying, you broke the news of the king’s death and shared what little you knew about the unidentified faction. \nYou and your sister then agreed to confront the old man. \nSurprisingly, the door in the west of the corridor is suddenly being unlocked.",
+            "result": "Your sister rejoiced at your arrival. \nYou hug her in relief, and she held you just as tightly. \nCrying, you broke the news of the king death and shared what little you knew about the unidentified faction. \nYou and your sister then agreed to confront the old man. \nSurprisingly, the door in the west of the corridor is suddenly being unlocked.",
             "flagCondition": "entered_library_hall",
             "flagDone": "",
             "lockPlayer": false
@@ -105,8 +105,45 @@
             "triggerType": "UNLOCK_MECHANISM",
             "target": "library-mainroom",
             "flag": "unlock_mechanism_wood_shelf",
-            "result": "All at once, the library was engulfed in a ferocious fire. \nOld Man Qing smiles faintly to use before throwing himself into the blazing flame. \nAs his body dissolved into ash, only a single, unbeating heart remained.",
+            "result": "All at once, the library was engulfed in a ferocious fire. \nOld Man Qing smiles faintly to use before throwing himself into the blazing flame. \nSuddenly, your uncle appears from the teleport portal. \nHe urges you to teleport quickly",
             "flagCondition": "entered_library_mainroom",
+            "flagDone": "",
+            "lockPlayer": false
+        },
+
+        {
+            "triggerType": "ENTER_ROOM",
+            "target": "warehouse-bedroom",
+            "flag": "entered_warehouse_bedroom",
+            "result": "Your uncle takes you and your sister to separate room. \nHe tells you to rest well and lock the door.",
+            "flagCondition": "",
+            "flagDone": "",
+            "lockPlayer": false
+        },
+        {
+            "triggerType": "UNLOCK_MECHANISM",
+            "target": "warehouse-toilet",
+            "flag": "unlock_mechanism_taped_package",
+            "result": "Duke Inqigo is furious after you peek at his notes. \n\"What a surprise, little Otuwa. Or should I call you, Huz? \nI am tired of playing family with you. Just hold on a little longer - after Bhu, it is your turn.\" \nBefore he leaves, you manage to get a magic crystal dropped from his pocket without him knowing.",
+            "flagCondition": "",
+            "flagDone": "",
+            "lockPlayer": false
+        },
+        {
+            "triggerType": "ENTER_ROOM",
+            "target": "warehouse-hall",
+            "flag": "entered_warehouse_hall",
+            "result": "Your sister blocks your path. \nIt seems that she already possessed with your uncle's magics. \nWith a heavy heart, you have no choice but to fight her.",
+            "flagCondition": "",
+            "flagDone": "win_combat_princess_unnudh",
+            "lockPlayer": true
+        },
+        {
+            "triggerType": "WIN_COMBAT",
+            "target": "princess unnudh",
+            "flag": "win_combat_princess_unnudh",
+            "result": "You put your unconscious sister to the side. \nHowever, when you want to go out, your sister is awake and starts strangling you. \nSuddenly, the woman assassin (Xuan) rescues you. \nYou told her about your uncle plan and both of you rushes to Bhu place. \nTips: use your teleport skill.",
+            "flagCondition": "entered_warehouse_hall",
             "flagDone": "",
             "lockPlayer": false
         }

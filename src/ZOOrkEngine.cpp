@@ -278,7 +278,7 @@ void ZOOrkEngine::handleAttackCommand(std::vector<std::string> arguments) {
     std::cout << enemy->getName() << "'s health becomes " << enemy->getHp() << std::endl;
 
     if (enemy->isDead()){
-        std::cout << enemy->getName() << " has died" << std::endl;
+        std::cout << enemy->getName() << " has defeated" << std::endl;
         enemy->setCombatMode(false);
 
         EventBus::instance()->emit({

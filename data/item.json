@@ -69,11 +69,6 @@
             "type": "unlock-mechanism",
             "mechanism": "loose brick"
         },
-        {
-            "name": "king heart",
-            "desc": "The only remains from the king. \nYou can still feel a lukewarm texture on it. \nSome tears begin welling up at your eyes before rolling down gracefully on your cheeks.",
-            "type": "none"
-        },
 
 
         {
@@ -95,10 +90,19 @@
             "atkBuff": 10,
             "defBuff": 10
         },
+
+
         {
-            "name": "old man heart",
-            "desc": "The only remains from the Old Man Qing. \nYou are still confused with his actions.",
-            "type": "none"
+            "name": "cutter",
+            "desc": "A sharp small cutter. Perhaps you can use it to open something.",
+            "type": "unlock-mechanism",
+            "mechanism": "taped package"
+        },
+        {
+            "name": "magic crystal",
+            "desc": "Crystal that is imbued with a magic.",
+            "type": "unlock-mechanism",
+            "mechanism": "hidden scratch"
         }
     ]
 }

@@ -9,6 +9,17 @@
             "name": "wood shelf",
             "desc": "A flammable wood shelf. You can use a lighter to burn it.",
             "print": "You manage to burn it down. It unlocks a teleport portal."
+        },
+
+        {
+            "name": "hidden scratch",
+            "desc": "Some code seems to be hidden behind the scratch. \nYou need something with magic to unlock it.",
+            "print": "\nwater > X \n X > metal \n metal > wood \n wood > earth \n earth > Y \n Password = XY"
+        },
+        {
+            "name": "taped package",
+            "desc": "A parcel aggressively wrapped in layers of industrial tape",
+            "print": "It reveals the magic formula to combine hearts to strengthen self. \nQing: done \nHuz: ready \nBhu: tomorrow \nXuan: needs to think" 
         }
     ]
 }

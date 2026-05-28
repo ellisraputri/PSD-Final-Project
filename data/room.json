@@ -106,6 +106,29 @@
             "items": [],
             "characters": ["princess unnudh"],
             "mechanisms": []
+        },
+
+
+        {
+            "name": "warehouse-bedroom",
+            "desc": "A simple bedroom the duke has made for you.", 
+            "items": [],
+            "characters": [],
+            "mechanisms": ["hidden scratch"]
+        },
+        {
+            "name": "warehouse-toilet",
+            "desc": "A toilet that has stinky smell.", 
+            "items": ["cutter"],
+            "characters": [],
+            "mechanisms": ["taped package"]
+        },
+        {
+            "name": "warehouse-hall",
+            "desc": "The main hall of the warehouse. It seems that many battles have happened here before.", 
+            "items": [],
+            "characters": ["princess unnudh"],
+            "mechanisms": []
         }
     ]
 }

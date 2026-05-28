@@ -64,7 +64,6 @@ void StoryManager::triggerAdditionalAction(StoryTrigger& trigger) {
 
     if (name == "took_black_pearl") {
         editCharacterInRoom("castlecenter-hall", "king iotate", false);
-        editItemInRoom("castlecenter-throne", "king heart", true);
     }
 
     if (name == "win_combat_guard") {
@@ -79,12 +78,19 @@ void StoryManager::triggerAdditionalAction(StoryTrigger& trigger) {
         otherPassage->setLocked(false);
     }
 
-    if (name == "entered_corridor1" || name == "entered_library_entrace" || name == "unlock_mechanism_wood_shelf") {
+    if (name == "unlock_mechanism_taped_package"){
+        std::shared_ptr<Character> ch = info->getCharacter("princess unnudh");
+        ch->setCombatMode(true);
+        editItemInRoom("warehouse-toilet", "magic crystal", true);
+    }
+
+    if (name == "entered_corridor1" || name == "entered_library_entrace" || name == "unlock_mechanism_wood_shelf" ||
+        name == "entered_warehouse_bedroom") {
         player->setCheckpoint(trigger.getTriggerTarget());
 
         if (name == "unlock_mechanism_wood_shelf"){
             editCharacterInRoom(player->getCurrentRoom()->getName(), "old man qing", false);
-            editItemInRoom(player->getCurrentRoom()->getName(), "old man heart", true);
+            editCharacterInRoom("library-jail", "princess unnudh", false);
         }
     }
 }

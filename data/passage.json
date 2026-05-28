@@ -128,6 +128,25 @@
             "direction": "east",
             "locked": true,
             "bidirectional": true
+        },
+
+        {
+            "name": "passage_warehouse-bedroom_warehouse-toilet",
+            "password": "",
+            "fromRoom": "warehouse-bedroom",
+            "toRoom": "warehouse-toilet",
+            "direction": "west",
+            "locked": false,
+            "bidirectional": true
+        },
+        {
+            "name": "passage_warehouse-bedroom_warehouse-hall",
+            "password": "firewater",
+            "fromRoom": "warehouse-bedroom",
+            "toRoom": "warehouse-hall",
+            "direction": "north",
+            "locked": true,
+            "bidirectional": true
         }
     ]
 }
