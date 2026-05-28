@@ -36,6 +36,10 @@ void StoryManager::trigger(TriggerType type, const std::string& target) {
         if ((trigger.getFlagCondition() != "" && !hasFlag(trigger.getFlagCondition()))) {
             continue;
         }
+        if (trigger.getFlagDone() != "" && hasFlag(trigger.getFlagDone())) {
+            trigger.setTriggerDone(true);
+            continue;
+        }
 
         flags.insert(trigger.getResultFlag());
         triggerAdditionalAction(trigger);
@@ -59,15 +63,8 @@ void StoryManager::triggerAdditionalAction(StoryTrigger& trigger) {
     std::string name = trigger.getResultFlag();
 
     if (name == "took_black_pearl") {
-        std::shared_ptr<Room> hall = info->getRoom("castlecenter-hall");
-        std::shared_ptr<Room> throne = info->getRoom("castlecenter-throne");
-        std::shared_ptr<Character> character = info->getCharacter("king iotate");
-        std::shared_ptr<Item> item = info->getItem("king heart");
-
-        hall->removeCharacter(character);
-        throne->addItem(item);
-        info->setRoom("castlecenter-hall", hall);
-        info->setRoom("castlecenter-thone", throne);
+        editCharacterInRoom("castlecenter-hall", "king iotate", false);
+        editItemInRoom("castlecenter-throne", "king heart", true);
     }
 
     if (name == "win_combat_guard") {
@@ -75,7 +72,49 @@ void StoryManager::triggerAdditionalAction(StoryTrigger& trigger) {
         player->setCurrentRoom(bedroom.get());
     }
 
-    if (name == "entered_corridor1" || name == "entered_library_entrace") {
-        player->setCheckpoint(trigger.getTriggerTarget());
+    if (name == "entered_library_jail"){
+        std::shared_ptr<Passage> passage = info->getPassage("passage_library-corridor_to_library-mainroom");
+        std::shared_ptr<Passage> otherPassage = info->getPassage("passage_library-mainroom_to_library-corridor");
+        passage->setLocked(false);
+        otherPassage->setLocked(false);
     }
+
+    if (name == "entered_corridor1" || name == "entered_library_entrace" || name == "unlock_mechanism_wood_shelf") {
+        player->setCheckpoint(trigger.getTriggerTarget());
+
+        if (name == "unlock_mechanism_wood_shelf"){
+            editCharacterInRoom(player->getCurrentRoom()->getName(), "old man qing", false);
+            editItemInRoom(player->getCurrentRoom()->getName(), "old man heart", true);
+        }
+    }
+}
+
+void StoryManager::editItemInRoom(std::string roomName, std::string itemName, bool isAdd){
+    Information* info = Information::instance();
+    std::shared_ptr<Item> item = info->getItem(itemName);
+    std::shared_ptr<Room> room = info->getRoom(roomName);
+    
+    if (isAdd) {
+        room->addItem(item);
+    }
+    else {
+        room->removeItem(item);
+    }
+
+    info->setRoom(roomName, room);
+}
+
+void StoryManager::editCharacterInRoom(std::string roomName, std::string charName, bool isAdd){
+    Information* info = Information::instance();
+    std::shared_ptr<Character> character = info->getCharacter(charName);
+    std::shared_ptr<Room> room = info->getRoom(roomName);
+    
+    if (isAdd) {
+        room->addCharacter(character);
+    }
+    else {
+        room->removeCharacter(character);
+    }
+
+    info->setRoom(roomName, room);
 }

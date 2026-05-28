@@ -12,6 +12,12 @@ void MechanismUnlockCommand::execute() {
             mechanism->setLocked(false);
             usedItem->setIsUsed(true);
             std::cout << mechanism->getResultPrint() << std::endl;
+
+            EventBus::instance()->emit({
+                TriggerType::UNLOCK_MECHANISM,
+                currentRoom->getName()
+            });
+
             return;
         }
     }

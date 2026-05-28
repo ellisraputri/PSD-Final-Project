@@ -46,6 +46,14 @@ std::shared_ptr<Character> Information::getCharacter(std::string name) {
     return nullptr;
 }
 
+std::shared_ptr<Passage> Information::getPassage(std::string name) {
+    auto it = allPassages.find(name);
+    if (it != allPassages.end()) {
+        return it->second;
+    }
+    return nullptr;
+}
+
 void Information::setItem(const std::string& name, std::shared_ptr<Item> item) {
     allItems[name] = item;
 }
@@ -300,6 +308,7 @@ void Information::initCheckpoints(){
     checkpoints.push_back(allRooms["bedroom-bed"]);
     checkpoints.push_back(allRooms["corridor1"]);
     checkpoints.push_back(allRooms["library-entrace"]);
+    checkpoints.push_back(allRooms["library-mainroom"]);
 }
 
 std::vector<std::string> Information::getCheckpointList(std::string current) {

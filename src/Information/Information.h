@@ -23,6 +23,7 @@ public:
     std::shared_ptr<Mechanism> getMechanism(std::string name);
     std::shared_ptr<Room> getRoom(std::string name);
     std::shared_ptr<Character> getCharacter(std::string name);
+    std::shared_ptr<Passage> getPassage(std::string name);
 
     void setItem(const std::string& name, std::shared_ptr<Item> item);
     void setMechanism(const std::string& name, std::shared_ptr<Mechanism> mechanism);

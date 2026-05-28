@@ -4,6 +4,11 @@
             "name": "loose brick",
             "desc": "A loose brick with a hidden text, needs to be exposed with UV light.",
             "print": "You manage to uncover the hidden text. The text is \"82114\"."
+        },
+        {
+            "name": "wood shelf",
+            "desc": "A flammable wood shelf. You can use a lighter to burn it.",
+            "print": "You manage to burn it down. It unlocks a teleport portal."
         }
     ]
 }

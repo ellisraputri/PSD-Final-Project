@@ -62,7 +62,7 @@
             "flag": "entered_library_entrace",
             "result": "The guard is wary of you. He immediately try to attack you.",
             "flagCondition": "",
-            "flagDone": "",
+            "flagDone": "win_combat_guard",
             "lockPlayer": true
         },
         {
@@ -78,8 +78,35 @@
             "triggerType": "ENTER_ROOM",
             "target": "library-hall",
             "flag": "entered_library_hall",
-            "result": "You hears a crying voice from the east side. \nYou recognize that it is your sister's voice.",
+            "result": "You hear a crying voice from the east side. \nYou recognize that it is your sister's voice.",
             "flagCondition": "win_combat_guard",
+            "flagDone": "entered_library_jail",
+            "lockPlayer": false
+        },
+        {
+            "triggerType": "ENTER_ROOM",
+            "target": "library-jail",
+            "flag": "entered_library_jail",
+            "result": "Your sister rejoiced at your arrival. \nYou hug her in relief, and she held you just as tightly. \nCrying, you broke the news of the king’s death and shared what little you knew about the unidentified faction. \nYou and your sister then agreed to confront the old man. \nSurprisingly, the door in the west of the corridor is suddenly being unlocked.",
+            "flagCondition": "entered_library_hall",
+            "flagDone": "",
+            "lockPlayer": false
+        },
+        {
+            "triggerType": "ENTER_ROOM",
+            "target": "library-mainroom",
+            "flag": "entered_library_mainroom",
+            "result": "Old man Qing took a glance between you and your sister, then let out a sigh. \nHe points to a shelf besides him while saying, \"Burn this and then you can be free.\"",
+            "flagCondition": "entered_library_jail",
+            "flagDone": "unlock_mechanism_wood_shelf",
+            "lockPlayer": false
+        },
+        {
+            "triggerType": "UNLOCK_MECHANISM",
+            "target": "library-mainroom",
+            "flag": "unlock_mechanism_wood_shelf",
+            "result": "All at once, the library was engulfed in a ferocious fire. \nOld Man Qing smiles faintly to use before throwing himself into the blazing flame. \nAs his body dissolved into ash, only a single, unbeating heart remained.",
+            "flagCondition": "entered_library_mainroom",
             "flagDone": "",
             "lockPlayer": false
         }

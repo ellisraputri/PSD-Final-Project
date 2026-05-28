@@ -95,10 +95,10 @@
         },
         {
             "name": "library-mainroom",
-            "desc": "The old man is sitting in a chair reading book.", 
+            "desc": "A place where the old man is usually sitting to read book.", 
             "items": [],
             "characters": ["old man qing"],
-            "mechanisms": []
+            "mechanisms": ["wood shelf"]
         },
         {
             "name": "library-jail",

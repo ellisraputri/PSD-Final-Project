@@ -17,5 +17,9 @@ TriggerType stringToTriggerType(const std::string& str) {
         return TriggerType::WIN_COMBAT;
     }
 
+    if (str == "UNLOCK_MECHANISM"){
+        return TriggerType::UNLOCK_MECHANISM;
+    }
+
     throw std::runtime_error("Unknown trigger type: " + str);
 }

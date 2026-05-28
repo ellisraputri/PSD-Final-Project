@@ -117,7 +117,7 @@
             "fromRoom": "library-corridor",
             "toRoom": "library-mainroom",
             "direction": "west",
-            "locked": false,
+            "locked": true,
             "bidirectional": true
         },
         {

@@ -15,9 +15,12 @@ public:
     void addTrigger(const StoryTrigger&);
 
     void triggerAdditionalAction(StoryTrigger&);
-    void trigger(TriggerType type, const std::string& target);
+    void trigger(TriggerType, const std::string&);
 
     bool hasFlag(const std::string&) const;
+
+    void editItemInRoom(std::string, std::string, bool);
+    void editCharacterInRoom(std::string, std::string, bool);
 
 private:
     static StoryManager* storyInstance;

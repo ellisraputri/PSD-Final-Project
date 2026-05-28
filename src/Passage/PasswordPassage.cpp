@@ -1,4 +1,5 @@
 #include "PasswordPassage.h"
+#include "Information/Information.h"
 
 PasswordPassage::PasswordPassage(
     const std::string& name,
@@ -20,6 +21,11 @@ void PasswordPassage::setPassword(std::string p) {
 bool PasswordPassage::tryUnlock(const std::string& inputPassword) {
     if (inputPassword == password) {
         locked = false;
+
+        std::string otherName = "passage_" + toRoom->getName() + "_to_" + fromRoom->getName();
+        std::shared_ptr<Passage> otherPassage = Information::instance()->getPassage(otherName);
+        otherPassage->setLocked(false);
+
         return true;
     }
 

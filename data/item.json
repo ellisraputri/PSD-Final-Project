@@ -79,20 +79,26 @@
         {
             "name": "lighter",
             "desc": "A small lighter that can be used to ignite something.",
-            "type": "none"
+            "type": "unlock-mechanism",
+            "mechanism": "wood shelf"
         },
         {
             "name": "old note",
-            "desc": "The note states a long history of a war between two factions. \nYou immediately recognize the two factions: one is the assassin's faction, while the other one is your father's faction. \nThe old man supposed to be in the assassin's faction. \nSo, you are very confused why he treat you very well.",
+            "desc": "The note states a long history of a war between two factions. \nYou immediately recognize the two factions: the assassin and your father. \nThe old man is in the opposite faction, so why did he treat you well?",
             "type": "none"
         },
         {
             "name": "spell book",
-            "desc": "A simple spell book. You can use the book to levelup your stats.",
+            "desc": "A simple spell book. You can use the book to level up your stats.",
             "type": "buff",
             "hpBuff": 20,
             "atkBuff": 10,
             "defBuff": 10
+        },
+        {
+            "name": "old man heart",
+            "desc": "The only remains from the Old Man Qing. \nYou are still confused with his actions.",
+            "type": "none"
         }
     ]
 }
