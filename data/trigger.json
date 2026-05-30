@@ -191,6 +191,24 @@
             "flagCondition": "win_combat_general_bhu",
             "flagDone": "",
             "lockPlayer": false
+        },
+        {
+            "triggerType": "UNLOCK_MECHANISM",
+            "target": "magic door",
+            "flag": "unlock_mechanism_magic_door",
+            "result": "You manage to revive all the divine beasts. \nIn a mirror next to the door, you can see that your eyes transformed from green-red to all green. \nIt seems that all the phoenix fragment in you has gone, leaving only the monster fragment. \nYou decided to go to your bedroom to rest.",
+            "flagCondition": "win_combat_duke_inqigo", 
+            "flagDone": "",
+            "lockPlayer": false
+        },
+        {
+            "triggerType": "ENTER_ROOM",
+            "target": "bedroom-bed",
+            "flag": "unlock_mechanism_magic_door",
+            "result": "It has been a long journey for you. It is time to rest. Good night. \n\nTHE END",
+            "flagCondition": "unlock_mechanism_magic_door", 
+            "flagDone": "",
+            "lockPlayer": false
         }
     ]
 }

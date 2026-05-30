@@ -40,6 +40,11 @@
             "name": "dragon statue",
             "desc": "A huge dragon statue made of wood",
             "print": "The code is \"W\""
+        },
+        {
+            "name": "magic door",
+            "desc": "A door that has unknown origin",
+            "print": "In the realm behind the door, the divine beasts are recuperating."
         }
     ]
 }

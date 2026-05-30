@@ -25,7 +25,7 @@ ZOOrkEngine::ZOOrkEngine() {
     // std::cout << "8" << std::endl;
 
     player = Player::instance();
-    player->setCurrentRoom(info->getRoom("house-center").get());
+    player->setCurrentRoom(info->getRoom("bedroom-bed").get());
     // std::cout << "8"<<std::endl;
     player->getCurrentRoom()->enter();
     // std::cout << "9"<<std::endl;

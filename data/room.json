@@ -89,7 +89,7 @@
         {
             "name": "library-bedroom",
             "desc": "A simple bedroom, yet feel warm. \nYou feel that you have been here before.", 
-            "items": ["lighter", "flashlight"],
+            "items": ["lighter"],
             "characters": [],
             "mechanisms": []
         },
@@ -177,6 +177,13 @@
             "name": "heaven-hall",
             "desc": "The hall of the Heaven Realm. Sparkles flowing around.", 
             "items": [],
+            "characters": [],
+            "mechanisms": ["magic door"]
+        },
+        {
+            "name": "heaven-library",
+            "desc": "The library of the heaven. There is a book about how to revive the ancient beasts.", 
+            "items": ["golden book", "golden pearl"],
             "characters": [],
             "mechanisms": []
         }

@@ -192,6 +192,15 @@
             "direction": "down",
             "locked": true,
             "bidirectional": true
+        },
+        {
+            "name": "passage_heaven-hall_heaven-library",
+            "password": "",
+            "fromRoom": "heaven-hall",
+            "toRoom": "heaven-library",
+            "direction": "north",
+            "locked": false,
+            "bidirectional": true
         }
     ]
 }

@@ -140,6 +140,17 @@
             "hpBuff": 200,
             "atkBuff": 200,
             "defBuff": 50
+        },
+        {
+            "name": "golden book",
+            "desc": "Use the golden pearl to revive the divine beasts and eradicate all remains of ferocious beasts. \nUse it in front of the magic door.",
+            "type": "none"
+        },
+        {
+            "name": "golden pearl",
+            "desc": "A pearl that can revive good and eradicate all evils.",
+            "type": "unlock-mechanism",
+            "mechanism": "magic door"
         }
     ]
 }
