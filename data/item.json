@@ -2,47 +2,47 @@
     "items": [
         {
             "name": "mysterious picture 1",
-            "desc": "The clear picture shows a small child with a blonde hair smiling happily. \nAfter careful examining it, you see two small wings sticking out from his back. \nIn the bottom right of the picture, there is a text: \"Huz\".",
+            "desc": "The clear picture shows a small child with a blonde hair smiling happily. \nIn the bottom right of the picture, there is a text: \u001b[1;91mHuz\u001b[0m.",
             "type": "none"
         },
         {
             "name": "mysterious picture 2",
-            "desc": "A picture of an old man with long white beard. \nIn the bottom right of the picture, there is a text: \"Qing\"",
+            "desc": "A picture of an old man with long white beard. \nIn the bottom right of the picture, there is a text: \u001b[1;91mQing\u001b[0m",
             "type": "none"
         },
         {
             "name": "mysterious picture 3",
-            "desc": "An picture of a middle-aged man with military clothes. \nIn the bottom right of the picture, there is a text: \"Bhu\"",
+            "desc": "An picture of a middle-aged man with military clothes. \nIn the bottom right of the picture, there is a text: \u001b[1;91mBhu\u001b[0m",
             "type": "none"
         },
         {
             "name": "mysterious picture 4",
-            "desc": "A woman with a two long swords can be spotted in the picture. \nHer back has a huge turtle tattoo, resembling the logo of the assassin earlier. \nIn the bottom right of the picture, there is a text: \"Xuan\"",
+            "desc": "A woman with a two long swords and huge turtle tattoo. \nIn the bottom right of the picture, there is a text: \u001b[1;91mXuan\u001b[0m",
             "type": "none"
         },
         {
             "name": "king picture",
-            "desc": "The picture portrays the current ruler of the empire, which is also your father, King Iotate. \nHis long gray hair with slanted red eyes symbolizes a bold, descisive, and ambitious person.",
+            "desc": "The picture portrays the current ruler of the empire, which is also your father, \u001b[1;91mKing Iotate\u001b[0m. His long gray hair with slanted red eyes symbolizes a bold, descisive, and ambitious person.",
             "type": "none"
         },
         {
             "name": "princess picture",
-            "desc": "A sincere yet insecure smile can be seen from your older sister's portrait, Princess Unnudh. \nHer brown eyes with eyeglasses and her two braided brown hair made you reminisence the time when she has not gone missing.",
+            "desc": "A sincere yet insecure smile can be seen from your older sister's portrait, \u001b[1;91mPrincess Unnudh\u001b[0m. Her brown eyes with eyeglasses and her two braided brown hair made you reminisence the time when she has not gone missing.",
             "type": "none"
         },
         {
             "name": "duke picture",
-            "desc": "The picture shows an one-eyed man with tiger fur jacket and cigarette, Duke Inqigo. \nThis is your uncle, a carefree person that roams freely without a permanent place to settle. \nYou only met him once when you were small.",
+            "desc": "The picture shows an one-eyed man with tiger fur jacket and cigarette, \u001b[1;91mDuke Inqigo\u001b[0m. This is your uncle, a carefree person that roams freely without a permanent place to settle.",
             "type": "none"
         },
         {
             "name": "prince picture",
-            "desc": "A portrait of yourself, Prince Otuwa. \nA young man with blonde hair and heterochromatic eyes of red and green.",
+            "desc": "A portrait of yourself, \u001b[1;91mPrince Otuwa\u001b[0m. A young man with blonde hair and heterochromatic eyes of red and green.",
             "type": "none"
         },
         {
             "name": "black pearl",
-            "desc": "An omnious looking pearl with green aura from its within. \nThis seems the pearl that your father told you to get.",
+            "desc": "An omnious looking pearl with green aura from its within. You can use it to \u001b[1;32mlevel up your stats\u001b[0m.",
             "type": "buff",
             "hpBuff": 100,
             "atkBuff": 100,
@@ -50,7 +50,7 @@
         },
         {
             "name": "long sword",
-            "desc": "A long sword with black gem on its hilt. \nYou recall that you usually train with this sword when you were little.",
+            "desc": "A long sword with black gem on its hilt.",
             "type": "buff",
             "hpBuff": 0,
             "atkBuff": 50,
@@ -58,14 +58,14 @@
         },
         {
             "name": "black key",
-            "desc": "A mysterious key that you have never seen. \nMaybe it will be useful to unlock a certain room.",
+            "desc": "A mysterious key to open a certain passage in the castle.",
             "type": "unlock-passage",
             "passage1": "passage_castlecenter-throne_to_corridor1",
             "passage2": "passage_corridor1_to_castlecenter-throne"
         },
         {
             "name": "flashlight",
-            "desc": "A small flashlight that still has a lot of battery and can be used to expose UV fields.",
+            "desc": "A small flashlight that can be used to expose \u001b[1;32mUV fields\u001b[0m.",
             "type": "unlock-mechanism",
             "mechanism": "loose brick"
         },
@@ -73,18 +73,18 @@
 
         {
             "name": "lighter",
-            "desc": "A small lighter that can be used to ignite something.",
+            "desc": "A small lighter that can be used to \u001b[1;32mignite\u001b[0m something.",
             "type": "unlock-mechanism",
             "mechanism": "wood shelf"
         },
         {
             "name": "old note",
-            "desc": "The note states a long history of a war between two factions. \nYou immediately recognize the two factions: the assassin and your father. \nThe old man is in the opposite faction, so why did he treat you well?",
+            "desc": "The note states a long history of a war between two factions: \u001b[1;91mdivine and ferocious beasts\u001b[0m. \nThe divine beasts consist of red phoenix, azure dragon, white tiger, and black turtle. \nWhile, the ferocious beasts consist of endless greed, blind chaos, proud stubbornness, and pure malice.",
             "type": "none"
         },
         {
             "name": "spell book",
-            "desc": "A simple spell book. You can use the book to level up your stats.",
+            "desc": "A simple spell book. You can use the book to \u001b[1;32mlevel up your stats\u001b[0m.",
             "type": "buff",
             "hpBuff": 20,
             "atkBuff": 20,
@@ -100,7 +100,7 @@
         },
         {
             "name": "magic crystal",
-            "desc": "Crystal that is imbued with a magic.",
+            "desc": "Crystal that is imbued with \u001b[1;32mmagic\u001b[0m.",
             "type": "unlock-mechanism",
             "mechanism": "hidden scratch"
         },
@@ -135,7 +135,7 @@
         },
         {
             "name": "elixir",
-            "desc": "Mysterious elixir given from Xuan. You need to use it to level up your stats.",
+            "desc": "Mysterious elixir given from Xuan. You need to use it to \u001b[1;32mlevel up your stats\u001b[0m.",
             "type": "buff",
             "hpBuff": 200,
             "atkBuff": 200,
@@ -143,12 +143,12 @@
         },
         {
             "name": "golden book",
-            "desc": "Use the golden pearl to revive the divine beasts and eradicate all remains of ferocious beasts. \nUse it in front of the magic door.",
+            "desc": "Use the golden pearl to \u001b[1;91mrevive the divine beasts\u001b[0m and \u001b[1;91meradicate all remains of ferocious beasts\u001b[0m. \nUse it in front of the \u001b[1;32mmagic door\u001b[0m.",
             "type": "none"
         },
         {
             "name": "golden pearl",
-            "desc": "A pearl that can revive good and eradicate all evils.",
+            "desc": "A pearl that can revive good and eradicate evil.",
             "type": "unlock-mechanism",
             "mechanism": "magic door"
         }

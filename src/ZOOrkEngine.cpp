@@ -103,10 +103,10 @@ void ZOOrkEngine::handleGoCommand(std::vector<std::string> arguments) {
 
     Room* currentRoom = player->getCurrentRoom();
     auto passage = currentRoom->getPassage(direction);
-    passage->enter();
     if (!passage->isLocked()){
         player->setCurrentRoom(passage->getTo());
     }
+    passage->enter();
 }
 
 void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
@@ -117,7 +117,7 @@ void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
         std::shared_ptr<Item> item = info->getItem(arguments[i]);
         if(item != nullptr){
             isPrinted[i] = true;
-            std::cout << arguments[i] << ": " << item->getDescription() << std::endl;
+            std::cout << "\u001b[1;94m" << arguments[i] << "\u001b[0m : " << item->getDescription() << std::endl;
         }
     }
     if(arguments.size()>0 && std::find(isPrinted.begin(), isPrinted.end(), false) == isPrinted.end()) return;
@@ -130,9 +130,9 @@ void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
             isPrinted[i] = true;
             
             if (mechanism->isLocked()){
-                std::cout << arguments[i] << ": " << mechanism->getDescription() << std::endl;
+                std::cout << "\u001b[1;94m" << arguments[i] << "\u001b[0m: " << mechanism->getDescription() << std::endl;
             } else {
-                std::cout << arguments[i] << ": " << mechanism->getResultPrint() << std::endl;
+                std::cout << "\u001b[1;94m" << arguments[i] << "\u001b[0m: " << mechanism->getResultPrint() << std::endl;
             }
         }
     }
@@ -144,7 +144,7 @@ void ZOOrkEngine::handleLookCommand(std::vector<std::string> arguments) {
         std::shared_ptr<Character> character = info->getCharacter(arguments[i]);
         if(character != nullptr){
             isPrinted[i] = true;
-            std::cout << arguments[i] << ": " << character->getDescription() << std::endl;
+            std::cout << "\u001b[1;94m" << arguments[i] << "\u001b[0m: " << character->getDescription() << std::endl;
         }
     }
     if(arguments.size()>0 && std::find(isPrinted.begin(), isPrinted.end(), false) == isPrinted.end()) return;
@@ -160,6 +160,7 @@ void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments) {
         std::shared_ptr<Item> item = info->getItem(s);
         if (item == nullptr || !currentRoom->isItemExist(item->getName())) {
             std::cout << s << " is not a recognizable item" << std::endl;
+            std::cout << "make sure to type the item full name" << std::endl;
             continue;
         }
 
@@ -192,9 +193,9 @@ void ZOOrkEngine::handleShowInventory() {
         return;
     }
 
-    std::cout << "Current Inventory:" << std::endl;
+    std::cout << "Current inventory:" << std::endl;
     for (const std::shared_ptr<Item> item: inventory){
-        std::cout << item->getName() << std::endl;
+        std::cout << "* " << item->getName() << std::endl;
     }
 }
 
@@ -265,6 +266,7 @@ void ZOOrkEngine::handleAttackCommand(std::vector<std::string> arguments) {
 
     if (enemy == nullptr || !currentRoom->isCharacterExist(enemy->getName())) {
         std::cout << enemy->getName() << " is not a recognizable enemy" << std::endl;
+        std::cout << "make sure to type the character full name" << std::endl;
         return;
     }
 

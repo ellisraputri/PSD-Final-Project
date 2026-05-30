@@ -2,7 +2,7 @@
     "rooms": [
         {
             "name": "bedroom-bed",
-            "desc": "You are sitting on your soft and comfy bed. \nBut, you do not have any sleep intention at the moment.",
+            "desc": "You are sitting on your soft and comfy bed.",
             "items": [],
             "characters": [],
             "mechanisms": []
@@ -16,21 +16,21 @@
         },
         {
             "name": "bedroom-door2",
-            "desc": "There is a slightly opened door heading to the east.", 
+            "desc": "There is a slightly opened door heading to the \u001b[1;32meast\u001b[0m.", 
             "items": [],
             "characters": [],
             "mechanisms": []
         },
         {
             "name": "corridor1",
-            "desc": "A long corridor with 4 pictures with large frames hanging on the wall.",
+            "desc": "A long corridor with 4 pictures with black frames hanging on the wall.",
             "items": ["mysterious picture 1", "mysterious picture 2", "mysterious picture 3", "mysterious picture 4"],
             "characters": [],
             "mechanisms": []
         },
         {
             "name": "corridor2",
-            "desc": "A long corridor with 4 magnificent portraits of the current empire's royal family.",
+            "desc": "A long corridor with 4 portraits of the current empire's royal family.",
             "items": ["king picture", "princess picture", "duke picture", "prince picture"],
             "characters": [],
             "mechanisms": []
@@ -51,14 +51,14 @@
         },
         {
             "name": "castle-storage1",
-            "desc": "An old storage room that stores various equipments. \nYou found a shiny black pearl, with a long sword resides beside it.", 
+            "desc": "An old storage room that stores various equipments.", 
             "items": ["black pearl", "long sword"],
             "characters": [],
             "mechanisms": []
         },
         {
             "name": "castle-storage2",
-            "desc": "An old storage room that stores various equipments. \nYou found a black key and flashlight that are still usable.", 
+            "desc": "The second room of the storage room that stores various equipments.", 
             "items": ["black key", "flashlight"],
             "characters": [],
             "mechanisms": []
@@ -67,28 +67,28 @@
 
         {
             "name": "library-entrace",
-            "desc": "This is the entrace of an unknown library. \nThere seems to be a person guarding the entrace.", 
+            "desc": "This is the entrace of an unknown library. There seems to be a person guarding the entrace.", 
             "items": [],
             "characters": ["guard"],
             "mechanisms": []
         },
         {
             "name": "library-corridor",
-            "desc": "The corridor of the library with a wall made of bricks. \nThere seems a brick that has a hidden text.", 
+            "desc": "The corridor of the library with a wall made of bricks. There is a brick with a hidden text.", 
             "items": ["old note"],
             "characters": [],
             "mechanisms": ["loose brick"]
         },
         {
             "name": "library-hall",
-            "desc": "A hall with a lot of books. \nThere is a mechanism in the east side of the room. \nYou need a password to unlock it. \nTips: use \"unlock <direction>\" command", 
+            "desc": "A hall with a lot of books.", 
             "items": ["spell book"],
             "characters": [],
             "mechanisms": []
         },
         {
             "name": "library-bedroom",
-            "desc": "A simple bedroom, yet feel warm. \nYou feel that you have been here before.", 
+            "desc": "A simple bedroom that you feel that you have been here before.", 
             "items": ["lighter"],
             "characters": [],
             "mechanisms": []
@@ -102,7 +102,7 @@
         },
         {
             "name": "library-jail",
-            "desc": "A jail with minimum ventilation and lighting. \nIt is prominent that your sister has been locked up here for a long time.", 
+            "desc": "A jail with minimum ventilation and lighting.", 
             "items": [],
             "characters": ["princess unnudh"],
             "mechanisms": []
@@ -111,7 +111,7 @@
 
         {
             "name": "warehouse-bedroom",
-            "desc": "A simple bedroom the duke has made for you. The door to the north side is locked.", 
+            "desc": "A simple bedroom the duke has made for you. The door to the \u001b[1;32mnorth\u001b[0m side is locked.", 
             "items": [],
             "characters": [],
             "mechanisms": ["hidden scratch"]
@@ -132,7 +132,7 @@
         },
         {
             "name": "house-center",
-            "desc": "The center of the house. There seems to be a passage down.", 
+            "desc": "The center of the house. There seems to be a passage \u001b[1;32mdown\u001b[0m.", 
             "items": ["ancient scroll", "ruby", "obsidian", "emerald", "moonstone"],
             "characters": ["assassin xuan"],
             "mechanisms": []
@@ -167,7 +167,7 @@
         },
         {
             "name": "house-underground", 
-            "desc": "The underground section of the house. It seems that Bhu usually do his activities here",
+            "desc": "The underground section of the house. General Bhu usually do his activities here",
             "items": [],
             "characters": ["general bhu"],
             "mechanisms": []

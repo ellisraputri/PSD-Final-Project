@@ -4,7 +4,7 @@
             "triggerType": "ENTER_ROOM",
             "target": "castlecenter-hall",
             "flag": "entered_castlecenter_hall",
-            "result": "You entered the throne hall. \nThe king is already sitting in his throne. \nYou need to greet him as usual.",
+            "result": "You entered the throne hall where the king sits. You need to \u001b[1;32mgreet him\u001b[0m as usual.",
             "flagCondition": "",
             "flagDone": "talked_king",
             "lockPlayer": true
@@ -13,7 +13,7 @@
             "triggerType": "TALK_CHARACTER",
             "target": "king iotate",
             "flag": "talked_king",
-            "result": "The king nodded after hearing your greeting. Then, he instructed you to find a black pearl in the storage room.",
+            "result": "The king nodded after hearing your greeting. Then, he instructed you to find a \u001b[1;32mblack pearl\u001b[0m in the storage room.",
             "flagCondition": "entered_castlecenter_hall",
             "flagDone": "took_black_pearl",
             "lockPlayer": false
@@ -22,7 +22,7 @@
             "triggerType": "TAKE_ITEM",
             "target": "black pearl",
             "flag": "took_black_pearl",
-            "result": "It seems that you have taken the pearl that your father wanted. \nIt is time to bring it to your father.",
+            "result": "You have found what your father wanted. It is time to bring it to your father.",
             "flagCondition": "talked_king",
             "flagDone": "",
             "lockPlayer": false
@@ -31,7 +31,7 @@
             "triggerType": "ENTER_ROOM",
             "target": "castlecenter-hall",
             "flag": "entered_castlecenter_hall_2",
-            "result": "You heard the king shouting painfully from the west side of this room.",
+            "result": "You heard the king shouting painfully from the \u001b[1;32mwest\u001b[0m side of this room.",
             "flagCondition": "took_black_pearl",
             "flagDone": "entered_castlecenter_throne",
             "lockPlayer": false
@@ -40,7 +40,7 @@
             "triggerType": "ENTER_ROOM",
             "target": "castlecenter-throne",
             "flag": "entered_castlecenter_throne",
-            "result": "You saw the king being stabbed right in his heart by an unknown woman. \nThe woman wears a black jumpsuit with a turtle logo on her right shoulder. \nHer black eyes viciously stare at you with her hands pointing her blood-stained sword towards you. \nYou immediately try to launch an attack to the mysterious woman. \nHowever, she dodges the attack effortlessly and proceeds to knock you out. \nBefore your consciousness is gone, you heard that she says \"We will meet again, Huz.\" \n\nAfter a long while, you finally opened your eyes again.",
+            "result": "You saw the king being \u001b[1;91mstabbed\u001b[0m right in his heart by an unknown woman. \nThe woman wears a black jumpsuit with a \u001b[1;91mturtle logo\u001b[0m on her right shoulder. \nYou immediately try to launch an attack to the mysterious woman. \nHowever, she dodges the attack effortlessly and proceeds to \u001b[1;91mknock you out\u001b[0m. \nBefore your consciousness is gone, you heard that she says \u001b[1;91m\"We will meet again, Huz.\"\u001b[0m \n\nAfter a long while, you finally opened your eyes again.",
             "flagCondition": "entered_castlecenter_hall_2",
             "flagDone": "",
             "lockPlayer": false
@@ -49,7 +49,7 @@
             "triggerType": "ENTER_ROOM",
             "target": "corridor1",
             "flag": "entered_corridor1",
-            "result": "Congrats! You unlocked the your first teleport waypoint. \nAfter this, you can type \"teleport\" to go elsewhere.",
+            "result": "Congrats! You unlocked the your first teleport waypoint. \nYou can type \u001b[1;32mteleport\u001b[0m to go elsewhere.",
             "flagCondition": "",
             "flagDone": "",
             "lockPlayer": false
@@ -60,7 +60,7 @@
             "triggerType": "ENTER_ROOM",
             "target": "library-entrace",
             "flag": "entered_library_entrace",
-            "result": "The guard is wary of you. He immediately try to attack you.",
+            "result": "The guard is wary of you. He immediately try to \u001b[1;32mattack\u001b[0m you.",
             "flagCondition": "",
             "flagDone": "win_combat_guard",
             "lockPlayer": true
@@ -69,7 +69,7 @@
             "triggerType": "WIN_COMBAT",
             "target": "guard",
             "flag": "win_combat_guard",
-            "result": "You won the combat against the guard. \nSuddenly, an old man with long white beard comes out. \nSurprisingly, he did not attack you. Instead, tears swelled up in his eyes. \n\"You're finally back to the Heaven Realm, Huz\". \nYou are then transported into a bedroom.",
+            "result": "You won the combat against the guard. \nSuddenly, \u001b[1;91man old man with long white beard\u001b[0m comes out. \nSurprisingly, he did not attack you. Instead, tears swelled up in his eyes. \n\u001b[1;91m\"You're finally back to the Heaven Realm, Huz\"\u001b[0m. \nYou are then taken into a bedroom.",
             "flagCondition": "",
             "flagDone": "",
             "lockPlayer": false
@@ -78,7 +78,7 @@
             "triggerType": "ENTER_ROOM",
             "target": "library-hall",
             "flag": "entered_library_hall",
-            "result": "You hear a crying voice from the east side. \nYou recognize that it is your sister's voice.",
+            "result": "You hear a crying voice from the \u001b[1;32meast\u001b[0m side. \nYou recognize that it is your \u001b[1;91msister's voice\u001b[0m. \nTips: use \u001b[1;32munlock <direction>\u001b[0m command",
             "flagCondition": "win_combat_guard",
             "flagDone": "entered_library_jail",
             "lockPlayer": false
@@ -87,7 +87,7 @@
             "triggerType": "ENTER_ROOM",
             "target": "library-jail",
             "flag": "entered_library_jail",
-            "result": "Your sister rejoiced at your arrival. \nYou hug her in relief, and she held you just as tightly. \nCrying, you broke the news of the king death and shared what little you knew about the unidentified faction. \nYou and your sister then agreed to confront the old man. \nSurprisingly, the door in the west of the corridor is suddenly being unlocked.",
+            "result": "Your sister rejoiced at your arrival. \nYou hug her in relief, and she held you just as tightly. \nCrying, you broke the news of the king death. \nYou and your sister then agreed to \u001b[1;91mask the old man\u001b[0m. \nSurprisingly, the door in the \u001b[1;32mwest of the corridor\u001b[0m is suddenly being unlocked.",
             "flagCondition": "entered_library_hall",
             "flagDone": "",
             "lockPlayer": false
@@ -96,7 +96,7 @@
             "triggerType": "ENTER_ROOM",
             "target": "library-mainroom",
             "flag": "entered_library_mainroom",
-            "result": "Old man Qing took a glance between you and your sister, then let out a sigh. \nHe points to a shelf besides him while saying, \"Burn this and then you can be free.\"",
+            "result": "Old man Qing took a glance between you and your sister, then let out a sigh. \nHe points to a shelf besides him while saying, \"\u001b[1;32mBurn\u001b[0m this and then you can be free.\"",
             "flagCondition": "entered_library_jail",
             "flagDone": "unlock_mechanism_wood_shelf",
             "lockPlayer": false
@@ -105,7 +105,7 @@
             "triggerType": "UNLOCK_MECHANISM",
             "target": "wood shelf",
             "flag": "unlock_mechanism_wood_shelf",
-            "result": "All at once, the library was engulfed in a ferocious fire. \nOld Man Qing smiles faintly to use before throwing himself into the blazing flame. \nSuddenly, your uncle appears from the teleport portal. \nHe urges you to teleport quickly",
+            "result": "All at once, the library was \u001b[1;91mengulfed in a ferocious fire\u001b[0m. \nOld Man Qing \u001b[1;91msmiles faintly\u001b[0m before throwing himself into the blazing flame. \nSuddenly, \u001b[1;91myour uncle\u001b[0m appears from the teleport portal and urges you to \u001b[1;32mteleport\u001b[0m quickly",
             "flagCondition": "entered_library_mainroom",
             "flagDone": "",
             "lockPlayer": false
@@ -124,7 +124,7 @@
             "triggerType": "UNLOCK_MECHANISM",
             "target": "taped package",
             "flag": "unlock_mechanism_taped_package",
-            "result": "Duke Inqigo is furious after you peek at his notes. \n\"What a surprise, little Otuwa. Or should I call you, Huz? \nI am tired of playing family with you. Just hold on a little longer - after Bhu, it is your turn.\" \nBefore he leaves, you manage to get a magic crystal dropped from his pocket without him knowing.",
+            "result": "Duke Inqigo is \u001b[1;91mfurious\u001b[0m after you peek at his notes. \n\"What a surprise, little Otuwa. Or should I call you, \u001b[1;91mHuz\u001b[0m? \nI am tired of playing family with you. Just hold on a little longer - \u001b[1;91mafter Bhu, it is your turn\u001b[0m.\" \nBefore he leaves, you manage to get a \u001b[1;32mmagic crystal\u001b[0m from his pocket without him knowing.",
             "flagCondition": "",
             "flagDone": "",
             "lockPlayer": false
@@ -133,7 +133,7 @@
             "triggerType": "ENTER_ROOM",
             "target": "warehouse-hall",
             "flag": "entered_warehouse_hall",
-            "result": "Your sister blocks your path. \nIt seems that she already possessed with your uncle's magics. \nWith a heavy heart, you have no choice but to fight her.",
+            "result": "Your sister blocks your path. It seems that she already \u001b[1;91mpossessed\u001b[0m by your uncle's magics. \nWith a heavy heart, you have no choice but to \u001b[1;32mfight her\u001b[0m.",
             "flagCondition": "",
             "flagDone": "win_combat_princess_unnudh",
             "lockPlayer": true
@@ -142,7 +142,7 @@
             "triggerType": "WIN_COMBAT",
             "target": "princess unnudh",
             "flag": "win_combat_princess_unnudh",
-            "result": "You put your unconscious sister to the side. \nHowever, when you want to go out, your sister is awake and starts strangling you. \nSuddenly, the woman assassin (Xuan) rescues you. \nYou told her about your uncle plan and both of you rushes to Bhu place. \nTips: use your teleport skill.",
+            "result": "You put your unconscious sister to the side. \nHowever, when you want to go out, your sister is \u001b[1;91mawake and starts strangling\u001b[0m you. \nSuddenly, the \u001b[1;91mwoman assassin (Xuan)\u001b[0m rescues you. \nYou told her about your uncle plan and both of you rushes to \u001b[1;91mBhu place\u001b[0m. \nTips: use your \u001b[1;32mteleport\u001b[0m skill.",
             "flagCondition": "entered_warehouse_hall",
             "flagDone": "",
             "lockPlayer": false
@@ -151,7 +151,7 @@
             "triggerType": "ENTER_ROOM",
             "target": "house-center",
             "flag": "entered_house_center",
-            "result": "Xuan told you that Bhu has special lock mechanism in his house. \nYou need to unlock it to go to the main house in the undergound.",
+            "result": "Xuan told you that Bhu has special lock mechanism in his house. \nYou need to unlock it to go to the main house in the \u001b[1;32mundergound\u001b[0m.",
             "flagCondition": "",
             "flagDone": "",
             "lockPlayer": false
@@ -160,7 +160,7 @@
             "triggerType": "ENTER_ROOM",
             "target": "house-underground",
             "flag": "entered_house_underground",
-            "result": "Xuan and you find that Bhu is still in good state. \nTalk to him to inform him about the news.",
+            "result": "Xuan and you find that Bhu is still in good state. \n\u001b[1;32mTalk to him\u001b[0m to inform him about the news.",
             "flagCondition": "",
             "flagDone": "",
             "lockPlayer": false
@@ -169,7 +169,7 @@
             "triggerType": "TALK_CHARACTER",
             "target": "general bhu",
             "flag": "talked_general_bhu",
-            "result": "Bhu is actually already possessed by the duke. \nImmediately prepare for combat!",
+            "result": "Bhu is actually already \u001b[1;91mpossessed\u001b[0m by the duke. Immediately prepare for \u001b[1;32mcombat\u001b[0m!",
             "flagCondition": "",
             "flagDone": "",
             "lockPlayer": true
@@ -178,7 +178,7 @@
             "triggerType": "WIN_COMBAT",
             "target": "general bhu",
             "flag": "win_combat_general_bhu",
-            "result": "Suddenly, the soul of Duke Inqigo embodied into an entity and attack you. \nXuan has her bodies split in half to protect you. \nBefore she dies, she collect all her remaining powers combined with Bhu to make an elixir. \nShe urges you to consume the elixir before fighting with the duke.",
+            "result": "Suddenly, \u001b[1;91mthe soul of Duke Inqigo\u001b[0m embodied into an entity and attack you. \nXuan has her bodies split in half to protect you. \nBefore she dies, she collect \u001b[1;91mall her remaining powers combined with Bhu\u001b[0m to make an elixir. \nShe urges you to \u001b[1;32mconsume the elixir\u001b[0m before fighting with the duke.",
             "flagCondition": "talked_general_bhu",
             "flagDone": "",
             "lockPlayer": true
@@ -187,7 +187,7 @@
             "triggerType": "WIN_COMBAT",
             "target": "duke inqigo",
             "flag": "win_combat_duke_inqigo",
-            "result": "You manage to defeat the duke. \nA gateway to the Heaven Realm is opened in front of you.",
+            "result": "You manage to defeat the duke. A gateway to the Heaven Realm is opened in front of you. \nTips: use \u001b[1;32mteleport\u001b[0m",
             "flagCondition": "win_combat_general_bhu",
             "flagDone": "",
             "lockPlayer": false
@@ -196,7 +196,7 @@
             "triggerType": "UNLOCK_MECHANISM",
             "target": "magic door",
             "flag": "unlock_mechanism_magic_door",
-            "result": "You manage to revive all the divine beasts. \nIn a mirror next to the door, you can see that your eyes transformed from green-red to all green. \nIt seems that all the phoenix fragment in you has gone, leaving only the monster fragment. \nYou decided to go to your bedroom to rest.",
+            "result": "You manage to \u001b[1;91mrevive all the divine beasts\u001b[0m. \nIn a mirror next to the door, you can see that your eyes transformed from green-red to all green. \nIt seems that all the \u001b[1;91mphoenix fragment in you has gone, leaving only the monster fragment\u001b[0m. \nYou decided to go to your \u001b[1;32mbedroom\u001b[0m to rest. Tips: use \u001b[1;32mteleport\u001b[0m",
             "flagCondition": "win_combat_duke_inqigo", 
             "flagDone": "",
             "lockPlayer": false
@@ -205,7 +205,7 @@
             "triggerType": "ENTER_ROOM",
             "target": "bedroom-bed",
             "flag": "unlock_mechanism_magic_door",
-            "result": "It has been a long journey for you. It is time to rest. Good night. \n\nTHE END",
+            "result": "It has been a long journey for you. It is time to rest. Good night. \n\n\u001b[1;32mTHE END\u001b[0m",
             "flagCondition": "unlock_mechanism_magic_door", 
             "flagDone": "",
             "lockPlayer": false

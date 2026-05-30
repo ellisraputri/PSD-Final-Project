@@ -2,24 +2,24 @@
     "mechanisms": [
         {
             "name": "loose brick",
-            "desc": "A loose brick with a hidden text, needs to be exposed with UV light.",
-            "print": "You manage to uncover the hidden text. The text is \"82114\"."
+            "desc": "A loose brick with a hidden text, needs to be exposed with \u001b[1;32mUV light\u001b[0m.",
+            "print": "You manage to uncover the hidden text. The text is \u001b[1;32m82114\u001b[0m."
         },
         {
             "name": "wood shelf",
-            "desc": "A flammable wood shelf. You can use a lighter to burn it.",
+            "desc": "A flammable wood shelf. You can use a \u001b[1;32mlighter\u001b[0m to burn it.",
             "print": "You manage to burn it down. It unlocks a teleport portal."
         },
 
         {
             "name": "hidden scratch",
-            "desc": "Some code seems to be hidden behind the scratch. \nYou need something with magic to unlock it.",
-            "print": "\nwater > X \n X > metal \n metal > wood \n wood > earth \n earth > Y \n Password = XY"
+            "desc": "Some code seems to be hidden behind the scratch. \nYou need something with \u001b[1;32mmagic\u001b[0m to unlock it.",
+            "print": "water > X \n X > metal \n metal > wood \n wood > earth \n earth > Y \n Password = XY"
         },
         {
             "name": "taped package",
             "desc": "A parcel aggressively wrapped in layers of industrial tape",
-            "print": "It reveals the magic formula to combine hearts to strengthen self. \nQing: done \nHuz: ready \nBhu: tomorrow \nXuan: needs to think" 
+            "print": "It reveals the \u001b[1;91mmagic\u001b[0m formula of combining hearts to strengthen self. \nQing: done \nHuz: ready \nBhu: tomorrow \nXuan: needs to think" 
         },
         {
             "name": "turtle statue",

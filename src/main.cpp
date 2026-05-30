@@ -7,8 +7,8 @@
 
 
 int main() {
-    std::cout << "Welcome to Zoork! \nIn this game, you will play in a perspective of a prince called Otuwa. \nHave fun playing the game! \n\n";
-    std::cout << "You open your eyes to see a familiar ceiling of your room. \nA spacious, glamorous, and elegantly designed room. \nA room that only fit for the high rank in the kingdom. \n\n";
+    std::cout << "\u001b[1;32mWelcome to Zoork!\u001b[0m \nIn this game, you will play in a perspective of a prince called \u001b[1;32mOtuwa\u001b[0m. \nHave fun playing the game! \n\n";
+    std::cout << "You open your eyes to see a familiar ceiling of \u001b[91myour room\u001b[0m. \nA spacious, glamorous, and elegantly designed room. \n\n";
 
     ZOOrkEngine zoork; 
     zoork.run();

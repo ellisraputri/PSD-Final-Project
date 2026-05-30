@@ -17,17 +17,17 @@ std::string Room::getDescription() const {
     
     if (itemSize != 0) desc += "\nItems in the room: ";
     for (int i=0; i<itemSize; i++){
-        desc += items[i]->getName() + ((i != itemSize-1)? ", " : "");
+        desc += "\u001b[1;94m" + items[i]->getName() + "\u001b[0m" + ((i != itemSize-1)? ", " : "");
     }
 
     if (charSize != 0) desc += "\nCharacters in the room: ";
     for (int i=0; i<charSize; i++){
-        desc += characters[i]->getName() + ((i != charSize-1)? ", " : "");
+        desc += "\u001b[1;94m" + characters[i]->getName() + "\u001b[0m" + ((i != charSize-1)? ", " : "");
     }
 
     if (mechanismSize != 0) desc += "\nMechanisms in the room: ";
     for (int i=0; i<mechanismSize; i++){
-        desc += mechanisms[i]->getName() + ((i != mechanismSize-1)? ", " : "");
+        desc += "\u001b[1;94m" + mechanisms[i]->getName() + "\u001b[0m" + ((i != mechanismSize-1)? ", " : "");
     }
 
     return desc;
@@ -114,6 +114,7 @@ bool Room::isMechanismExist(const std::string& s) {
 }
 
 void Room::enter() {
+    std::cout << "\u001b[1;32m" << getName() << "\u001b[0m" << std::endl;
     std::cout << getDescription() << std::endl;
 
     EventBus::instance()->emit({
