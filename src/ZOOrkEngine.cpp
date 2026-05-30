@@ -33,6 +33,7 @@ ZOOrkEngine::ZOOrkEngine() {
 
 void ZOOrkEngine::run() {
     while (!gameOver) {
+        std::cout << "\n";
         std::cout << "> ";
 
         std::string input;
@@ -67,15 +68,13 @@ void ZOOrkEngine::run() {
             handleTeleportCommand(arguments);
         } else if (command == "unlock") {
             handleUnlockPasswordCommand(arguments);
-        }
-        else if (command == "quit" || command == "exit") {
+        } else if (command == "help") {
+            handleHelpCommand(arguments);
+        } else if (command == "quit" || command == "exit") {
             handleQuitCommand(arguments); 
-        }
-        else {
+        } else {
             std::cout << "I don't understand that command\n";
         }
-
-        std::cout << "\n";
     }
 }
 
@@ -161,6 +160,11 @@ void ZOOrkEngine::handleTakeCommand(std::vector<std::string> arguments) {
         std::shared_ptr<Item> item = info->getItem(s);
         if (item == nullptr || !currentRoom->isItemExist(item->getName())) {
             std::cout << s << " is not a recognizable item" << std::endl;
+            continue;
+        }
+
+        if (!item->isTakeable()) {
+            std::cout << s << " cannot be taken" << std::endl;
             continue;
         }
 
@@ -419,6 +423,24 @@ void ZOOrkEngine::handleUnlockPasswordCommand(std::vector<std::string> arguments
     } else {
         std::cout << "Wrong password.\n";
     }
+}
+
+void ZOOrkEngine::handleHelpCommand(std::vector<std::string> arguments) {
+    std::cout << "Command available: \n";
+    std::cout << "<go> <north | south | west | east | up | down> =  move between rooms\n";
+    std::cout << "<look | inspect> <characterName | itemName | mechanismName> = get details about specific thing\n";
+    std::cout << "<look | inspect> = get details about current room \n";
+    std::cout << "<take | get> <itemName> = take specific item into inventory\n";
+    std::cout << "<drop> <itemName> = drop specific item from inventory\n" ;
+    std::cout << "<inventory> = show current inventory\n";
+    std::cout << "<use> <itemName> = use specific item\n";
+    std::cout << "<attack | hit> <characterName> = hit specific character\n";
+    std::cout << "<talk | greet> <characterName> = greet to specific character\n";
+    std::cout << "<dialog> <characterName> = do dialog with specific character\n";
+    std::cout << "<teleport> = teleport to specific room\n";
+    std::cout << "<unlock> <direction> = unlock a locked passage based on direction\n";
+    std::cout << "<help> = show all commands\n";
+    std::cout << "<quit | exit> = stop the game, note: the game cannot be retried.\n";
 }
 
 void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments) {

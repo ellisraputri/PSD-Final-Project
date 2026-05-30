@@ -38,3 +38,11 @@ void Item::setIsUsed(bool b){
 bool Item::isUsed(){
     return used;
 }
+
+void Item::setTakeable(bool b){
+    takeable = b;
+}
+
+bool Item::isTakeable(){
+    return takeable;
+}

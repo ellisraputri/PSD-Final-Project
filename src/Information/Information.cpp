@@ -194,6 +194,7 @@ void Information::initItem() {
         } 
         else {
             item = std::make_shared<Item>(name, desc);
+            if (type == "none") item->setTakeable(false);
         }
 
         if (type == "unlock-passage"){

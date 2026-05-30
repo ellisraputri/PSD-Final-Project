@@ -21,9 +21,13 @@ public:
     void setIsUsed(bool);
     bool isUsed();
 
+    void setTakeable(bool);
+    bool isTakeable();
+
 protected:
     bool taken = false; 
     bool used = false;
+    bool takeable = true;
     std::shared_ptr<Command> useCommand;
 };
 

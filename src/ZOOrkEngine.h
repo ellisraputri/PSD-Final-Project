@@ -47,6 +47,8 @@ private:
 
     void handleUnlockPasswordCommand(std::vector<std::string>);
 
+    void handleHelpCommand(std::vector<std::string>);
+
     void handleQuitCommand(std::vector<std::string>);
 
     static std::vector<std::string> tokenizeString(const std::string&);
