@@ -20,6 +20,26 @@
             "name": "taped package",
             "desc": "A parcel aggressively wrapped in layers of industrial tape",
             "print": "It reveals the magic formula to combine hearts to strengthen self. \nQing: done \nHuz: ready \nBhu: tomorrow \nXuan: needs to think" 
+        },
+        {
+            "name": "turtle statue",
+            "desc": "A huge black turtle statue with water flowing from its mouth",
+            "print": "The code is \"W\""
+        },
+        {
+            "name": "phoenix statue",
+            "desc": "A huge phoenix statue with shining lights",
+            "print": "The code is \"F\""
+        },
+        {
+            "name": "tiger statue",
+            "desc": "A huge tiger statue made of several types of metal",
+            "print": "The code is \"M\""
+        },
+        {
+            "name": "dragon statue",
+            "desc": "A huge dragon statue made of wood",
+            "print": "The code is \"W\""
         }
     ]
 }

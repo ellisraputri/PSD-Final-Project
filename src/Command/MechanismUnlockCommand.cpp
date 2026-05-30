@@ -15,7 +15,7 @@ void MechanismUnlockCommand::execute() {
 
             EventBus::instance()->emit({
                 TriggerType::UNLOCK_MECHANISM,
-                currentRoom->getName()
+                mechanism->getName()
             });
 
             return;

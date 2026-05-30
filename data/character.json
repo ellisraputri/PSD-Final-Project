@@ -43,6 +43,39 @@
             "dialogues": {
                 "first_meeting": "Hello son."
             }
+        },
+        {
+            "name": "assassin xuan",
+            "desc": "An assassin with black long hair and black eyes.",
+            "hp": 0, 
+            "atk": 0, 
+            "def": 0, 
+            "combatMode": false,
+            "dialogues": {
+                "first_meeting": "Hello son."
+            }
+        },
+        {
+            "name": "general bhu",
+            "desc": "A middle aged man, a great fighter.",
+            "hp": 200, 
+            "atk": 50, 
+            "def": 10, 
+            "combatMode": true,
+            "dialogues": {
+                "first_meeting": "Hello son."
+            }
+        },
+        {
+            "name": "duke inqigo",
+            "desc": "The one-eyed duke with a dangerous smile",
+            "hp": 1000, 
+            "atk": 150, 
+            "def": 0, 
+            "combatMode": true,
+            "dialogues": {
+                "first_meeting": "Hello son."
+            }
         }
     ]
 }

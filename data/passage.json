@@ -147,6 +147,51 @@
             "direction": "north",
             "locked": true,
             "bidirectional": true
+        },
+        {
+            "name": "passage_house-center-house-north",
+            "password": "",
+            "fromRoom": "house-center",
+            "toRoom": "house-north",
+            "direction": "north",
+            "locked": false,
+            "bidirectional": true
+        },
+        {
+            "name": "passage_house-center-house-east",
+            "password": "",
+            "fromRoom": "house-center",
+            "toRoom": "house-east",
+            "direction": "east",
+            "locked": false,
+            "bidirectional": true
+        },
+        {
+            "name": "passage_house-center-house-south",
+            "password": "",
+            "fromRoom": "house-center",
+            "toRoom": "house-south",
+            "direction": "south",
+            "locked": false,
+            "bidirectional": true
+        },
+        {
+            "name": "passage_house-center-house-west",
+            "password": "",
+            "fromRoom": "house-center",
+            "toRoom": "house-west",
+            "direction": "west",
+            "locked": false,
+            "bidirectional": true
+        },
+        {
+            "name": "passage_house-center-house-underground",
+            "password": "wfmw",
+            "fromRoom": "house-center",
+            "toRoom": "house-underground",
+            "direction": "down",
+            "locked": true,
+            "bidirectional": true
         }
     ]
 }

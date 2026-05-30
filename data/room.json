@@ -111,7 +111,7 @@
 
         {
             "name": "warehouse-bedroom",
-            "desc": "A simple bedroom the duke has made for you.", 
+            "desc": "A simple bedroom the duke has made for you. The door to the north side is locked.", 
             "items": [],
             "characters": [],
             "mechanisms": ["hidden scratch"]
@@ -128,6 +128,56 @@
             "desc": "The main hall of the warehouse. It seems that many battles have happened here before.", 
             "items": [],
             "characters": ["princess unnudh"],
+            "mechanisms": []
+        },
+        {
+            "name": "house-center",
+            "desc": "The center of the house. There seems to be a passage down.", 
+            "items": ["ancient scroll", "ruby", "obsidian", "emerald", "moonstone"],
+            "characters": ["assassin xuan"],
+            "mechanisms": []
+        },
+        {
+            "name": "house-north",
+            "desc": "The north room of the house. There lies the black turtle statue.", 
+            "items": [],
+            "characters": [],
+            "mechanisms": ["turtle statue"]
+        },
+        {
+            "name": "house-east",
+            "desc": "The east room of the house. There lies the azure dragon statue.", 
+            "items": [],
+            "characters": [],
+            "mechanisms": ["dragon statue"]
+        },
+        {
+            "name": "house-south",
+            "desc": "The south room of the house. There lies the phoenix statue.", 
+            "items": [],
+            "characters": [],
+            "mechanisms": ["phoenix statue"]
+        },
+        {
+            "name": "house-west",
+            "desc": "The west room of the house. There lies the white tiger statue", 
+            "items": [],
+            "characters": [],
+            "mechanisms": ["tiger statue"]
+        },
+        {
+            "name": "house-underground", 
+            "desc": "The underground section of the house. It seems that Bhu usually do his activities here",
+            "items": [],
+            "characters": ["general bhu"],
+            "mechanisms": []
+        },
+
+        {
+            "name": "heaven-hall",
+            "desc": "The hall of the Heaven Realm. Sparkles flowing around.", 
+            "items": [],
+            "characters": [],
             "mechanisms": []
         }
     ]

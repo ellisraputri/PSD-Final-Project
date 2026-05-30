@@ -12,7 +12,7 @@
         },
         {
             "name": "mysterious picture 3",
-            "desc": "An picture of a middle-aged man with slanted eyes and plump body. \nIn the bottom right of the picture, there is a text: \"Bhu\"",
+            "desc": "An picture of a middle-aged man with military clothes. \nIn the bottom right of the picture, there is a text: \"Bhu\"",
             "type": "none"
         },
         {
@@ -46,14 +46,14 @@
             "type": "buff",
             "hpBuff": 100,
             "atkBuff": 100,
-            "defBuff": 100
+            "defBuff": 10
         },
         {
             "name": "long sword",
             "desc": "A long sword with black gem on its hilt. \nYou recall that you usually train with this sword when you were little.",
             "type": "buff",
             "hpBuff": 0,
-            "atkBuff": 10,
+            "atkBuff": 50,
             "defBuff": 0
         },
         {
@@ -87,8 +87,8 @@
             "desc": "A simple spell book. You can use the book to level up your stats.",
             "type": "buff",
             "hpBuff": 20,
-            "atkBuff": 10,
-            "defBuff": 10
+            "atkBuff": 20,
+            "defBuff": 20
         },
 
 
@@ -103,6 +103,43 @@
             "desc": "Crystal that is imbued with a magic.",
             "type": "unlock-mechanism",
             "mechanism": "hidden scratch"
+        },
+        {
+            "name": "ancient scroll",
+            "desc": "Azure in the east, red in the south, white in the west, and black in the north",
+            "type": "none"
+        },
+        {
+            "name": "ruby",
+            "desc": "A shiny red gemstone",
+            "type": "unlock-mechanism",
+            "mechanism": "phoenix statue"
+        },
+        {
+            "name": "emerald",
+            "desc": "A shiny greenish-blue gemstone",
+            "type": "unlock-mechanism",
+            "mechanism": "dragon statue"
+        },
+        {
+            "name": "moonstone",
+            "desc": "A shiny white gemstone",
+            "type": "unlock-mechanism",
+            "mechanism": "tiger statue"
+        },
+        {
+            "name": "obsidian",
+            "desc": "A shiny black gemstone",
+            "type": "unlock-mechanism",
+            "mechanism": "turtle statue"
+        },
+        {
+            "name": "elixir",
+            "desc": "Mysterious elixir given from Xuan. You need to use it to level up your stats.",
+            "type": "buff",
+            "hpBuff": 200,
+            "atkBuff": 200,
+            "defBuff": 50
         }
     ]
 }

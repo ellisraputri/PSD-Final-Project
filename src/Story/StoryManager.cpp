@@ -85,13 +85,20 @@ void StoryManager::triggerAdditionalAction(StoryTrigger& trigger) {
     }
 
     if (name == "entered_corridor1" || name == "entered_library_entrace" || name == "unlock_mechanism_wood_shelf" ||
-        name == "entered_warehouse_bedroom") {
-        player->setCheckpoint(trigger.getTriggerTarget());
+        name == "entered_warehouse_bedroom" || name == "win_combat_princess_unnudh" || name == "win_combat_duke_inqigo" || name == "entered_house_center") {
+        player->setCheckpoint(player->getCurrentRoom()->getName());
 
         if (name == "unlock_mechanism_wood_shelf"){
             editCharacterInRoom(player->getCurrentRoom()->getName(), "old man qing", false);
             editCharacterInRoom("library-jail", "princess unnudh", false);
         }
+    }
+
+    if (name == "win_combat_general_bhu"){
+        editItemInRoom("house-underground", "elixir", true);
+        editCharacterInRoom("house-underground", "duke inqigo", true);
+        editCharacterInRoom("house-underground", "general bhu", false);
+        editCharacterInRoom("house-center", "assassin xuan", false);
     }
 }
 

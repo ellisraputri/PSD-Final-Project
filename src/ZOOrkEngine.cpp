@@ -12,6 +12,7 @@ ZOOrkEngine::ZOOrkEngine() {
     info->initPassage();
     // std::cout << "3"<<std::endl;
     info->initMechanism();
+    // std::cout <<"3a"<<std::endl;
     info->initItem();
     // std::cout << "4"<<std::endl;
     info->initCharacter();
@@ -21,9 +22,10 @@ ZOOrkEngine::ZOOrkEngine() {
     info->initTrigger();
     // std::cout << "7"<<std::endl;
     info->initCheckpoints();
+    // std::cout << "8" << std::endl;
 
     player = Player::instance();
-    player->setCurrentRoom(info->getRoom("library-entrace").get());
+    player->setCurrentRoom(info->getRoom("house-center").get());
     // std::cout << "8"<<std::endl;
     player->getCurrentRoom()->enter();
     // std::cout << "9"<<std::endl;

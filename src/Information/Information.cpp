@@ -311,6 +311,9 @@ void Information::initCheckpoints(){
     checkpoints.push_back(allRooms["library-mainroom"]);
     checkpoints.push_back(allRooms["warehouse-bedroom"]);
     checkpoints.push_back(allRooms["warehouse-hall"]);
+    checkpoints.push_back(allRooms["house-center"]);
+    checkpoints.push_back(allRooms["house-underground"]);
+    checkpoints.push_back(allRooms["heaven-hall"]);
 }
 
 std::vector<std::string> Information::getCheckpointList(std::string current) {
