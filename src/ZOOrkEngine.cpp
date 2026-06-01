@@ -343,14 +343,14 @@ void ZOOrkEngine::handleDialogCommand(std::vector<std::string> arguments){
     character->printDialogues();
 
     while (dialogSelection != "stop dialog") {
-        std::cout << "\nyou >> ";
+        std::cout << "\n\u001b[1;94myou >>\u001b[0m ";
 
         std::getline(std::cin, dialogSelection);
         if (dialogSelection == "stop dialog") {
             break;
         }
 
-        std::cout << character->getName() << " >> " << character->getDialogue(dialogSelection) << "\n\n";
+        std::cout << "\u001b[1;91m" << character->getName() << " >>\u001b[0m " << character->getDialogue(dialogSelection) << "\n";
     }
 }
 
@@ -359,11 +359,16 @@ void ZOOrkEngine::handleTeleportCommand(std::vector<std::string> arguments) {
         std::cout << "You cannot move from your place right now.\n";
         return;
     }
+    
+    auto checkpoints = info->getCheckpointList(player->getCheckpoint());
+    if (checkpoints.empty()) {
+        std::cout << "You have not unlocked any teleport checkpoint\n";
+        return;
+    }
 
     int input;
     std::cout << "Where do you want to teleport? Please just input the number.\n";
 
-    auto checkpoints = info->getCheckpointList(player->getCheckpoint());
     for (int i = 0; i < checkpoints.size(); i++) {
         std::cout << i << ". " << checkpoints[i] << std::endl;
     }
@@ -429,20 +434,20 @@ void ZOOrkEngine::handleUnlockPasswordCommand(std::vector<std::string> arguments
 
 void ZOOrkEngine::handleHelpCommand(std::vector<std::string> arguments) {
     std::cout << "Command available: \n";
-    std::cout << "<go> <north | south | west | east | up | down> =  move between rooms\n";
-    std::cout << "<look | inspect> <characterName | itemName | mechanismName> = get details about specific thing\n";
-    std::cout << "<look | inspect> = get details about current room \n";
-    std::cout << "<take | get> <itemName> = take specific item into inventory\n";
-    std::cout << "<drop> <itemName> = drop specific item from inventory\n" ;
-    std::cout << "<inventory> = show current inventory\n";
-    std::cout << "<use> <itemName> = use specific item\n";
-    std::cout << "<attack | hit> <characterName> = hit specific character\n";
-    std::cout << "<talk | greet> <characterName> = greet to specific character\n";
-    std::cout << "<dialog> <characterName> = do dialog with specific character\n";
-    std::cout << "<teleport> = teleport to specific room\n";
-    std::cout << "<unlock> <direction> = unlock a locked passage based on direction\n";
-    std::cout << "<help> = show all commands\n";
-    std::cout << "<quit | exit> = stop the game, note: the game cannot be retried.\n";
+    std::cout << "\u001b[1;32m<go>\u001b[0m \u001b[1;91m<north | south | west | east | up | down>\u001b[0m =  move between rooms\n";
+    std::cout << "\u001b[1;32m<look | inspect>\u001b[0m \u001b[1;91m<characterName | itemName | mechanismName>\u001b[0m = get details about specific thing\n";
+    std::cout << "\u001b[1;32m<look | inspect>\u001b[0m = get details about current room \n";
+    std::cout << "\u001b[1;32m<take | get>\u001b[0m \u001b[1;91m<itemName>\u001b[0m = take specific item into inventory\n";
+    std::cout << "\u001b[1;32m<drop>\u001b[0m \u001b[1;91m<itemName>\u001b[0m = drop specific item from inventory\n" ;
+    std::cout << "\u001b[1;32m<inventory>\u001b[0m = show current inventory\n";
+    std::cout << "\u001b[1;32m<use>\u001b[0m \u001b[1;91m<itemName>\u001b[0m = use specific item\n";
+    std::cout << "\u001b[1;32m<attack | hit>\u001b[0m \u001b[1;91m<characterName>\u001b[0m = hit specific character\n";
+    std::cout << "\u001b[1;32m<talk | greet>\u001b[0m \u001b[1;91m<characterName>\u001b[0m = greet to specific character\n";
+    std::cout << "\u001b[1;32m<dialog>\u001b[0m \u001b[1;91m<characterName>\u001b[0m = do dialog with specific character\n";
+    std::cout << "\u001b[1;32m<teleport>\u001b[0m = teleport to specific room\n";
+    std::cout << "\u001b[1;32m<unlock>\u001b[0m \u001b[1;91m<direction>\u001b[0m = unlock a locked passage based on direction\n";
+    std::cout << "\u001b[1;32m<help>\u001b[0m = show all commands\n";
+    std::cout << "\u001b[1;32m<quit | exit>\u001b[0m = stop the game, note: the game does not save your progress.\n";
 }
 
 void ZOOrkEngine::handleQuitCommand(std::vector<std::string> arguments) {

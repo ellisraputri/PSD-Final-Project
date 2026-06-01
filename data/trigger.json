@@ -60,7 +60,7 @@
             "triggerType": "ENTER_ROOM",
             "target": "library-entrace",
             "flag": "entered_library_entrace",
-            "result": "The guard is wary of you. He immediately try to \u001b[1;32mattack\u001b[0m you.",
+            "result": "The guard is wary of you. He immediately try to \u001b[1;32mattack\u001b[0m you. Tips: use the \u001b[1;32mblack pearl\u001b[0m to increase your combat stats",
             "flagCondition": "",
             "flagDone": "win_combat_guard",
             "lockPlayer": true

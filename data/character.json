@@ -8,7 +8,9 @@
             "def": 0, 
             "combatMode": false,
             "dialogues": {
-                "first_meeting": "Hello son."
+                "about princess": "I also do not know where your sister go. She just disappeared without me knowing.",
+                "about duke": "The last time I see him is when your sister disappeared four years ago.",
+                "about black pearl": "That is the power of you that I have sealed when you were small. I think it is time for you to claim back your power."
             }
         },
         {
@@ -19,7 +21,8 @@
             "def": 0, 
             "combatMode": true,
             "dialogues": {
-                "first_meeting": "Hello son."
+                "about library": "This is the Heaven Realm library. I need to guard this library from unknown existence",
+                "about qing": "The old man is the librarian. His job is to tidy up the books and guarding the library prisoner"
             }
         },
         {
@@ -30,7 +33,9 @@
             "def": 0, 
             "combatMode": false,
             "dialogues": {
-                "first_meeting": "Hello son."
+                "about unnudh": "I captured her 4 years ago since she is a ferocious beast. But, after seeing her behavior these years, I think I should not imprison her. Nevertheless, this is for the best of the world. So, I did not let her go.",
+                "about huz": "He is the youngest divine beasts among us. However, after the Great War last century, he went missing",
+                "about divine beast": "There are 4 divine beasts in the current era: Bhu, Xuan, Huz, and me. We are assigned to eradicate the evil caused by ferocious beasts"
             }
         },
         {
@@ -41,7 +46,8 @@
             "def": 10, 
             "combatMode": false,
             "dialogues": {
-                "first_meeting": "Hello son."
+                "imprisonment time": "I was in here for about 4 years. I never got out from this cell",
+                "imprisonment treatment": "I got food everyday. I also got books so that I was not bored. However, I was still missing Father, Uncle, and you a lot."
             }
         },
         {
@@ -52,7 +58,10 @@
             "def": 0, 
             "combatMode": false,
             "dialogues": {
-                "first_meeting": "Hello son."
+                "about huz": "You may already know that you are Huz. But, I suppose you are also Otuwa now, one of the ferocious beast. When I killed Iotate, I cannot bear to also kill you, so I fleed.",
+                "about otuwa": "The original Otuwa has been killed by the divine beasts in the last war. So, I do not know why you can yield his power",
+                "about ferocious beast": "A bunch of killers that murder people, even children, to achieve their goal. Even your so-called father, has murdered about 1000 people this year.",
+                "about inqigo": "I never heard of it since the last war. I thought his power is already weakened."
             }
         },
         {
@@ -63,7 +72,7 @@
             "def": 10, 
             "combatMode": true,
             "dialogues": {
-                "first_meeting": "Hello son."
+                "first meeting": "..."
             }
         },
         {
@@ -74,7 +83,10 @@
             "def": 0, 
             "combatMode": true,
             "dialogues": {
-                "first_meeting": "Hello son."
+                "about huz": "Yeah, we captured you in the last war. Then, we transferred Otuwa's heart into your body. Some of Otuwa's power is sealed in the black pearl, but I suppose you already have it in your body now. So, now, you are already a ferocious beast.",
+                "about ferocious beast": "We are the best in the world. No human or beast should interrupt us. We should be the ruler of the world!",
+                "about divine beast": "They already hinder our plans a bunch of time. So, I always wanted to kill them",
+                "about unnudh": "I already swallowed her. She refused to hear my commands, so I just use her to increase my power. It is a pity that your father power is being taken by that Xuan. Otherwise, I can be more powerful." 
             }
         }
     ]

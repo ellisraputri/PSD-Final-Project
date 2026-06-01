@@ -114,7 +114,7 @@ bool Room::isMechanismExist(const std::string& s) {
 }
 
 void Room::enter() {
-    std::cout << "\u001b[1;32m" << getName() << "\u001b[0m" << std::endl;
+    std::cout << "\u001b[1;94m" << getName() << "\u001b[0m" << std::endl;
     std::cout << getDescription() << std::endl;
 
     EventBus::instance()->emit({
