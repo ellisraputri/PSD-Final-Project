@@ -8,13 +8,9 @@ void BuffCharacterItemCommand::execute() {
 
     if (usedItem == requiredItem) {
         Player* player = Player::instance();
-        int playerAtk = player->getAtk();
-        int playerDef = player->getDef();
-        int playerHp = player->getHp();
-
-        player->setAtk(playerAtk + item->getAtkBuff());
-        player->setDef(playerDef + item->getDefBuff());
-        player->setHp(playerHp + item->getHpBuff());
+        player->setAtk(player->getAtk() + item->getAtkBuff());
+        player->setDef(player->getDef() + item->getDefBuff());
+        player->setHp(player->getHp() + item->getHpBuff());
 
         usedItem->setIsUsed(true);
         std::cout << "You used the item "+ item->getName() + " and get an increase in your combat stats\n";

@@ -1,7 +1,7 @@
 {
     "passages": [
         {
-            "name": "passage_bedroom-bed_bedroom-door1",
+            "name": "bedroom-bed_to_bedroom-door1",
             "password": "",
             "fromRoom": "bedroom-bed",
             "toRoom": "bedroom-door1",
@@ -10,7 +10,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_bedroom-bed_bedroom-door2",
+            "name": "bedroom-bed_to_bedroom-door2",
             "password": "",
             "fromRoom": "bedroom-bed",
             "toRoom": "bedroom-door2",
@@ -19,7 +19,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_bedroom-door1_corridor1",
+            "name": "bedroom-door1_to_corridor1",
             "password": "",
             "fromRoom": "bedroom-door1",
             "toRoom": "corridor1",
@@ -28,7 +28,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_bedroom-door2_corridor2",
+            "name": "bedroom-door2_to_corridor2",
             "password": "",
             "fromRoom": "bedroom-door2",
             "toRoom": "corridor2",
@@ -37,7 +37,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_castlecenter-hall_corridor2",
+            "name": "castlecenter-hall_to_corridor2",
             "password": "",
             "fromRoom": "corridor2",
             "toRoom": "castlecenter-hall",
@@ -46,7 +46,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_castlecenter-hall_castlecenter-throne",
+            "name": "castlecenter-hall_to_castlecenter-throne",
             "password": "",
             "fromRoom": "castlecenter-hall",
             "toRoom": "castlecenter-throne",
@@ -55,7 +55,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_castlecenter-hall_castle-storage1",
+            "name": "castlecenter-hall_to_castle-storage1",
             "password": "",
             "fromRoom": "castlecenter-hall",
             "toRoom": "castle-storage1",
@@ -64,7 +64,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_castle-storage1_castle-storage2",
+            "name": "castle-storage1_to_castle-storage2",
             "password": "",
             "fromRoom": "castle-storage1",
             "toRoom": "castle-storage2",
@@ -73,7 +73,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_castlecenter-throne_corridor1",
+            "name": "castlecenter-throne_to_corridor1",
             "password": "",
             "fromRoom": "castlecenter-throne",
             "toRoom": "corridor1",
@@ -85,7 +85,7 @@
 
 
         {
-            "name": "passage_library-entrace_library-corridor",
+            "name": "library-entrace_to_library-corridor",
             "password": "",
             "fromRoom": "library-entrace",
             "toRoom": "library-corridor",
@@ -94,7 +94,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_library-corridor_library-hall",
+            "name": "library-corridor_to_library-hall",
             "password": "",
             "fromRoom": "library-corridor",
             "toRoom": "library-hall",
@@ -103,7 +103,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_library-corridor_library-bedroom",
+            "name": "library-corridor_to_library-bedroom",
             "password": "",
             "fromRoom": "library-corridor",
             "toRoom": "library-bedroom",
@@ -112,7 +112,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_library-corridor_library-mainroom",
+            "name": "library-corridor_to_library-mainroom",
             "password": "",
             "fromRoom": "library-corridor",
             "toRoom": "library-mainroom",
@@ -121,7 +121,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_library-hall_library-jail",
+            "name": "library-hall_to_library-jail",
             "password": "82114",
             "fromRoom": "library-hall",
             "toRoom": "library-jail",
@@ -131,7 +131,7 @@
         },
 
         {
-            "name": "passage_warehouse-bedroom_warehouse-toilet",
+            "name": "warehouse-bedroom_to_warehouse-toilet",
             "password": "",
             "fromRoom": "warehouse-bedroom",
             "toRoom": "warehouse-toilet",
@@ -140,7 +140,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_warehouse-bedroom_warehouse-hall",
+            "name": "warehouse-bedroom_to_warehouse-hall",
             "password": "firewater",
             "fromRoom": "warehouse-bedroom",
             "toRoom": "warehouse-hall",
@@ -149,7 +149,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_house-center-house-north",
+            "name": "house-center_to_house-north",
             "password": "",
             "fromRoom": "house-center",
             "toRoom": "house-north",
@@ -158,7 +158,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_house-center-house-east",
+            "name": "house-center_to_house-east",
             "password": "",
             "fromRoom": "house-center",
             "toRoom": "house-east",
@@ -167,7 +167,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_house-center-house-south",
+            "name": "house-center_to_house-south",
             "password": "",
             "fromRoom": "house-center",
             "toRoom": "house-south",
@@ -176,7 +176,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_house-center-house-west",
+            "name": "house-center_to_house-west",
             "password": "",
             "fromRoom": "house-center",
             "toRoom": "house-west",
@@ -185,7 +185,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_house-center-house-underground",
+            "name": "house-center_to_house-underground",
             "password": "wfmw",
             "fromRoom": "house-center",
             "toRoom": "house-underground",
@@ -194,7 +194,7 @@
             "bidirectional": true
         },
         {
-            "name": "passage_heaven-hall_heaven-library",
+            "name": "heaven-hall_to_heaven-library",
             "password": "",
             "fromRoom": "heaven-hall",
             "toRoom": "heaven-library",

@@ -151,7 +151,7 @@
             "triggerType": "ENTER_ROOM",
             "target": "house-center",
             "flag": "entered_house_center",
-            "result": "Xuan told you that Bhu has special lock mechanism in his house. \nYou need to unlock it to go to the main house in the \u001b[1;32mundergound\u001b[0m.",
+            "result": "Xuan told you that Bhu has special lock mechanism in his house. \nYou need to unlock it to go \u001b[1;32mdown\u001b[0m to the main house in the undergound.",
             "flagCondition": "",
             "flagDone": "",
             "lockPlayer": false

@@ -3,10 +3,21 @@
 
 #include <unordered_map>
 #include <vector>
+#include "PassageConfig.h"
+#include "RoomConfig.h"
+#include "MechanismConfig.h"
+#include "ItemConfig.h"
+#include "CharacterConfig.h"
+#include "TriggerConfig.h"
 #include "Item/Item.h"
+#include "Item/BuffItem.h"
 #include "Mechanism/Mechanism.h"
 #include "Room/Room.h"
 #include "Passage/Passage.h"
+#include "Passage/PasswordPassage.h"
+#include "Command/PassageDefaultUnlockCommand.h"
+#include "Command/BuffCharacterItemCommand.h"
+#include "Command/MechanismUnlockCommand.h"
 #include "Story/TriggerType.h"
 #include "Story/StoryManager.h"
 #include "Story/StoryTrigger.h"
@@ -53,6 +64,11 @@ private:
     std::vector<std::shared_ptr<Room>> checkpoints;
 
     json readJson(std::string);
+    std::vector<std::shared_ptr<Passage>> createPassage(PassageConfig&);
+    std::shared_ptr<BuffItem> createBuffItem(ItemConfig&);
+    std::shared_ptr<Item> createUnlockPassageItem(ItemConfig&);
+    std::shared_ptr<Item> createUnlockMechanismItem(ItemConfig&);
+    std::shared_ptr<Item> createDecorativeItem(ItemConfig&);
 };
 
 #endif

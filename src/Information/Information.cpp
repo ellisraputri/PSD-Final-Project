@@ -1,9 +1,4 @@
 #include "Information.h"
-#include "Item/BuffItem.h"
-#include "Passage/PasswordPassage.h"
-#include "Command/PassageDefaultUnlockCommand.h"
-#include "Command/BuffCharacterItemCommand.h"
-#include "Command/MechanismUnlockCommand.h"
 
 Information* Information::infoInstance = nullptr;
 
@@ -91,12 +86,32 @@ void Information::initRoom() {
     json j = readJson("data/room.json");
 
     for (const auto& data : j["rooms"]) {
-        std::string name = data["name"];
-        std::string desc = data["desc"];
+        RoomConfig config = RoomConfig::fromJson(data);
+        std::shared_ptr<Room> room = std::make_shared<Room>(config.name, config.description);
 
-        std::shared_ptr<Room> room = std::make_shared<Room>(name, desc);
+        allRooms[config.name] = room;
+    }
+}
 
-        allRooms[name] = room;
+std::vector<std::shared_ptr<Passage>> Information::createPassage(PassageConfig& config) {
+    if (!config.password.empty()) {
+        return Passage::createBasicPassage<PasswordPassage>(
+            allRooms[config.fromRoom].get(),
+            allRooms[config.toRoom].get(),
+            config.direction,
+            config.locked,
+            config.bidirectional,
+            config.password
+        );
+    }
+    else {
+        return Passage::createBasicPassage<Passage>(
+            allRooms[config.fromRoom].get(),
+            allRooms[config.toRoom].get(),
+            config.direction,
+            config.locked,
+            config.bidirectional
+        );
     }
 }
 
@@ -104,41 +119,12 @@ void Information::initPassage() {
     json j = readJson("data/passage.json");
 
     for(const auto& data: j["passages"]){
-        std::string name = data["name"];
-        std::string password = data["password"];
-        std::string fromRoom = data["fromRoom"];
-        std::string toRoom = data["toRoom"];
-        std::string direction = data["direction"];
-        bool locked = data["locked"];
-        bool bidirectional = data["bidirectional"];
+        PassageConfig config = PassageConfig::fromJson(data);
+        std::vector<std::shared_ptr<Passage>> passages = createPassage(config);
         
-        std::vector<std::shared_ptr<Passage>> passages;
-        if (password != "") {
-            passages = Passage::createBasicPassage<PasswordPassage>(
-                allRooms[fromRoom].get(),
-                allRooms[toRoom].get(),
-                direction,
-                locked,
-                bidirectional,
-                password
-            );
-        }
-        else {
-            passages = Passage::createBasicPassage<Passage>(
-                allRooms[fromRoom].get(),
-                allRooms[toRoom].get(),
-                direction,
-                locked,
-                bidirectional
-            );
-        }
-        
-        std::string passageName = "passage_" + fromRoom + "_to_" + toRoom;
-        allPassages[passageName] = passages[0];
-
+        allPassages[passages[0]->getName()] = passages[0];
         if (passages.size() > 1) {
-            std::string passageName2 = "passage_" + toRoom + "_to_" + fromRoom;
-            allPassages[passageName2] = passages[1];
+            allPassages[passages[1]->getName()] = passages[1];
         }
     }
 }
@@ -147,64 +133,78 @@ void Information::initMechanism() {
     json j = readJson("data/mechanism.json");
 
     for(const auto& data: j["mechanisms"]){
-        std::string name = data["name"];
-        std::string desc = data["desc"];
-        std::string print = data["print"];
+        MechanismConfig config = MechanismConfig::fromJson(data);
 
-        auto mechanism = std::make_shared<Mechanism>(name, desc, print);
-        allMechanisms[name] = mechanism;
+        auto mechanism = std::make_shared<Mechanism>(config.name, config.description, config.print);
+        allMechanisms[config.name] = mechanism;
     }
+}
+
+std::shared_ptr<BuffItem> Information::createBuffItem(ItemConfig& config) {
+    std::shared_ptr<BuffItem> item = std::make_shared<BuffItem>(
+        config.name, config.description, config.hpBuff, config.atkBuff, config.defBuff
+    );
+    
+    auto buffCommand = std::make_shared<BuffCharacterItemCommand>(
+        item.get(), item.get()
+    );
+    item->setUseCommand(buffCommand);
+
+    return item;
+}
+
+std::shared_ptr<Item> Information::createUnlockPassageItem(ItemConfig& config) {
+    std::shared_ptr<Item> item = std::make_shared<Item>(config.name, config.description);
+    
+    auto unlockCommand = std::make_shared<PassageDefaultUnlockCommand>(
+        allPassages[config.passage1].get(),
+        allPassages[config.passage2].get(),
+        item.get()
+    );
+    item->setUseCommand(unlockCommand);
+
+    return item;
+}
+
+std::shared_ptr<Item> Information::createUnlockMechanismItem(ItemConfig& config) {
+    std::shared_ptr<Item> item = std::make_shared<Item>(config.name, config.description);
+    
+    auto unlockCommand = std::make_shared<MechanismUnlockCommand>(
+        allMechanisms[config.mechanism].get(),
+        item.get()
+    );
+    item->setUseCommand(unlockCommand);
+
+    return item;
+}
+
+std::shared_ptr<Item> Information::createDecorativeItem(ItemConfig& config) {
+    std::shared_ptr<Item> item = std::make_shared<Item>(config.name, config.description);
+    item->setTakeable(false);
+    return item;
 }
 
 void Information::initItem() {
     json j = readJson("data/item.json");
 
     for(const auto& data: j["items"]){
-        std::string name = data["name"];
-        std::string desc = data["desc"];
-        std::string type = data["type"];
-
+        ItemConfig config = ItemConfig::fromJson(data);
         std::shared_ptr<Item> item;
 
-        if (type == "buff") {
-            int hpBuff = data["hpBuff"];
-            int atkBuff = data["atkBuff"];
-            int defBuff = data["defBuff"];
-            item = std::make_shared<BuffItem>(name, desc, hpBuff, atkBuff, defBuff);
-            
-            auto buffCommand = std::make_shared<BuffCharacterItemCommand>(
-                item.get(), item.get()
-            );
-            item->setUseCommand(buffCommand);
+        if (config.type == "buff") {
+            item = createBuffItem(config);
         } 
-        else {
-            item = std::make_shared<Item>(name, desc);
-            if (type == "none") item->setTakeable(false);
+        else if (config.type == "unlock-passage"){
+            item = createUnlockPassageItem(config);
         }
-
-        if (type == "unlock-passage"){
-            std::string passage1 = data["passage1"];
-            std::string passage2 = data["passage2"];
-            
-            auto unlockCommand = std::make_shared<PassageDefaultUnlockCommand>(
-                allPassages[passage1].get(),
-                allPassages[passage2].get(),
-                item.get()
-            );
-            item->setUseCommand(unlockCommand);
-            
-        } 
-        else if (type == "unlock-mechanism"){
-            std::string mechanism = data["mechanism"];
-            
-            auto unlockCommand = std::make_shared<MechanismUnlockCommand>(
-                allMechanisms[mechanism].get(),
-                item.get()
-            );
-            item->setUseCommand(unlockCommand);
+        else if (config.type == "unlock-mechanism"){
+            item = createUnlockMechanismItem(config);
+        }
+        else {
+            item = createDecorativeItem(config);
         }
         
-        allItems[name] = item;
+        allItems[config.name] = item;
     }
 }
 
@@ -212,30 +212,23 @@ void Information::initCharacter(){
     json j = readJson("data/character.json");
 
     for(const auto& data: j["characters"]){
-        std::string name = data["name"];
-        std::string desc = data["desc"];
-        bool combatMode = data["combatMode"];
+        CharacterConfig config = CharacterConfig::fromJson(data);
         std::shared_ptr<Character> character;
 
-        if (combatMode){
-            int hp = data["hp"];
-            int atk = data["atk"];
-            int def = data["def"];
+        if (config.combatMode){
             character = std::make_shared<CombatCharacter>(
-                name, desc, hp, atk, def
+                config.name, config.description, config.hp, config.atk, config.def
             );
         } 
         else {
-            character = std::make_shared<Character>(name, desc);
+            character = std::make_shared<Character>(config.name, config.description);
         }
 
-        if (data.contains("dialogues")) {
-            for (auto& [flag, text] : data["dialogues"].items()) {
-                character->addDialogue(flag, text);
-            }
+        for (auto& [flag, text] : config.dialogues) {
+            character->addDialogue(flag, text);
         }
 
-        allCharacters[name] = character;
+        allCharacters[config.name] = character;
     }
 }
 
@@ -243,16 +236,16 @@ void Information::initRoomPopulation() {
     json j = readJson("data/room.json");
 
     for (const auto& data : j["rooms"]) {
-        std::string name = data["name"];
-        auto room = allRooms[name];
+        RoomConfig config = RoomConfig::fromJson(data);
+        auto room = allRooms[config.name];
 
-        for (const auto& itemName : data["items"]) {
+        for (const auto& itemName : config.items) {
             room->addItem(allItems[itemName]);
         }
-        for (const auto& characterName : data["characters"]) {
+        for (const auto& characterName : config.characters) {
             room->addCharacter(allCharacters[characterName]);
         }
-        for (const auto& mechanismName : data["mechanisms"]) {
+        for (const auto& mechanismName : config.mechanisms) {
             room->addMechanism(allMechanisms[mechanismName]);
         }
     }
@@ -262,15 +255,9 @@ void Information::initTrigger() {
     json j = readJson("data/trigger.json");
 
     for (const auto& data: j["triggers"]){
-        std::string triggerType = data["triggerType"];
-        std::string target = data["target"];
-        std::string flag = data["flag"];
-        std::string result = data["result"];
-        std::string flagDone = data["flagDone"];
-        std::string flagCondition = data["flagCondition"];
-        bool lockPlayer = data["lockPlayer"];
+        TriggerConfig config = TriggerConfig::fromJson(data);
 
-        StoryTrigger trigger = StoryTrigger(stringToTriggerType(triggerType), target, flag, result, flagDone, flagCondition, lockPlayer);
+        StoryTrigger trigger = StoryTrigger(stringToTriggerType(config.triggerType), config.target, config.flag, config.result, config.flagDone, config.flagCondition, config.lockPlayer);
         StoryManager::instance()->addTrigger(trigger);
     }
 }
