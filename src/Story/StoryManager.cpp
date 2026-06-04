@@ -59,7 +59,6 @@ void StoryManager::trigger(TriggerType type, const std::string& target) {
 void StoryManager::triggerAdditionalAction(StoryTrigger& trigger) {
     Information* info = Information::instance();
     Player* player = Player::instance();
-
     std::string name = trigger.getResultFlag();
 
     if (name == "took_black_pearl") {
@@ -72,15 +71,13 @@ void StoryManager::triggerAdditionalAction(StoryTrigger& trigger) {
     }
 
     if (name == "entered_library_jail"){
-        std::shared_ptr<Passage> passage = info->getPassage("passage_library-corridor_to_library-mainroom");
-        std::shared_ptr<Passage> otherPassage = info->getPassage("passage_library-mainroom_to_library-corridor");
-        passage->setLocked(false);
-        otherPassage->setLocked(false);
+        info->getPassage("passage_library-corridor_to_library-mainroom")->setLocked(false);
+        info->getPassage("passage_library-mainroom_to_library-corridor")->setLocked(false);
+        info->getCharacter("princess unnudh")->setCombatMode(false);
     }
 
     if (name == "unlock_mechanism_taped_package"){
-        std::shared_ptr<Character> ch = info->getCharacter("princess unnudh");
-        ch->setCombatMode(true);
+        info->getCharacter("princess unnudh")->setCombatMode(true);
         editItemInRoom("warehouse-toilet", "magic crystal", true);
     }
 
@@ -107,13 +104,9 @@ void StoryManager::editItemInRoom(std::string roomName, std::string itemName, bo
     std::shared_ptr<Item> item = info->getItem(itemName);
     std::shared_ptr<Room> room = info->getRoom(roomName);
     
-    if (isAdd) {
-        room->addItem(item);
-    }
-    else {
-        room->removeItem(item);
-    }
-
+    if (isAdd) room->addItem(item);
+    else room->removeItem(item);
+    
     info->setRoom(roomName, room);
 }
 
@@ -122,12 +115,8 @@ void StoryManager::editCharacterInRoom(std::string roomName, std::string charNam
     std::shared_ptr<Character> character = info->getCharacter(charName);
     std::shared_ptr<Room> room = info->getRoom(roomName);
     
-    if (isAdd) {
-        room->addCharacter(character);
-    }
-    else {
-        room->removeCharacter(character);
-    }
+    if (isAdd) room->addCharacter(character);
+    else room->removeCharacter(character);
 
     info->setRoom(roomName, room);
 }

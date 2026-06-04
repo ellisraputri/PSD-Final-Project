@@ -44,7 +44,7 @@
             "hp": 200, 
             "atk": 10, 
             "def": 10, 
-            "combatMode": false,
+            "combatMode": true,
             "dialogues": {
                 "imprisonment time": "I was in here for about 4 years. I never got out from this cell",
                 "imprisonment treatment": "I got food everyday. I also got books so that I was not bored. However, I was still missing Father, Uncle, and you a lot."

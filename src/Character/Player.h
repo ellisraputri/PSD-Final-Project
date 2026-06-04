@@ -1,12 +1,12 @@
 #ifndef ZOORK_PLAYER_H
 #define ZOORK_PLAYER_H
 
-#include "Character/Character.h"
+#include "CombatCharacter.h"
 #include "Location.h"
 #include "Room/NullRoom.h"
 #include <vector>
 
-class Player : public Character {
+class Player : public CombatCharacter {
 public:
     static Player *instance() {
         // Note: lazy instantiation of the singleton Player object
@@ -39,7 +39,7 @@ private:
     bool locked = false;
     std::string checkpoint = "bedroom-bed";
 
-    Player() : Character("You", "You are a person, alike in dignity to any other, but uniquely you."),
+    Player() : CombatCharacter("You", "You are a person, alike in dignity to any other, but uniquely you."),
                currentRoom(new NullRoom()) {}
 };
 

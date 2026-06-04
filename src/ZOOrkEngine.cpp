@@ -25,7 +25,7 @@ ZOOrkEngine::ZOOrkEngine() {
     // std::cout << "8" << std::endl;
 
     player = Player::instance();
-    player->setCurrentRoom(info->getRoom("bedroom-bed").get());
+    player->setCurrentRoom(info->getRoom("warehouse-bedroom").get());
     // std::cout << "8"<<std::endl;
     player->getCurrentRoom()->enter();
     // std::cout << "9"<<std::endl;
@@ -262,23 +262,26 @@ void ZOOrkEngine::handleAttackCommand(std::vector<std::string> arguments) {
     } 
 
     Room* currentRoom = player->getCurrentRoom();
-    std::shared_ptr<Character> enemy = info->getCharacter(arguments[0]);
+    std::shared_ptr<Character> ch = info->getCharacter(arguments[0]);
 
-    if (enemy == nullptr || !currentRoom->isCharacterExist(enemy->getName())) {
-        std::cout << enemy->getName() << " is not a recognizable enemy" << std::endl;
+    if (ch == nullptr || !currentRoom->isCharacterExist(ch->getName())) {
+        std::cout << ch->getName() << " is not a recognizable enemy" << std::endl;
         std::cout << "make sure to type the character full name" << std::endl;
         return;
     }
 
-    if (!enemy->isCombatMode()){
-        std::cout << enemy->getName() << " is not in a state to have a combat with you" << std::endl;
+    if (!ch->isCombatMode()){
+        std::cout << ch->getName() << " is not in a state to have a combat with you" << std::endl;
         return;
     }
+
+    auto enemy = std::dynamic_pointer_cast<CombatCharacter>(ch);
     
     int playerAtk = randomInt(0, std::max(player->getAtk(), 0));
     int playerDef = randomInt(0, std::max(player->getDef(), 0));
     int enemyAtk = randomInt(0, std::max(enemy->getAtk(), 0));
     int enemyDef = randomInt(0, std::max(enemy->getDef(), 0));
+    std::cout << "sampe sini" << std::endl;
 
     int dmgFromPlayer = std::max((playerAtk - enemyDef), 0);
     enemy->takeDamage(dmgFromPlayer);

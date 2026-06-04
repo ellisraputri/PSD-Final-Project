@@ -50,8 +50,9 @@ private:
     std::unordered_map<std::string, std::shared_ptr<Room>> allRooms;
     std::unordered_map<std::string, std::shared_ptr<Passage>> allPassages;
     std::unordered_map<std::string, std::shared_ptr<Character>> allCharacters;
-
     std::vector<std::shared_ptr<Room>> checkpoints;
+
+    json readJson(std::string);
 };
 
 #endif
