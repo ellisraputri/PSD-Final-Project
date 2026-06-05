@@ -291,3 +291,14 @@ std::vector<std::string> Information::getCheckpointList(std::string current) {
 
     return returnList;
 }
+
+void Information::initAll() {
+    initRoom();
+    initPassage();
+    initMechanism();
+    initItem();
+    initCharacter();
+    initRoomPopulation();
+    initTrigger();
+    initCheckpoints();
+}

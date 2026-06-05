@@ -115,7 +115,7 @@
             "triggerType": "ENTER_ROOM",
             "target": "warehouse-bedroom",
             "flag": "entered_warehouse_bedroom",
-            "result": "Your uncle takes you and your sister to separate room. \nHe tells you to rest well and lock the door.",
+            "result": "Your uncle takes you and your sister to separate room. \nHe tells you to rest well.",
             "flagCondition": "",
             "flagDone": "",
             "lockPlayer": false

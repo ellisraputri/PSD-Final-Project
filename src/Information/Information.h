@@ -42,6 +42,7 @@ public:
     void setPassage(const std::string& name, std::shared_ptr<Passage> passage);
     void setCharacter(const std::string& name, std::shared_ptr<Character> character);
 
+    void initAll();
     void initRoom();
     void initPassage();
     void initItem();

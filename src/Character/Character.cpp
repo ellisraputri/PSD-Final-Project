@@ -22,7 +22,7 @@ std::string Character::getDialogue(const std::string& flag) const {
 }
 
 void Character::printDialogues() const {
-    std::cout << "Please input the key to get the dialog you want. If you want to exit, just input 'stop dialog' \nKeys provided: \n";
+    std::cout << "Please input the key to get the dialog you want. If you want to exit, just input \u001b[1;32mstop dialog\u001b[0m \nKeys provided: \n";
     for (const auto& [key, val]: dialogues){
         std::cout << "* " << key << std::endl;
     }

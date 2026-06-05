@@ -22,7 +22,7 @@
             "combatMode": true,
             "dialogues": {
                 "about library": "This is the Heaven Realm library. I need to guard this library from unknown existence",
-                "about qing": "The old man is the librarian. His job is to tidy up the books and guarding the library prisoner"
+                "about qing": "The old man is the librarian. His job is to tidy up the books and guard the prisoner"
             }
         },
         {
@@ -58,7 +58,7 @@
             "def": 0, 
             "combatMode": false,
             "dialogues": {
-                "about huz": "You may already know that you are Huz. But, I suppose you are also Otuwa now, one of the ferocious beast. When I killed Iotate, I cannot bear to also kill you, so I fleed.",
+                "about huz": "You may already know that you are Huz. But, I suppose you are also Otuwa now, one of the ferocious beasts. When I killed Iotate, I cannot bear to also kill you, so I left you there.",
                 "about otuwa": "The original Otuwa has been killed by the divine beasts in the last war. So, I do not know why you can yield his power",
                 "about ferocious beast": "A bunch of killers that murder people, even children, to achieve their goal. Even your so-called father, has murdered about 1000 people this year.",
                 "about inqigo": "I never heard of it since the last war. I thought his power is already weakened."

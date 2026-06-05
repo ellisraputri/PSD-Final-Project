@@ -20,6 +20,7 @@ public:
     Room* getCurrentRoom() const;
 
     std::vector<std::shared_ptr<Item>> getInventory() const;
+    bool findItemFromInventory(std::string);
     void takeItem(std::shared_ptr<Item>);
     void dropItem(std::shared_ptr<Item>);
 

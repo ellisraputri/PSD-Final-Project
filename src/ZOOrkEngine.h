@@ -8,6 +8,7 @@
 #include "Passage/NullPassage.h"
 #include "Information/Information.h"
 #include "EventBus.h"
+#include "EngineUtils.h"
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -26,34 +27,23 @@ private:
     Information* info;
 
     void handleGoCommand(std::vector<std::string>);
-
     void handleLookCommand(std::vector<std::string>);
-
     void handleTakeCommand(std::vector<std::string>);
-
     void handleShowInventory();
-
     void handleDropCommand(std::vector<std::string>);
-
     void handleUseCommand(std::vector<std::string>);
-
     void handleAttackCommand(std::vector<std::string>);
-
     void handleTalkCommand(std::vector<std::string>);
-
     void handleDialogCommand(std::vector<std::string>);
-
     void handleTeleportCommand(std::vector<std::string>);
-
     void handleUnlockPasswordCommand(std::vector<std::string>);
-
     void handleHelpCommand(std::vector<std::string>);
-
     void handleQuitCommand(std::vector<std::string>);
 
-    static std::vector<std::string> tokenizeString(const std::string&);
-    static std::string makeLowercase(std::string);
-    int randomInt(int, int);
+    bool performAttack(CombatCharacter&,CombatCharacter&,const std::string&,const std::string&);
+    bool isItemExist(std::string);
+    bool isMechanismExist(std::string);
+    bool isCharacterExist(std::string);
 };
 
 

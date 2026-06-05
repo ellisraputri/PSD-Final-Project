@@ -14,6 +14,17 @@ std::vector<std::shared_ptr<Item>> Player::getInventory() const {
     return inventory;
 }
 
+bool Player::findItemFromInventory(std::string name) {
+    for (const auto& playerItem : inventory) {
+        if (playerItem->getName() == name) {
+            return true;
+        }
+    }
+
+    std::cout << name << " does not exist in the inventory\n";
+    return false;
+}
+
 void Player::takeItem(std::shared_ptr<Item> item) {
     inventory.push_back(item);
 }

@@ -13,7 +13,7 @@ void BuffCharacterItemCommand::execute() {
         player->setHp(player->getHp() + item->getHpBuff());
 
         usedItem->setIsUsed(true);
-        std::cout << "You used the item "+ item->getName() + " and get an increase in your combat stats\n";
+        std::cout << "You used the item \u001b[1;94m"+ item->getName() + "\u001b[0m and get an increase in your combat stats\n";
         std::cout << "HP stats: "<< player->getHp() << "\n";
         std::cout << "ATK stats: "<< player->getAtk() << "\n";
         std::cout << "DEF stats: "<< player->getDef() << "\n";

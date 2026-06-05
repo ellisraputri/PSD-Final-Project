@@ -60,8 +60,8 @@
             "name": "black key",
             "desc": "A mysterious key to open a certain passage in the castle.",
             "type": "unlock-passage",
-            "passage1": "passage_castlecenter-throne_to_corridor1",
-            "passage2": "passage_corridor1_to_castlecenter-throne"
+            "passage1": "castlecenter-throne_to_corridor1",
+            "passage2": "corridor1_to_castlecenter-throne"
         },
         {
             "name": "flashlight",

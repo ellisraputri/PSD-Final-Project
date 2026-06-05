@@ -71,8 +71,8 @@ void StoryManager::triggerAdditionalAction(StoryTrigger& trigger) {
     }
 
     if (name == "entered_library_jail"){
-        info->getPassage("passage_library-corridor_to_library-mainroom")->setLocked(false);
-        info->getPassage("passage_library-mainroom_to_library-corridor")->setLocked(false);
+        info->getPassage("library-corridor_to_library-mainroom")->setLocked(false);
+        info->getPassage("library-mainroom_to_library-corridor")->setLocked(false);
         info->getCharacter("princess unnudh")->setCombatMode(false);
     }
 
