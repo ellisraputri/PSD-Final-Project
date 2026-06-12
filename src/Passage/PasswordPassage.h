@@ -14,7 +14,7 @@ public:
     );
 
     void setPassword(std::string);
-    bool tryUnlock(const std::string& inputPassword);
+    bool tryUnlock(const std::string&);
 
 private:
     std::string password;

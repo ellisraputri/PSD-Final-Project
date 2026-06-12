@@ -14,7 +14,7 @@ public:
     void setResultPrint(std::string);
     std::string getResultPrint() const;
 
-protected:
+private:
    bool locked = true;
    std::string resultPrint;
 };

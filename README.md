@@ -1,41 +1,54 @@
 # PSD-Final-Project
 CSE3PSD/CSE5008 Programming Assignment 3A - Zork-Style Adventure
 
+**Name:** Ellis Raputri
 
-cd build
-cmake ..
-cmake --build .
-Debug\PSD_Final_Project.exe
+**Class:** LT6O
 
-rmdir /s /q build
-mkdir build
-cd build
-cmake ..
-cmake --build .
+**ID Number:** 2702298116
 
-{
-    "triggerType": "ENTER_ROOM",
-    "target": "castlecenter-hall",
-    "flag": "entered_castlecenter_hall",
-    "result": "You entered the throne hall.",
-    "flagCondition": "",
-    "flagDone": "talked_king",    
-    "lockPlayer": true
-}
-flagDone dan lockPlayer hanya dipakai kalau butuh locking player after trigger.
-flagDone = flag apa yang bisa membuat trigger ini berhenti triggered
-flagCondition = flag apa yang harus ada sebelum trigger ini bisa triggered
+<br>
 
-penamaan:
-- character-> full lowercase
-- item -> full lowercase
-- passage -> passage_{room1}_{room2}
-- room -> lowercase, pake "-", cth: bedroom-door2
+## Project Description
+This project consists of a command-line built game, replicating the legendary game (Zork). The game includes a story, with several action that can player do. The actions include: 
+- (go) (north | south | west | east | up | down) =  move between rooms
+- (look | inspect) (characterName | itemName | mechanismName) = get details about specific thing
+- (look | inspect) = get details about current room 
+- (take | get) (itemName) = take specific item into inventory
+- (drop) (itemName) = drop specific item from inventory 
+- (inventory) = show current inventory
+- (use) (itemName) = use specific item
+- (attack | hit) (characterName) = hit specific character
+- (talk | greet) (characterName) = greet to specific character
+- (dialog) (characterName) = do dialog with specific character
+- (teleport) = teleport to specific room
+- (unlock) (direction) = unlock a locked passage based on direction
+- (help) = show all commands
+- (quit | exit) = stop the game, note: the game does not save your progress.
 
-untuk item, nama passage menjadi:
-- passage_{room1}_to_{room2}
+<br>
 
-item type:
-- none
-- unlock
-- buff
+## How to Play 
+- Install C++ and CMake on your computer. 
+- Clone the repository or download the ZIP file.
+- Build the code using CMake with the commands below.
+    ```
+    mkdir build
+    cd build
+    cmake ..
+    cmake --build .
+    ```
+- Run the application.
+    ```
+    Debug\PSD_Final_Project.exe
+    ```
+- Enjoy the game!
+
+<br>
+
+## Screenshots 
+<img src="screenshots/image1.png" alt ="Image (1)" width = "600"><br><br>
+<img src="screenshots/image2.png" alt ="Image (2)" width = "600"><br><br>
+<img src="screenshots/image3.png" alt ="Image (3)" width = "600"><br><br>
+<img src="screenshots/image4.png" alt ="Image (4)" width = "600"><br><br>
+
