@@ -333,7 +333,7 @@ void ZOOrkEngine::handleUnlockPasswordCommand(std::vector<std::string> arguments
     }
 
     std::string password;
-    std::cout << "Enter password: ";
+    std::cout << "Enter password (lowercase only): ";
     std::cin >> password;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
